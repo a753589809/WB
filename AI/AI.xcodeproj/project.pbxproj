@@ -7,55 +7,47 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		011A82AF213FF13500AB2363 /* ImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 011A82AE213FF13500AB2363 /* ImageHelper.m */; };
+		011A82B2213FF20400AB2363 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 011A82B1213FF20400AB2363 /* UIViewExt.m */; };
+		011A82BC213FF27A00AB2363 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 011A82B3213FF27A00AB2363 /* VideoViewController.m */; };
+		011A82BD213FF27A00AB2363 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 011A82B6213FF27A00AB2363 /* ScanViewController.m */; };
+		011A82BE213FF27A00AB2363 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 011A82B8213FF27A00AB2363 /* ViewController.m */; };
+		011A82BF213FF27A00AB2363 /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 011A82BA213FF27A00AB2363 /* QRCodeViewController.m */; };
+		011A82C0213FF27A00AB2363 /* VideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 011A82BB213FF27A00AB2363 /* VideoViewController.xib */; };
 		01816C4F213972BF00101F0C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01816C4E213972BF00101F0C /* AppDelegate.m */; };
-		01816C52213972BF00101F0C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01816C51213972BF00101F0C /* ViewController.m */; };
 		01816C55213972BF00101F0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01816C53213972BF00101F0C /* Main.storyboard */; };
 		01816C57213972C100101F0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01816C56213972C100101F0C /* Assets.xcassets */; };
 		01816C5A213972C100101F0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01816C58213972C100101F0C /* LaunchScreen.storyboard */; };
 		01816C5D213972C100101F0C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 01816C5C213972C100101F0C /* main.m */; };
-		01816C652139743500101F0C /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01816C632139743500101F0C /* QRCodeViewController.m */; };
-		01816C682139753100101F0C /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 01816C672139753100101F0C /* UIViewExt.m */; };
-		01816C6F213A3DD900101F0C /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01816C6E213A3DD800101F0C /* ScanViewController.m */; };
-		01816C73213A3DE100101F0C /* scan_circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01816C70213A3DE100101F0C /* scan_circle@2x.png */; };
-		01816C74213A3DE100101F0C /* scanSuccess.wav in Resources */ = {isa = PBXBuildFile; fileRef = 01816C71213A3DE100101F0C /* scanSuccess.wav */; };
-		01816C75213A3DE100101F0C /* scan_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 01816C72213A3DE100101F0C /* scan_line@2x.png */; };
 		01816C78213A6F8A00101F0C /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01816C77213A6F8A00101F0C /* NetworkExtension.framework */; };
 		01816C7A213A730800101F0C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01816C79213A730800101F0C /* SystemConfiguration.framework */; };
-		01816C7C213A7A1400101F0C /* 6666.png in Resources */ = {isa = PBXBuildFile; fileRef = 01816C7B213A7A1400101F0C /* 6666.png */; };
-		01816C9C213BA29800101F0C /* ImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 01816C9A213BA29800101F0C /* ImageHelper.m */; };
-		01816CA0213BB42D00101F0C /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01816C9E213BB42D00101F0C /* VideoViewController.m */; };
-		01816CA1213BB42D00101F0C /* VideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01816C9F213BB42D00101F0C /* VideoViewController.xib */; };
 		576D81B5BEE93203CF05FFB0 /* libPods-AI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84A575072EE0EA378A9A58A3 /* libPods-AI.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		011A82AD213FF13500AB2363 /* ImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageHelper.h; sourceTree = "<group>"; };
+		011A82AE213FF13500AB2363 /* ImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageHelper.m; sourceTree = "<group>"; };
+		011A82B0213FF20400AB2363 /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
+		011A82B1213FF20400AB2363 /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
+		011A82B3213FF27A00AB2363 /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
+		011A82B4213FF27A00AB2363 /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
+		011A82B5213FF27A00AB2363 /* QRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
+		011A82B6213FF27A00AB2363 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
+		011A82B7213FF27A00AB2363 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		011A82B8213FF27A00AB2363 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		011A82B9213FF27A00AB2363 /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
+		011A82BA213FF27A00AB2363 /* QRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeViewController.m; sourceTree = "<group>"; };
+		011A82BB213FF27A00AB2363 /* VideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoViewController.xib; sourceTree = "<group>"; };
 		01816C4A213972BF00101F0C /* AI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01816C4D213972BF00101F0C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		01816C4E213972BF00101F0C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		01816C50213972BF00101F0C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		01816C51213972BF00101F0C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		01816C54213972BF00101F0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01816C56213972C100101F0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		01816C59213972C100101F0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		01816C5B213972C100101F0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01816C5C213972C100101F0C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		01816C632139743500101F0C /* QRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeViewController.m; sourceTree = "<group>"; };
-		01816C642139743500101F0C /* QRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeViewController.h; sourceTree = "<group>"; };
-		01816C662139753100101F0C /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
-		01816C672139753100101F0C /* UIViewExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewExt.m; sourceTree = "<group>"; };
-		01816C6D213A3DD800101F0C /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
-		01816C6E213A3DD800101F0C /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
-		01816C70213A3DE100101F0C /* scan_circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scan_circle@2x.png"; sourceTree = "<group>"; };
-		01816C71213A3DE100101F0C /* scanSuccess.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = scanSuccess.wav; sourceTree = "<group>"; };
-		01816C72213A3DE100101F0C /* scan_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scan_line@2x.png"; sourceTree = "<group>"; };
 		01816C77213A6F8A00101F0C /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		01816C79213A730800101F0C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		01816C7B213A7A1400101F0C /* 6666.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6666.png; sourceTree = "<group>"; };
-		01816C9A213BA29800101F0C /* ImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageHelper.m; sourceTree = "<group>"; };
-		01816C9B213BA29800101F0C /* ImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageHelper.h; sourceTree = "<group>"; };
-		01816C9D213BB42D00101F0C /* VideoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
-		01816C9E213BB42D00101F0C /* VideoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
-		01816C9F213BB42D00101F0C /* VideoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoViewController.xib; sourceTree = "<group>"; };
 		1B5415FA0048511A8860F7D9 /* Pods-AI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AI.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AI/Pods-AI.debug.xcconfig"; sourceTree = "<group>"; };
 		84A575072EE0EA378A9A58A3 /* libPods-AI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AI.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0AA4C05CB9F07A7694E44CB /* Pods-AI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AI.release.xcconfig"; path = "Pods/Target Support Files/Pods-AI/Pods-AI.release.xcconfig"; sourceTree = "<group>"; };
@@ -75,6 +67,65 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		011A82A3213FF0A200AB2363 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				011A82A4213FF0A200AB2363 /* VC */,
+				011A82A5213FF0A200AB2363 /* Model */,
+				011A82A6213FF0A200AB2363 /* View */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		011A82A4213FF0A200AB2363 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				011A82B5213FF27A00AB2363 /* QRCodeViewController.h */,
+				011A82BA213FF27A00AB2363 /* QRCodeViewController.m */,
+				011A82B4213FF27A00AB2363 /* ScanViewController.h */,
+				011A82B6213FF27A00AB2363 /* ScanViewController.m */,
+				011A82B9213FF27A00AB2363 /* VideoViewController.h */,
+				011A82B3213FF27A00AB2363 /* VideoViewController.m */,
+				011A82BB213FF27A00AB2363 /* VideoViewController.xib */,
+				011A82B7213FF27A00AB2363 /* ViewController.h */,
+				011A82B8213FF27A00AB2363 /* ViewController.m */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		011A82A5213FF0A200AB2363 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		011A82A6213FF0A200AB2363 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				01816C53213972BF00101F0C /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		011A82AB213FF10000AB2363 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				011A82B0213FF20400AB2363 /* UIViewExt.h */,
+				011A82B1213FF20400AB2363 /* UIViewExt.m */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		011A82AC213FF10000AB2363 /* NetWork */ = {
+			isa = PBXGroup;
+			children = (
+				011A82AD213FF13500AB2363 /* ImageHelper.h */,
+				011A82AE213FF13500AB2363 /* ImageHelper.m */,
+			);
+			path = NetWork;
+			sourceTree = "<group>";
+		};
 		01816C41213972BF00101F0C = {
 			isa = PBXGroup;
 			children = (
@@ -96,26 +147,11 @@
 		01816C4C213972BF00101F0C /* AI */ = {
 			isa = PBXGroup;
 			children = (
+				011A82AC213FF10000AB2363 /* NetWork */,
+				011A82AB213FF10000AB2363 /* Util */,
+				011A82A3213FF0A200AB2363 /* Main */,
 				01816C4D213972BF00101F0C /* AppDelegate.h */,
 				01816C4E213972BF00101F0C /* AppDelegate.m */,
-				01816C53213972BF00101F0C /* Main.storyboard */,
-				01816C9B213BA29800101F0C /* ImageHelper.h */,
-				01816C9A213BA29800101F0C /* ImageHelper.m */,
-				01816C50213972BF00101F0C /* ViewController.h */,
-				01816C51213972BF00101F0C /* ViewController.m */,
-				01816C9D213BB42D00101F0C /* VideoViewController.h */,
-				01816C9E213BB42D00101F0C /* VideoViewController.m */,
-				01816C9F213BB42D00101F0C /* VideoViewController.xib */,
-				01816C662139753100101F0C /* UIViewExt.h */,
-				01816C672139753100101F0C /* UIViewExt.m */,
-				01816C642139743500101F0C /* QRCodeViewController.h */,
-				01816C632139743500101F0C /* QRCodeViewController.m */,
-				01816C6D213A3DD800101F0C /* ScanViewController.h */,
-				01816C6E213A3DD800101F0C /* ScanViewController.m */,
-				01816C70213A3DE100101F0C /* scan_circle@2x.png */,
-				01816C72213A3DE100101F0C /* scan_line@2x.png */,
-				01816C71213A3DE100101F0C /* scanSuccess.wav */,
-				01816C7B213A7A1400101F0C /* 6666.png */,
 				01816C56213972C100101F0C /* Assets.xcassets */,
 				01816C58213972C100101F0C /* LaunchScreen.storyboard */,
 				01816C5B213972C100101F0C /* Info.plist */,
@@ -201,14 +237,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01816C74213A3DE100101F0C /* scanSuccess.wav in Resources */,
 				01816C5A213972C100101F0C /* LaunchScreen.storyboard in Resources */,
-				01816C73213A3DE100101F0C /* scan_circle@2x.png in Resources */,
 				01816C57213972C100101F0C /* Assets.xcassets in Resources */,
+				011A82C0213FF27A00AB2363 /* VideoViewController.xib in Resources */,
 				01816C55213972BF00101F0C /* Main.storyboard in Resources */,
-				01816C75213A3DE100101F0C /* scan_line@2x.png in Resources */,
-				01816CA1213BB42D00101F0C /* VideoViewController.xib in Resources */,
-				01816C7C213A7A1400101F0C /* 6666.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,13 +272,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01816C52213972BF00101F0C /* ViewController.m in Sources */,
-				01816C6F213A3DD900101F0C /* ScanViewController.m in Sources */,
+				011A82BE213FF27A00AB2363 /* ViewController.m in Sources */,
+				011A82BC213FF27A00AB2363 /* VideoViewController.m in Sources */,
+				011A82BD213FF27A00AB2363 /* ScanViewController.m in Sources */,
+				011A82B2213FF20400AB2363 /* UIViewExt.m in Sources */,
 				01816C5D213972C100101F0C /* main.m in Sources */,
-				01816C682139753100101F0C /* UIViewExt.m in Sources */,
-				01816C9C213BA29800101F0C /* ImageHelper.m in Sources */,
-				01816C652139743500101F0C /* QRCodeViewController.m in Sources */,
-				01816CA0213BB42D00101F0C /* VideoViewController.m in Sources */,
+				011A82AF213FF13500AB2363 /* ImageHelper.m in Sources */,
+				011A82BF213FF27A00AB2363 /* QRCodeViewController.m in Sources */,
 				01816C4F213972BF00101F0C /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
