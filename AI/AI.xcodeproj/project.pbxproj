@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0115CB5821410F37001613E8 /* XTSoundPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0115CB5721410F37001613E8 /* XTSoundPlayer.m */; };
 		011A82AF213FF13500AB2363 /* ImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 011A82AE213FF13500AB2363 /* ImageHelper.m */; };
 		011A82B2213FF20400AB2363 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 011A82B1213FF20400AB2363 /* UIViewExt.m */; };
 		011A82BC213FF27A00AB2363 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 011A82B3213FF27A00AB2363 /* VideoViewController.m */; };
@@ -14,6 +15,11 @@
 		011A82BE213FF27A00AB2363 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 011A82B8213FF27A00AB2363 /* ViewController.m */; };
 		011A82BF213FF27A00AB2363 /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 011A82BA213FF27A00AB2363 /* QRCodeViewController.m */; };
 		011A82C0213FF27A00AB2363 /* VideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 011A82BB213FF27A00AB2363 /* VideoViewController.xib */; };
+		011A82C3213FF47500AB2363 /* BaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 011A82C2213FF47500AB2363 /* BaseVC.m */; };
+		011A82C6213FF4EC00AB2363 /* HomeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 011A82C5213FF4EC00AB2363 /* HomeVC.m */; };
+		011A82C9213FFF6800AB2363 /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 011A82C8213FFF6800AB2363 /* HomeCell.m */; };
+		011A82CC214003B900AB2363 /* NSArray+VAInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 011A82CA214003B900AB2363 /* NSArray+VAInfo.m */; };
+		011A82D12140C84C00AB2363 /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 011A82D02140C84C00AB2363 /* HomeModel.m */; };
 		01816C4F213972BF00101F0C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01816C4E213972BF00101F0C /* AppDelegate.m */; };
 		01816C55213972BF00101F0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01816C53213972BF00101F0C /* Main.storyboard */; };
 		01816C57213972C100101F0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01816C56213972C100101F0C /* Assets.xcassets */; };
@@ -25,6 +31,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0115CB5621410F37001613E8 /* XTSoundPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTSoundPlayer.h; sourceTree = "<group>"; };
+		0115CB5721410F37001613E8 /* XTSoundPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XTSoundPlayer.m; sourceTree = "<group>"; };
 		011A82AD213FF13500AB2363 /* ImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageHelper.h; sourceTree = "<group>"; };
 		011A82AE213FF13500AB2363 /* ImageHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageHelper.m; sourceTree = "<group>"; };
 		011A82B0213FF20400AB2363 /* UIViewExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewExt.h; sourceTree = "<group>"; };
@@ -38,6 +46,18 @@
 		011A82B9213FF27A00AB2363 /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
 		011A82BA213FF27A00AB2363 /* QRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeViewController.m; sourceTree = "<group>"; };
 		011A82BB213FF27A00AB2363 /* VideoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoViewController.xib; sourceTree = "<group>"; };
+		011A82C1213FF47500AB2363 /* BaseVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseVC.h; sourceTree = "<group>"; };
+		011A82C2213FF47500AB2363 /* BaseVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseVC.m; sourceTree = "<group>"; };
+		011A82C4213FF4EC00AB2363 /* HomeVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeVC.h; sourceTree = "<group>"; };
+		011A82C5213FF4EC00AB2363 /* HomeVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeVC.m; sourceTree = "<group>"; };
+		011A82C7213FFF6800AB2363 /* HomeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeCell.h; sourceTree = "<group>"; };
+		011A82C8213FFF6800AB2363 /* HomeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeCell.m; sourceTree = "<group>"; };
+		011A82CA214003B900AB2363 /* NSArray+VAInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+VAInfo.m"; sourceTree = "<group>"; };
+		011A82CB214003B900AB2363 /* NSArray+VAInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+VAInfo.h"; sourceTree = "<group>"; };
+		011A82CE2140C6B000AB2363 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		011A82CF2140C84C00AB2363 /* HomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeModel.h; sourceTree = "<group>"; };
+		011A82D02140C84C00AB2363 /* HomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeModel.m; sourceTree = "<group>"; };
+		011A82D42140D01C00AB2363 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		01816C4A213972BF00101F0C /* AI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01816C4D213972BF00101F0C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		01816C4E213972BF00101F0C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -80,6 +100,8 @@
 		011A82A4213FF0A200AB2363 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				011A82C4213FF4EC00AB2363 /* HomeVC.h */,
+				011A82C5213FF4EC00AB2363 /* HomeVC.m */,
 				011A82B5213FF27A00AB2363 /* QRCodeViewController.h */,
 				011A82BA213FF27A00AB2363 /* QRCodeViewController.m */,
 				011A82B4213FF27A00AB2363 /* ScanViewController.h */,
@@ -96,6 +118,8 @@
 		011A82A5213FF0A200AB2363 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				011A82CF2140C84C00AB2363 /* HomeModel.h */,
+				011A82D02140C84C00AB2363 /* HomeModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -104,6 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				01816C53213972BF00101F0C /* Main.storyboard */,
+				011A82C7213FFF6800AB2363 /* HomeCell.h */,
+				011A82C8213FFF6800AB2363 /* HomeCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -113,6 +139,10 @@
 			children = (
 				011A82B0213FF20400AB2363 /* UIViewExt.h */,
 				011A82B1213FF20400AB2363 /* UIViewExt.m */,
+				011A82CB214003B900AB2363 /* NSArray+VAInfo.h */,
+				011A82CA214003B900AB2363 /* NSArray+VAInfo.m */,
+				0115CB5621410F37001613E8 /* XTSoundPlayer.h */,
+				0115CB5721410F37001613E8 /* XTSoundPlayer.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -152,6 +182,10 @@
 				011A82A3213FF0A200AB2363 /* Main */,
 				01816C4D213972BF00101F0C /* AppDelegate.h */,
 				01816C4E213972BF00101F0C /* AppDelegate.m */,
+				011A82C1213FF47500AB2363 /* BaseVC.h */,
+				011A82C2213FF47500AB2363 /* BaseVC.m */,
+				011A82CE2140C6B000AB2363 /* Common.h */,
+				011A82D42140D01C00AB2363 /* PrefixHeader.pch */,
 				01816C56213972C100101F0C /* Assets.xcassets */,
 				01816C58213972C100101F0C /* LaunchScreen.storyboard */,
 				01816C5B213972C100101F0C /* Info.plist */,
@@ -274,10 +308,16 @@
 			files = (
 				011A82BE213FF27A00AB2363 /* ViewController.m in Sources */,
 				011A82BC213FF27A00AB2363 /* VideoViewController.m in Sources */,
+				011A82C9213FFF6800AB2363 /* HomeCell.m in Sources */,
 				011A82BD213FF27A00AB2363 /* ScanViewController.m in Sources */,
+				011A82C6213FF4EC00AB2363 /* HomeVC.m in Sources */,
+				011A82C3213FF47500AB2363 /* BaseVC.m in Sources */,
 				011A82B2213FF20400AB2363 /* UIViewExt.m in Sources */,
+				011A82D12140C84C00AB2363 /* HomeModel.m in Sources */,
+				0115CB5821410F37001613E8 /* XTSoundPlayer.m in Sources */,
 				01816C5D213972C100101F0C /* main.m in Sources */,
 				011A82AF213FF13500AB2363 /* ImageHelper.m in Sources */,
+				011A82CC214003B900AB2363 /* NSArray+VAInfo.m in Sources */,
 				011A82BF213FF27A00AB2363 /* QRCodeViewController.m in Sources */,
 				01816C4F213972BF00101F0C /* AppDelegate.m in Sources */,
 			);
@@ -344,8 +384,11 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = AI/PrefixHeader.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -401,7 +444,10 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = AI/PrefixHeader.pch;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -420,16 +466,19 @@
 			baseConfigurationReference = 1B5415FA0048511A8860F7D9 /* Pods-AI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 62748U543U;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = HV95DQGN23;
+				GCC_PREFIX_HEADER = AI/PrefixHeader.pch;
 				INFOPLIST_FILE = AI/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kxg.kaixingou123;
+				PRODUCT_BUNDLE_IDENTIFIER = zzkko.com.ZZKKO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "e95ff3ae-692e-4ef6-9ec8-2669240040d9";
+				PROVISIONING_PROFILE_SPECIFIER = Shein_Development;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -439,16 +488,18 @@
 			baseConfigurationReference = E0AA4C05CB9F07A7694E44CB /* Pods-AI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 62748U543U;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
+				GCC_PREFIX_HEADER = AI/PrefixHeader.pch;
 				INFOPLIST_FILE = AI/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kxg.kaixingou123;
+				PRODUCT_BUNDLE_IDENTIFIER = zzkko.com.ZZKKO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
