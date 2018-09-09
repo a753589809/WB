@@ -62,7 +62,7 @@
 
 
 //返回按钮图片
-#define kBackImage [[UIImage imageNamed:@"back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+#define kBackImage [[UIImage imageNamed:@"menuicon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
 
 
 //Alert

@@ -11,6 +11,8 @@
 #import "HomeModel.h"
 #import "XTSoundPlayer.h"
 
+#define kCellSpaing 7.5
+
 @interface HomeVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -27,14 +29,16 @@
     
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
+    self.collectionView.contentInset = UIEdgeInsetsMake(kCellSpaing, kCellSpaing, 0, kCellSpaing);
+    CGFloat w = (kScreenWidth - 2 * kCellSpaing) / 2;
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.itemSize = CGSizeMake(kScreenWidth / 2 - 0.5, kScreenWidth / 2);
+    layout.itemSize = CGSizeMake(w, w);
     layout.minimumLineSpacing = 0;
     layout.minimumInteritemSpacing = 0;
     [self.collectionView setCollectionViewLayout:layout];
     
     NSArray *titleArray = @[@"狗狗品种",@"场景识别",@"手相",@"面相",@"发型指导",@"明星脸"];
-    NSArray *imageArray = @[@"icon-dog",@"icon-scene",@"icon-hand",@"icon-Physiognomy",@"icon-hair",@"icon-face"];
+    NSArray *imageArray = @[@"icon-dog-icon",@"icon-dog-icon",@"icon-dog-icon",@"icon-dog-icon",@"icon-dog-icon",@"icon-dog-icon"];
     for (int i=0; i<titleArray.count; i++) {
         HomeModel *model = [[HomeModel alloc] init];
         model.title = [titleArray objectAt:i];
@@ -58,8 +62,8 @@
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    XTSoundPlayer *player = [XTSoundPlayer standardSoundPlayer];
-    [player play:@"哈哈"];
+//    XTSoundPlayer *player = [XTSoundPlayer standardSoundPlayer];
+//    [player play:@"设置语速"];
 }
 
 @end
