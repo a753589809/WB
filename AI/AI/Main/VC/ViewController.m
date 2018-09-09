@@ -14,6 +14,7 @@
 #import "ImageHelper.h"
 #import <AVFoundation/AVFoundation.h>
 #import "VideoViewController.h"
+#import "XTSoundPlayer.h"
 
 #define kCreateAlert(title) UIAlertView *_alertView11 = [[UIAlertView alloc] initWithTitle:title message:nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];\
 [_alertView11 show];
@@ -85,6 +86,8 @@
         if (success) {
             NSLog(@"%@",dic);
             self->msgLabel.text = dic[@"name"];
+            XTSoundPlayer *player = [XTSoundPlayer standardSoundPlayer];
+            [player play:dic[@"name"]];
         }
         else {
             NSLog(@"%@",error);

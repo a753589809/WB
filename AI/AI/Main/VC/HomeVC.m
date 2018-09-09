@@ -10,6 +10,9 @@
 #import "HomeCell.h"
 #import "HomeModel.h"
 #import "XTSoundPlayer.h"
+#import "ConnectSuccessVC.h"
+#import "SceneRecognitionVC.h"
+#import "NetWorking.h"
 
 #define kCellSpaing 7.5
 
@@ -64,6 +67,17 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
 //    XTSoundPlayer *player = [XTSoundPlayer standardSoundPlayer];
 //    [player play:@"设置语速"];
+    
+//    SceneRecognitionVC *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"SceneRecognitionVC"];
+//    [self.navigationController pushViewController:vc animated:YES];
+    
+    [[NetWorking defaultNetWorking] uploadingAddress:@"/update" andFile:@"model_dog.tar.gz" andProgress:^(NSProgress *progress) {
+        
+    } andBlock:^(NSDictionary *dict) {
+        
+    } andFailDownload:^{
+        
+    }];
 }
 
 @end
