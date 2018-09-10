@@ -110,7 +110,7 @@
 	return context;	
 }
 
-+ (UIImage *) convertBitmapRGBA8ToUIImage:(unsigned char *) buffer 
++ (UIImage *)convertBitmapRGBA8ToUIImage:(unsigned char *) buffer
 								withWidth:(int) width
 							   withHeight:(int) height {
 	
