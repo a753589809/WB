@@ -23,12 +23,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+
     [self setupCaptureSession];
 }
 
-- (void)setupCaptureSession
-{
+- (void)setupCaptureSession {
     NSError *error = nil;
     
     AVCaptureSession *session = [[AVCaptureSession alloc] init];//负责输入和输出设置之间的数据传递
@@ -37,6 +36,23 @@
                                defaultDeviceWithMediaType:AVMediaTypeVideo];//这里默认是使用后置摄像头，你可以改成前置摄像头
     AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device
                                                                         error:&error];
+    
+    float frameRate = 15;
+    for(AVCaptureDeviceFormat *vFormat in [device formats] ) {
+        CMFormatDescriptionRef description= vFormat.formatDescription;
+        float maxRate = ((AVFrameRateRange*) [vFormat.videoSupportedFrameRateRanges objectAtIndex:0]).maxFrameRate;
+        if (maxRate > frameRate - 1 &&
+            CMFormatDescriptionGetMediaSubType(description)==kCVPixelFormatType_420YpCbCr8BiPlanarFullRange) {
+            if ([device lockForConfiguration:nil]) {
+                device.activeFormat = vFormat;
+                [device setActiveVideoMinFrameDuration:CMTimeMake(10, frameRate * 10)];
+                [device setActiveVideoMaxFrameDuration:CMTimeMake(10, frameRate * 10)];
+                [device unlockForConfiguration];
+                break;
+            }
+        }
+    }
+    
     if (!input) {
         
     }
@@ -56,10 +72,10 @@
                             nil];
     AVCaptureVideoPreviewLayer* preLayer = [AVCaptureVideoPreviewLayer layerWithSession: session];//相机拍摄预览图层
     preLayer.frame = CGRectMake(0, 64, 100, 100);
-    preLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    preLayer.videoGravity = AVLayerVideoGravityResizeAspect;
     [self.view.layer addSublayer:preLayer];
     
-    output.minFrameDuration = CMTimeMake(1, 30);
+//    output.minFrameDuration = CMTimeMake(1, 30);
     
     [session startRunning];
     
@@ -67,8 +83,8 @@
 
 - (void)captureOutput:(AVCaptureOutput *)captureOutput
 didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
-       fromConnection:(AVCaptureConnection *)connection
-{
+       fromConnection:(AVCaptureConnection *)connection {
+    
     if (isRequest) {
         return;
     }
@@ -96,8 +112,8 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     
 }
 
-- (NSData *)dataFromSampleBuffer:(CMSampleBufferRef) sampleBuffer
-{
+
+- (NSData *)dataFromSampleBuffer:(CMSampleBufferRef) sampleBuffer {
     // Get a CMSampleBuffer's Core Video image buffer for the media data
     CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
     // Lock the base address of the pixel buffer
@@ -187,42 +203,22 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 
 
 // Create a UIImage from sample buffer data
-- (UIImage *)imageFromSampleBuffer:(CMSampleBufferRef) sampleBuffer
-{
-    // Get a CMSampleBuffer's Core Video image buffer for the media data
+- (UIImage *)imageFromSampleBuffer:(CMSampleBufferRef) sampleBuffer {
     CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
-    // Lock the base address of the pixel buffer
     CVPixelBufferLockBaseAddress(imageBuffer, 0);
-    
-    // Get the number of bytes per row for the pixel buffer
     void *baseAddress = CVPixelBufferGetBaseAddress(imageBuffer);
-    
-    // Get the number of bytes per row for the pixel buffer
     size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer);
-    // Get the pixel buffer width and height
     size_t width = CVPixelBufferGetWidth(imageBuffer);
     size_t height = CVPixelBufferGetHeight(imageBuffer);
-    
-    // Create a device-dependent RGB color space
     CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-    
-    // Create a bitmap graphics context with the sample buffer data
     CGContextRef context = CGBitmapContextCreate(baseAddress, width, height, 8,
                                                  bytesPerRow, colorSpace, kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
-    // Create a Quartz image from the pixel data in the bitmap graphics context
     CGImageRef quartzImage = CGBitmapContextCreateImage(context);
-    // Unlock the pixel buffer
     CVPixelBufferUnlockBaseAddress(imageBuffer,0);
-    
-    // Free up the context and color space
     CGContextRelease(context);
     CGColorSpaceRelease(colorSpace);
-    
-    // Create an image object from the Quartz image
 //    UIImage *image = [UIImage imageWithCGImage:quartzImage];
     UIImage *image = [UIImage imageWithCGImage:quartzImage scale:1.0 orientation:UIImageOrientationRight];
-    
-    // Release the Quartz image
     CGImageRelease(quartzImage);
     
     return (image);
