@@ -12,3 +12,4 @@
 #import "UIViewExt.h"
 #import <Masonry/Masonry.h>
 #import "AIUtil.h"
+#import "NSString+Extension.h"

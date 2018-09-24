@@ -36,15 +36,16 @@
     if (self) {
         self.manager = [AFHTTPSessionManager manager];
         self.manager.requestSerializer.timeoutInterval = 45.0f;
+//        self.manager.requestSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"application/x-www-form-urlencoded",@"text/json",@"text/html",@"text/xml",@"text/plain", nil];
+        self.manager.requestSerializer = [AFHTTPRequestSerializer serializer];
         self.manager.responseSerializer = [AFJSONResponseSerializer serializer]; //申明返回的结果是json类型
-        self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/html",@"text/xml",@"text/plain", nil]; //如果报接受类型不一致请替换一致text/html或别的
+        self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"application/x-www-form-urlencoded",@"text/json",@"text/html",@"text/xml",@"text/plain", nil]; //如果报接受类型不一致请替换一致text/html或别的
     }
     return self;
 }
 
 - (void)requestAddress:(NSString *)address andPostParameters:(NSDictionary *)postDic andBlock:(blockDownload)getdic andFailDownload:(blockFailDownLoad)failBlock {
-    //发请求
-    _sessionDataTask = [self.manager POST:address parameters:postDic progress:^(NSProgress * _Nonnull downloadProgress) {
+    _sessionDataTask = [self.manager GET:address parameters:postDic progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         getdic(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -54,6 +55,59 @@
     }];
 
 }
+
+- (void)requestAddress2:(NSString *)address key:(NSString *)key andPostParameters:(NSDictionary *)postDic andBlock:(blockDownload)getdic andFailDownload:(blockFailDownLoad)failBlock {
+    
+    [self.manager.requestSerializer setValue:key forHTTPHeaderField:@"authorization-user"];
+//    [self.manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+//    [self.manager.requestSerializer ]
+//    self.manager.responseSerializer = [AFHTTPResponseSerializer serializer]; 
+    _sessionDataTask = [self.manager GET:address parameters:postDic progress:^(NSProgress * _Nonnull downloadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        getdic(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failBlock();
+        FLog(@"erroe:%@",error);
+        FLog(@"erroe:%@",[error localizedDescription]);
+    }];
+    
+}
+
+
++ (void)postUrl:(NSString *)url key:(NSString *)key callback:(void(^)(BOOL success, NSDictionary *dic, NSError *error))callback {
+    
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:url parameters:nil error:nil];
+    request.timeoutInterval= 30;
+    [request setValue:key forHTTPHeaderField:@"authorization-user"];
+    
+    // 设置body
+//    [request setHTTPBody:imageData];
+    
+    AFHTTPResponseSerializer *responseSerializer = [AFHTTPResponseSerializer serializer];
+    responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",
+                                                 @"text/html",
+                                                 @"text/json",
+                                                 @"text/javascript",
+                                                 @"text/plain",
+                                                 @"application/octet-stream",
+                                                 nil];
+    manager.responseSerializer = responseSerializer;
+    
+    [[manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
+        if (responseObject) {
+            NSDictionary *d = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
+            NSMutableDictionary *dic = d.mutableCopy;
+            callback(true, dic, error);
+        }
+        else {
+            callback(false, nil, error);
+        }
+    }] resume];
+    
+}
+
 
 - (void)uploadingAddress:(NSString *)address
                  andFile:(NSString *)file

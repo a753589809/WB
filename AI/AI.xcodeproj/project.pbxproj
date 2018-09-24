@@ -29,6 +29,7 @@
 		01509032214522F300F87B2E /* model_dog.tar.gz in Resources */ = {isa = PBXBuildFile; fileRef = 01509030214522F200F87B2E /* model_dog.tar.gz */; };
 		01509033214522F300F87B2E /* model_travel.tar.gz in Resources */ = {isa = PBXBuildFile; fileRef = 01509031214522F200F87B2E /* model_travel.tar.gz */; };
 		01509036214530EA00F87B2E /* NetWorking.m in Sources */ = {isa = PBXBuildFile; fileRef = 01509034214530EA00F87B2E /* NetWorking.m */; };
+		01509039214BD59E00F87B2E /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 01509038214BD59D00F87B2E /* NSString+Extension.m */; };
 		01816C4F213972BF00101F0C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01816C4E213972BF00101F0C /* AppDelegate.m */; };
 		01816C55213972BF00101F0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01816C53213972BF00101F0C /* Main.storyboard */; };
 		01816C57213972C100101F0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01816C56213972C100101F0C /* Assets.xcassets */; };
@@ -82,6 +83,8 @@
 		01509031214522F200F87B2E /* model_travel.tar.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; path = model_travel.tar.gz; sourceTree = "<group>"; };
 		01509034214530EA00F87B2E /* NetWorking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NetWorking.m; sourceTree = "<group>"; };
 		01509035214530EA00F87B2E /* NetWorking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetWorking.h; sourceTree = "<group>"; };
+		01509037214BD59D00F87B2E /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
+		01509038214BD59D00F87B2E /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
 		01816C4A213972BF00101F0C /* AI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01816C4D213972BF00101F0C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		01816C4E213972BF00101F0C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -176,6 +179,8 @@
 				0115CB5721410F37001613E8 /* XTSoundPlayer.m */,
 				015090222144D31D00F87B2E /* AIUtil.h */,
 				015090232144D31D00F87B2E /* AIUtil.m */,
+				01509037214BD59D00F87B2E /* NSString+Extension.h */,
+				01509038214BD59D00F87B2E /* NSString+Extension.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -361,6 +366,7 @@
 				0150902F2144F21100F87B2E /* SceneRecognitionVC.m in Sources */,
 				0150901A2143E3F100F87B2E /* XTSheetView.m in Sources */,
 				0115CB5821410F37001613E8 /* XTSoundPlayer.m in Sources */,
+				01509039214BD59E00F87B2E /* NSString+Extension.m in Sources */,
 				015090242144D31D00F87B2E /* AIUtil.m in Sources */,
 				01816C5D213972C100101F0C /* main.m in Sources */,
 				011A82AF213FF13500AB2363 /* ImageHelper.m in Sources */,

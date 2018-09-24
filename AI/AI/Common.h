@@ -96,6 +96,6 @@
 
 
 // url
-#define kRequestUrl @"http://192.168.8.1:8080/class"
+#define kRequestUrl @"http://192.168.8.1:8080"
 
 #endif
