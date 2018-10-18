@@ -64,7 +64,26 @@
     return cell;
 }
 
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+//    http://10.10.10.254:8080/update/model_dog
+    [[NetWorking defaultNetWorking] uploadingAddress:@"http://10.10.10.254:8080/update/model_flowers_200" andFile:@"model_flowers.tar" andProgress:^(NSProgress *progress) {
+        NSLog(@"%@", progress);
+    } andBlock:^(NSDictionary *dict) {
+        NSLog(@"%@", dict);
+    } andFailDownload:^{
+        
+    }];
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 //    XTSoundPlayer *player = [XTSoundPlayer standardSoundPlayer];
 //    [player play:@"设置语速"];
     
@@ -83,35 +102,32 @@
 //    http://sellingsys.s1.natapp.cc/
 //    public final static String serverWeb_IP = "http://192.168.0.6:8080/webPortal";
     
-    [[NetWorking defaultNetWorking] requestAddress:@"http://sellingsys.s1.natapp.cc/webPortal/app/uploadAuthor" andPostParameters:@{} andBlock:^(NSDictionary *dict) {
-        NSLog(@"%@",dict);
-        
-        /*
-         {
-         "authorization-key" = "e40eb8ae-e11f-4f37-a451-8aae6dfe9c39";
-         logIndex = "";
-         shrgMsg = "";
-         shrgStatus = S;
-         }
-         */
-//        app端根据与服务器约定的 authorization-key+ MD5(authorization-key+PLAINTEXT_KEY) 生成加密后的密钥值//  PLAINTEXT_KEY = "shrgha"
-        
-        NSString *key1 = [NSString stringWithFormat:@"%@shrgha",[dict objectForKey:@"authorization-key"]].md5;
-        NSString *key2 = [NSString stringWithFormat:@"%@,%@",[dict objectForKey:@"authorization-key"], key1];
-        
-        
-        [[NetWorking defaultNetWorking] requestAddress2:@"http://192.168.0.6:8080/webPortal/app/remoteUpload" key:key2 andPostParameters:@{@"fileUuid":@"CAE3BB84820180912183205.tar.gz",@"modelId":@"55"} andBlock:^(NSDictionary *dict) {
-            NSLog(@"%@",dict);
-        } andFailDownload:^{
-            
-        }];
-        
-        
-        
-        
-    } andFailDownload:^{
-        
-    }];
+//    [[NetWorking defaultNetWorking] requestAddress:@"http://sellingsys.s1.natapp.cc/webPortal/app/uploadAuthor" andPostParameters:@{} andBlock:^(NSDictionary *dict) {
+//        NSLog(@"%@",dict);
+//
+//        /*
+//         {
+//         "authorization-key" = "e40eb8ae-e11f-4f37-a451-8aae6dfe9c39";
+//         logIndex = "";
+//         shrgMsg = "";
+//         shrgStatus = S;
+//         }
+//         */
+////        app端根据与服务器约定的 authorization-key+ MD5(authorization-key+PLAINTEXT_KEY) 生成加密后的密钥值//  PLAINTEXT_KEY = "shrgha"
+//
+//        NSString *key1 = [NSString stringWithFormat:@"%@shrgha",[dict objectForKey:@"authorization-key"]].md5;
+//        NSString *key2 = [NSString stringWithFormat:@"%@,%@",[dict objectForKey:@"authorization-key"], key1];
+//
+//
+//        [[NetWorking defaultNetWorking] requestAddress2:@"http://192.168.0.6:8080/webPortal/app/remoteUpload" key:key2 andPostParameters:@{@"fileUuid":@"CAE3BB84820180912183205.tar.gz",@"modelId":@"55"} andBlock:^(NSDictionary *dict) {
+//            NSLog(@"%@",dict);
+//        } andFailDownload:^{
+//
+//        }];
+//
+//    } andFailDownload:^{
+//
+//    }];
 }
 
 @end

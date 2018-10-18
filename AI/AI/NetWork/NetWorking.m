@@ -118,8 +118,16 @@
 //    kRequestUrl
     _sessionDataTask = [self.manager POST:kRequestUrl parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
-        NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
-        NSURL *filePath = [documentsDirectoryURL URLByAppendingPathComponent:file];
+//        NSString *documentDir=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+//        NSString *path=[documentDir stringByAppendingPathComponent:@"live.json"];
+//        NSData *d = [NSData dataWithContentsOfURL:[NSURL URLWithString:path]];
+//        NSLog(@"%@",d);
+        
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"live.json" ofType:nil];
+        NSLog(@"%@",[NSDictionary dictionaryWithContentsOfFile:filePath]);
+        NSData *d = [NSData dataWithContentsOfURL:[NSURL URLWithString:filePath]];
+        NSLog(@"%@",d);
+//        NSLog(@"%@",path);
         /*
          此方法参数
          1. 要上传的文件路径
@@ -128,7 +136,8 @@
          4. 上传文件的[mimeType]
          application/octet-stream为通用型
          */
-        [formData appendPartWithFileURL:filePath name:@"" fileName:file mimeType:@"application/octet-stream" error:nil];
+
+//        [formData appendPartWithFileURL:filePath name:@"" fileName:file mimeType:@"application/octet-stream" error:nil];
         
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         if (progress) {
