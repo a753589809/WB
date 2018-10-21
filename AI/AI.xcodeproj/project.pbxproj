@@ -967,8 +967,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 62748U543U;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = T7A67B5RNV;
 				GCC_PREFIX_HEADER = AI/PrefixHeader.pch;
 				INFOPLIST_FILE = AI/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -976,10 +976,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kxg.kaixingou123;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shrg.aibuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "a7645eb3-9867-483c-a54d-647b47a21fd4";
+				PROVISIONING_PROFILE_SPECIFIER = test;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -989,9 +989,9 @@
 			baseConfigurationReference = E0AA4C05CB9F07A7694E44CB /* Pods-AI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 62748U543U;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = T7A67B5RNV;
 				GCC_PREFIX_HEADER = AI/PrefixHeader.pch;
 				INFOPLIST_FILE = AI/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -999,9 +999,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kxg.kaixingou123;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shrg.aibuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "42c77ba6-8d2b-4237-914e-2c89b9a418cb";
+				PROVISIONING_PROFILE_SPECIFIER = adhoc;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

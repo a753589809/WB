@@ -252,7 +252,7 @@
 // 点击屏幕，触发聚焦
 - (void)cameraDidSelected:(CGPoint)point {
     
-    // 当设置完成之后，需要回调到上面那个方法⬆️
+    // 当设置完成之后，需要回调到上面那个方法
     [self changeDevicePropertySafety:^(AVCaptureDevice *captureDevice) {
         
         // 触摸屏幕的坐标点需要转换成0-1，设置聚焦点

@@ -34,7 +34,7 @@
     self = [super init];
     if (self) {
         self.manager = [AFHTTPSessionManager manager];
-        self.manager.requestSerializer.timeoutInterval = 45.0f;
+        self.manager.requestSerializer.timeoutInterval = 35.0f;
 //        self.manager.requestSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"application/x-www-form-urlencoded",@"text/json",@"text/html",@"text/xml",@"text/plain", nil];
         self.manager.requestSerializer = [AFHTTPRequestSerializer serializer];
         self.manager.responseSerializer = [AFJSONResponseSerializer serializer]; //申明返回的结果是json类型
