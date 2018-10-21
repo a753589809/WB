@@ -41,6 +41,8 @@
     
     UITapGestureRecognizer *_tap;
     
+    XTSoundPlayer *player;
+    
     BOOL isRequest;
     
 }
@@ -51,7 +53,8 @@
 
 - (void)dealloc
 {
-    
+    [player stop];
+    player = nil;
 }
 
 - (void)viewDidLoad {
@@ -318,7 +321,7 @@
 didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
        fromConnection:(AVCaptureConnection *)connection {
     
-    if (isRequest) {
+    if (isRequest || [player isSpeaking]) {
         return;
     }
     isRequest = YES;
@@ -411,7 +414,9 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         
         self->resultLabel.text = name;
         if (![[NSUserDefaults standardUserDefaults] boolForKey:VOICEKEY]) {
-            XTSoundPlayer *player = [XTSoundPlayer standardSoundPlayer];
+            if (!player) {
+                player = [XTSoundPlayer standardSoundPlayer];
+            }
             [player play:name];
         }
         

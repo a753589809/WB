@@ -25,4 +25,8 @@
 //播放并给出文字
 - (void)play:(NSString *)string;
 
+- (void)stop;
+
+- (BOOL)isSpeaking;
+
 @end
