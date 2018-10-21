@@ -29,7 +29,7 @@
 								withWidth:(int)width
 							   withHeight:(int)height;
 
-+ (void)postImage:(NSData *)imageData name:(NSString *)name callback:(void(^)(BOOL success, NSDictionary *dic, NSError *error))callback;
++ (void)postImage:(NSData *)imageData modelName:(NSString *)modelName name:(NSString *)name callback:(void(^)(BOOL success, NSDictionary *dic, NSError *error))callback;
 
 @end
 

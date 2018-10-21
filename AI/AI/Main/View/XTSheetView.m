@@ -53,6 +53,10 @@
             imageName1 = @"menu-Middle-short";
             imageName2 = @"menu-Middle-short-p";
         }
+        if (titleArray.count == 1) {
+            imageName1 = @"menu-Button-short";
+            imageName2 = @"menu-Button-short-p";
+        }
         
         UIButton *b = [UIButton buttonWithType:UIButtonTypeCustom];
         b.frame = CGRectMake(10, 0, kScreenWidth - 20, 60);
@@ -87,6 +91,16 @@
 }
 
 - (void)clickMenu:(UIButton *)bt {
+    NSURL *url = [NSURL URLWithString:@"prefs:root=WIFI"];
+    if ([[UIApplication sharedApplication] canOpenURL:url]) {
+        [[UIApplication sharedApplication] openURL:url];
+    }
+    else {
+        NSURL *url = [NSURL URLWithString:@"App-Prefs:root=WIFI"];
+        if ([[UIApplication sharedApplication] canOpenURL:url]) {
+            [[UIApplication sharedApplication] openURL:url];
+        }
+    }
     [self clickCancel];
 }
 

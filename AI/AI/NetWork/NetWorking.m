@@ -12,7 +12,6 @@
 @interface NetWorking()
 
 @property (nonatomic, strong)AFHTTPSessionManager *manager;
-@property (nonatomic, strong)NSString *app_Version;
 
 @end
 
@@ -45,7 +44,7 @@
 }
 
 - (void)requestAddress:(NSString *)address andPostParameters:(NSDictionary *)postDic andBlock:(blockDownload)getdic andFailDownload:(blockFailDownLoad)failBlock {
-    _sessionDataTask = [self.manager GET:address parameters:postDic progress:^(NSProgress * _Nonnull downloadProgress) {
+    _sessionDataTask = [self.manager GET:[NSString stringWithFormat:@"%@%@", kBoxUrl, address] parameters:postDic progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         getdic(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -53,61 +52,7 @@
         FLog(@"erroe:%@",error);
         FLog(@"erroe:%@",[error localizedDescription]);
     }];
-
 }
-
-- (void)requestAddress2:(NSString *)address key:(NSString *)key andPostParameters:(NSDictionary *)postDic andBlock:(blockDownload)getdic andFailDownload:(blockFailDownLoad)failBlock {
-    
-    [self.manager.requestSerializer setValue:key forHTTPHeaderField:@"authorization-user"];
-//    [self.manager.requestSerializer setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
-//    [self.manager.requestSerializer ]
-//    self.manager.responseSerializer = [AFHTTPResponseSerializer serializer]; 
-    _sessionDataTask = [self.manager GET:address parameters:postDic progress:^(NSProgress * _Nonnull downloadProgress) {
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        getdic(responseObject);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failBlock();
-        FLog(@"erroe:%@",error);
-        FLog(@"erroe:%@",[error localizedDescription]);
-    }];
-    
-}
-
-
-+ (void)postUrl:(NSString *)url key:(NSString *)key callback:(void(^)(BOOL success, NSDictionary *dic, NSError *error))callback {
-    
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    
-    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:url parameters:nil error:nil];
-    request.timeoutInterval= 30;
-    [request setValue:key forHTTPHeaderField:@"authorization-user"];
-    
-    // 设置body
-//    [request setHTTPBody:imageData];
-    
-    AFHTTPResponseSerializer *responseSerializer = [AFHTTPResponseSerializer serializer];
-    responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",
-                                                 @"text/html",
-                                                 @"text/json",
-                                                 @"text/javascript",
-                                                 @"text/plain",
-                                                 @"application/octet-stream",
-                                                 nil];
-    manager.responseSerializer = responseSerializer;
-    
-    [[manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
-        if (responseObject) {
-            NSDictionary *d = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
-            NSMutableDictionary *dic = d.mutableCopy;
-            callback(true, dic, error);
-        }
-        else {
-            callback(false, nil, error);
-        }
-    }] resume];
-    
-}
-
 
 - (void)uploadingAddress:(NSString *)address
                  andFile:(NSString *)file
@@ -115,19 +60,7 @@
                 andBlock:(blockDownload)block
          andFailDownload:(blockFailDownLoad)failBlock {
     
-//    kRequestUrl
-    _sessionDataTask = [self.manager POST:kRequestUrl parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        
-//        NSString *documentDir=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-//        NSString *path=[documentDir stringByAppendingPathComponent:@"live.json"];
-//        NSData *d = [NSData dataWithContentsOfURL:[NSURL URLWithString:path]];
-//        NSLog(@"%@",d);
-        
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"live.json" ofType:nil];
-        NSLog(@"%@",[NSDictionary dictionaryWithContentsOfFile:filePath]);
-        NSData *d = [NSData dataWithContentsOfURL:[NSURL URLWithString:filePath]];
-        NSLog(@"%@",d);
-//        NSLog(@"%@",path);
+    _sessionDataTask = [self.manager POST:[NSString stringWithFormat:@"%@%@", kBoxUrl, address] parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         /*
          此方法参数
          1. 要上传的文件路径
@@ -136,8 +69,9 @@
          4. 上传文件的[mimeType]
          application/octet-stream为通用型
          */
-
-//        [formData appendPartWithFileURL:filePath name:@"" fileName:file mimeType:@"application/octet-stream" error:nil];
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:file ofType:nil];
+        NSURL *fileUrl = [NSURL fileURLWithPath:filePath];
+        [formData appendPartWithFileURL:fileUrl name:@"" fileName:file mimeType:@"application/octet-stream" error:nil];
         
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         if (progress) {
@@ -147,10 +81,15 @@
         block(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failBlock();
-        NSLog(@"error:%@",[error localizedDescription]);
+        FLog(@"error:%@",[error localizedDescription]);
     }];
     
 }
+
+
+
+
+
 
 - (void)uploading {
     //创建会话管理者

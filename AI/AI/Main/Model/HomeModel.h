@@ -12,5 +12,8 @@
 
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *imageName;
+@property (nonatomic, copy) NSString *color;
+@property (nonatomic, copy) NSString *modelName;
+@property (nonatomic, copy) NSString *ID;
 
 @end

@@ -10,4 +10,6 @@
 
 @interface BaseVC : UIViewController
 
+- (void)showTool:(NSString *)title view:(UIView *)v;
+
 @end

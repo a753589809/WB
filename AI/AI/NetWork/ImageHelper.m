@@ -194,11 +194,11 @@
 	return image;
 }
 
-+ (void)postImage:(NSData *)imageData name:(NSString *)name callback:(void(^)(BOOL success, NSDictionary *dic, NSError *error))callback {
++ (void)postImage:(NSData *)imageData modelName:(NSString *)modelName name:(NSString *)name callback:(void(^)(BOOL success, NSDictionary *dic, NSError *error))callback {
     
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     
-    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:kRequestUrl parameters:nil error:nil];
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:[NSString stringWithFormat:@"%@/class/%@", kBoxUrl, modelName] parameters:nil error:nil];
     request.timeoutInterval= 30;
     [request setValue:@"application/octet-stream" forHTTPHeaderField:@"Content-Type"];
     if (name && name.length > 0) {
@@ -225,36 +225,7 @@
     [[manager dataTaskWithRequest:request completionHandler:^(NSURLResponse * _Nonnull response, id  _Nullable responseObject, NSError * _Nullable error) {
         if (responseObject) {
             NSDictionary *d = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
-            NSMutableDictionary *dic = d.mutableCopy;
-            NSString *name = dic[@"name"];
-            if ([name isEqual:@"Opencountry"]) {
-                name = @"原野";
-            }
-            else if ([name isEqual:@"street"]) {
-                name = @"街道";
-            }
-            else if ([name isEqual:@"mountain"]) {
-                name = @"山岭";
-            }
-            else if ([name isEqual:@"tallbuilding"]) {
-                name = @"高楼";
-            }
-            else if ([name isEqual:@"inside city"]) {
-                name = @"巷道";
-            }
-            else if ([name isEqual:@"forest"]) {
-                name = @"森林";
-            }
-            else if ([name isEqual:@"highway"]) {
-                name = @"高速公路";
-            }
-            else if ([name isEqual:@"coast"]) {
-                name = @"海滨";
-            }
-            if (name) {
-                [dic setObject:name forKey:@"name"];
-            }
-            callback(true, dic, error);
+            callback(true, d, error);
         }
         else {
             callback(false, nil, error);

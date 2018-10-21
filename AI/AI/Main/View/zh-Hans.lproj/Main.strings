@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "K6X-4q-EdB"; */
+"K6X-4q-EdB.text" = "Label";
+
+/* Class = "UILabel"; text = "连接成功"; ObjectID = "Rfb-5w-iqK"; */
+"Rfb-5w-iqK.text" = "连接成功";
+
+/* Class = "UIButton"; normalTitle = "拍视频"; ObjectID = "UDo-zV-Tom"; */
+"UDo-zV-Tom.normalTitle" = "拍视频";
+
+/* Class = "UIButton"; normalTitle = "选择照片"; ObjectID = "VO4-Zs-PE9"; */
+"VO4-Zs-PE9.normalTitle" = "选择照片";
+
+/* Class = "UIButton"; normalTitle = "注册"; ObjectID = "dTn-EJ-yA0"; */
+"dTn-EJ-yA0.normalTitle" = "注册";
+
+/* Class = "UIButton"; normalTitle = "OK"; ObjectID = "gNn-af-tkw"; */
+"gNn-af-tkw.normalTitle" = "OK";

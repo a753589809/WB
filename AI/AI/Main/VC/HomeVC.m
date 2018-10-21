@@ -13,8 +13,10 @@
 #import "ConnectSuccessVC.h"
 #import "SceneRecognitionVC.h"
 #import "NetWorking.h"
+#import "ViewController.h"
+#import "VideoViewController.h"
 
-#define kCellSpaing 7.5
+#define kCellSpaing 15
 
 @interface HomeVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -33,19 +35,32 @@
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.collectionView.contentInset = UIEdgeInsetsMake(kCellSpaing, kCellSpaing, 0, kCellSpaing);
-    CGFloat w = (kScreenWidth - 2 * kCellSpaing) / 2;
+    CGFloat w = (kScreenWidth - 3 * kCellSpaing) / 2 - 1;
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.itemSize = CGSizeMake(w, w);
-    layout.minimumLineSpacing = 0;
-    layout.minimumInteritemSpacing = 0;
+    layout.minimumLineSpacing = kCellSpaing;
+    layout.minimumInteritemSpacing = kCellSpaing;
     [self.collectionView setCollectionViewLayout:layout];
     
-    NSArray *titleArray = @[@"狗狗品种",@"场景识别",@"手相",@"面相",@"发型指导",@"明星脸"];
-    NSArray *imageArray = @[@"icon-dog-icon",@"icon-dog-icon",@"icon-dog-icon",@"icon-dog-icon",@"icon-dog-icon",@"icon-dog-icon"];
+//    NSArray *titleArray = @[L(@"无线U盘"),L(@"明星脸"),L(@"夫妻相"),L(@"狗狗品种"),L(@"花")];
+//    NSArray *imageArray = @[@"icon-usb",@"icon-face copy",@"icon-Physiognomy Copy",@"icon-dog copy",@"icon-flower"];
+//    NSArray *colorArray = @[@"007FEF",@"E84C3C",@"F5B908",@"00BA9A",@"1BB7F0"];
+//    NSArray *modelNameArray = @[@"",@"model_celebrities_v0.00001",@"model_couples_v0.00001",@"model_dog_v0.00001",@"model_flowers_v0.00001"];
+//    NSArray *modelIdArray = @[@"",@"57",@"63",@"55",@"64"];
+    
+    NSArray *titleArray = @[L(@"明星脸"),L(@"夫妻相"),L(@"狗狗品种"),L(@"花")];
+    NSArray *imageArray = @[@"icon-face copy",@"icon-Physiognomy Copy",@"icon-dog copy",@"icon-flower"];
+    NSArray *colorArray = @[@"E84C3C",@"F5B908",@"00BA9A",@"1BB7F0"];
+    NSArray *modelNameArray = @[@"model_celebrities_v0.00001",@"model_couples_v0.00001",@"model_dog_v0.00001",@"model_flowers_v0.00001"];
+    NSArray *modelIdArray = @[@"57",@"63",@"55",@"64"];
+    
     for (int i=0; i<titleArray.count; i++) {
         HomeModel *model = [[HomeModel alloc] init];
         model.title = [titleArray objectAt:i];
         model.imageName = [imageArray objectAt:i];
+        model.color = [colorArray objectAt:i];
+        model.modelName = [modelNameArray objectAt:i];
+        model.ID = [modelIdArray objectAt:i];
         [self.data addObject:model];
     }
     [self.collectionView reloadData];
@@ -66,16 +81,68 @@
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-//    http://10.10.10.254:8080/update/model_dog
-    [[NetWorking defaultNetWorking] uploadingAddress:@"http://10.10.10.254:8080/update/model_flowers_200" andFile:@"model_flowers.tar" andProgress:^(NSProgress *progress) {
-        NSLog(@"%@", progress);
-    } andBlock:^(NSDictionary *dict) {
-        NSLog(@"%@", dict);
-    } andFailDownload:^{
-        
-    }];
+//#warning xt_g
+//    VideoViewController *v = [[VideoViewController alloc] init];
+//    [self.navigationController pushViewController:v animated:YES];
+//    return;
+    
+//    ViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ViewController"];
+//    vc.model = [self.data objectAt:indexPath.item];
+//    [self.navigationController pushViewController:vc animated:true];
+//    return;
+//    [[NetWorking defaultNetWorking] requestAddress:[NSString stringWithFormat:@"/checkmodelversion/%@", @""] andPostParameters:nil andBlock:^(NSDictionary *dict) {
+//        FLog(@"%@", dict);
+//    } andFailDownload:^{
+//        [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
+//        [self showTool:@"模型检测失败" view:self.navigationController.view];
+//    }];
+//    return;
     
     
+    HomeModel *model = [self.data objectAt:indexPath.item];
+    
+    if (model && model.modelName.length > 0) {
+        [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:true];
+        [[NetWorking defaultNetWorking] requestAddress:[NSString stringWithFormat:@"/checkmodelversion/%@", model.modelName] andPostParameters:nil andBlock:^(NSDictionary *dict) {
+            
+            if ([[dict objectForKey:@"result"] isEqual:@"-1"]) {
+                // 传模型文件
+                [[NetWorking defaultNetWorking] uploadingAddress:[NSString stringWithFormat:@"/update/%@", model.modelName] andFile:[NSString stringWithFormat:@"%@.tar", model.modelName] andProgress:^(NSProgress *progress) {
+                    FLog(@"%@", progress);
+                } andBlock:^(NSDictionary *dict) {
+                    FLog(@"%@", dict);
+                    [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
+                    if ([[dict objectForKey:@"result"] isEqual:@"0"]) {
+                        ViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ViewController"];
+                        vc.model = model;
+                        [self.navigationController pushViewController:vc animated:true];
+                    }
+                    else {
+                        [self showTool:@"模型上传失败" view:self.navigationController.view];
+                    }
+                } andFailDownload:^{
+                    [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
+                    [self showTool:@"模型上传失败" view:self.navigationController.view];
+                }];
+            }
+            else if ([[dict objectForKey:@"result"] isEqual:@"0"]) {
+                [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
+                ViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ViewController"];
+                vc.model = model;
+                [self.navigationController pushViewController:vc animated:true];
+            }
+            
+            FLog(@"%@",dict);
+        } andFailDownload:^{
+            [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
+            [self showTool:@"模型检测失败" view:self.navigationController.view];
+        }];
+    }
+    
+    
+
+    
+
     
     
     
@@ -128,6 +195,7 @@
 //    } andFailDownload:^{
 //
 //    }];
+    
 }
 
 @end

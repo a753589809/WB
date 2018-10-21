@@ -15,7 +15,9 @@
 
 @end
 
-@implementation BaseVC
+@implementation BaseVC {
+    UILabel *_voiceLabel;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,6 +26,11 @@
     
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"menuicon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(clickMenu)];
     [self.navigationItem setRightBarButtonItem:backItem];
+    
+    if (self.navigationController.childViewControllers.count > 1) {
+        UIBarButtonItem *backItem=[[UIBarButtonItem alloc] initWithImage:kBackImage style:UIBarButtonItemStyleDone target:self action:@selector(backClick)];
+        [self.navigationItem setLeftBarButtonItem:backItem];
+    }
 }
 
 - (UIView *)menuView {
@@ -38,7 +45,14 @@
         [_menuView addSubview:imageView];
         
         CGFloat y = 0;
-        NSArray *titles = @[@"连接AI Box",@"关闭语音朗读"];
+        NSString *t;
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:VOICEKEY]) {
+            t = @"开启语音朗读";
+        }
+        else {
+            t = @"关闭语音朗读";
+        }
+        NSArray *titles = @[@"连接AI Box",t];
         NSArray *images = @[@"menu-link",@"menu-sound"];
         NSArray *bgimages = @[@"menu-bg-1",@"menu-bg-2"];
         
@@ -64,6 +78,9 @@
             img.image = [UIImage imageNamed:images[i]];
             [b addSubview:img];
             UILabel *label = [self createLabelWithFrame:CGRectMake(img.right + 15, 0, b.width - img.right - 15, 59) font:[UIFont systemFontOfSize:18] title:titles[i] color:[UIColor whiteColor]];
+            if (i == 1) {
+                _voiceLabel = label;
+            }
             label.bottom = b.height;
             [b addSubview:label];
         }
@@ -102,8 +119,10 @@
 
 - (void)clickMune:(UIButton *)bt {
     if (bt.tag == 0) {
-        NSArray *title = @[@"AI Box一键连中继",@"AI Box手动连接",@"手机热点连接AI Box",@"手机直连AI Box"];
-        NSArray *sub = @[@"手机使用2.4GWiFi时可用此连接方法",@"AI Box手动搜索周围WiFi连接",@"手机打开热点共享给AI Box连接",@"手机直接连接AI Box的网络，无法上internet网"];
+//        NSArray *title = @[@"AI Box一键连中继",@"AI Box手动连接",@"手机热点连接AI Box",@"手机直连AI Box"];
+//        NSArray *sub = @[@"手机使用2.4GWiFi时可用此连接方法",@"AI Box手动搜索周围WiFi连接",@"手机打开热点共享给AI Box连接",@"手机直接连接AI Box的网络，无法上internet网"];
+        NSArray *title = @[@"手机直连AI Box"];
+        NSArray *sub = @[@"手机直接连接AI Box的网络，无法上internet网"];
         XTSheetView *sheet = [[NSBundle mainBundle] loadNibNamed:@"XTSheetView" owner:nil options:nil].lastObject;
         sheet.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
         [sheet setTitleArray:title subTitle:sub];
@@ -113,9 +132,34 @@
         }];
     }
     else if (bt.tag == 1) {
-        
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:VOICEKEY]) {
+            [[NSUserDefaults standardUserDefaults] setBool:false forKey:VOICEKEY];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            _voiceLabel.text = @"关闭语音朗读";
+        }
+        else {
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:VOICEKEY];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            _voiceLabel.text = @"开启语音朗读";
+        }
     }
     [self hideMenuView];
+}
+
+- (void)backClick {
+    [self.navigationController popViewControllerAnimated:true];
+}
+
+- (void)showTool:(NSString *)title view:(UIView *)v {
+    MBProgressHUD *tool = [MBProgressHUD showHUDAddedTo:v animated:YES];
+    tool.mode = MBProgressHUDModeText;
+    tool.margin = 10.f;
+    tool.yOffset = 200.f;
+    tool.detailsLabelText = title;
+    tool.detailsLabelFont = [UIFont systemFontOfSize:14];
+    tool.removeFromSuperViewOnHide = YES;
+    float a = title.length / 10.0;
+    [tool hide:YES afterDelay:a > 1.5 ? a : 1.5f];
 }
 
 @end

@@ -62,7 +62,7 @@
 
 
 //返回按钮图片
-#define kBackImage [[UIImage imageNamed:@"menuicon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
+#define kBackImage [[UIImage imageNamed:@"back"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]
 
 
 //Alert
@@ -94,8 +94,15 @@
 #define RGBACOLOR(r,g,b,a)   [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
 
 
+// 本地化
+#define L(key) \
+[[NSBundle mainBundle] localizedStringForKey:(key) value:@"" table:nil]
+
 
 // url
-#define kRequestUrl @"http://192.168.8.1:8080"
+#define kBoxUrl @"http://10.10.10.254:8080"
+
+// userdefault key
+#define VOICEKEY @"VOICEKEY"
 
 #endif

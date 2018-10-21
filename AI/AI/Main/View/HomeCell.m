@@ -18,11 +18,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     
-    _bgView.layer.cornerRadius = 5.0;
-    _bgView.layer.shadowColor = [UIColor lightGrayColor].CGColor;//阴影颜色
-    _bgView.layer.shadowOffset = CGSizeMake(0, 0);//偏移距离
-    _bgView.layer.shadowOpacity = 0.15;//不透明度
-    _bgView.layer.shadowRadius = 15.0;//半径
+    _bgView.layer.cornerRadius = 10.0;
     
 }
 
@@ -30,6 +26,7 @@
     _model = model;
     msgLabel.text = model.title;
     imgView.image = [UIImage imageNamed:model.imageName];
+    _bgView.backgroundColor = [UIColor colorWithHexString:model.color];
 }
 
 @end

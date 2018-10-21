@@ -13,8 +13,8 @@
 
 @interface VideoViewController ()<AVCaptureVideoDataOutputSampleBufferDelegate> {
     BOOL isRequest;
-    __weak IBOutlet UILabel *msgLabel;
     __weak IBOutlet UIImageView *imageVIew;
+    __weak IBOutlet UIView *bgView;
 }
 
 @end
@@ -62,18 +62,20 @@
     [session addOutput:output];
     dispatch_queue_t queue = dispatch_queue_create("myQueue", NULL);
     [output setSampleBufferDelegate:self queue:queue];
-//    output.videoSettings = [NSDictionary dictionaryWithObjectsAndKeys:
-//                            [NSNumber numberWithInt:kCVPixelFormatType_32BGRA], kCVPixelBufferPixelFormatTypeKey,
-//                            [NSNumber numberWithInt: 375], (id)kCVPixelBufferWidthKey,
-//                            [NSNumber numberWithInt: 375], (id)kCVPixelBufferHeightKey,
-//                            nil];
     output.videoSettings = [NSDictionary dictionaryWithObjectsAndKeys:
                             [NSNumber numberWithInt:kCVPixelFormatType_32BGRA], kCVPixelBufferPixelFormatTypeKey,
+                            [NSNumber numberWithInt: 375], (id)kCVPixelBufferWidthKey,
+                            [NSNumber numberWithInt: 375], (id)kCVPixelBufferHeightKey,
                             nil];
+//    output.videoSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+//                            [NSNumber numberWithInt:kCVPixelFormatType_32BGRA], kCVPixelBufferPixelFormatTypeKey,
+//                            nil];
     AVCaptureVideoPreviewLayer* preLayer = [AVCaptureVideoPreviewLayer layerWithSession: session];//相机拍摄预览图层
-    preLayer.frame = CGRectMake(0, 64, 100, 100);
-    preLayer.videoGravity = AVLayerVideoGravityResizeAspect;
-    [self.view.layer addSublayer:preLayer];
+    preLayer.frame = bgView.layer.bounds;
+    preLayer.backgroundColor = (__bridge CGColorRef _Nullable)([UIColor yellowColor]);
+    preLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+    [bgView.layer addSublayer:preLayer];
+    bgView.layer.masksToBounds = YES;
     
 //    output.minFrameDuration = CMTimeMake(1, 30);
     
@@ -85,33 +87,38 @@
 didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
        fromConnection:(AVCaptureConnection *)connection {
     
-    if (isRequest) {
-        return;
-    }
-    isRequest = YES;
+//    if (isRequest) {
+//        return;
+//    }
+//    isRequest = YES;
     
     UIImage *image = [self imageFromSampleBuffer:sampleBuffer];
     dispatch_async(dispatch_get_main_queue(), ^{
         self->imageVIew.image = image;
     });
     
-    unsigned char *bitmap = [ImageHelper convertUIImageToBitmapRGBA8:image];
-    NSData *data = [NSData dataWithBytes:bitmap length:224*224*3];
-    free(bitmap);
+//    [self performSelector:@selector(changeValue) withObject:nil afterDelay:1];
     
-    [ImageHelper postImage:data name:nil callback:^(BOOL success, NSDictionary *dic, NSError *error) {
-        if (success) {
-            NSLog(@"%@",dic);
-            self->msgLabel.text = dic[@"name"];
-        }
-        else {
-            NSLog(@"%@",error);
-        }
-        self->isRequest = NO;
-    }];
+//    unsigned char *bitmap = [ImageHelper convertUIImageToBitmapRGBA8:image];
+//    NSData *data = [NSData dataWithBytes:bitmap length:224*224*3];
+//    free(bitmap);
+//
+//    [ImageHelper postImage:data name:nil callback:^(BOOL success, NSDictionary *dic, NSError *error) {
+//        if (success) {
+//            NSLog(@"%@",dic);
+//            self->msgLabel.text = dic[@"name"];
+//        }
+//        else {
+//            NSLog(@"%@",error);
+//        }
+//        self->isRequest = NO;
+//    }];
     
 }
 
+- (void)changeValue {
+    isRequest = NO;
+}
 
 - (NSData *)dataFromSampleBuffer:(CMSampleBufferRef) sampleBuffer {
     // Get a CMSampleBuffer's Core Video image buffer for the media data

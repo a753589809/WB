@@ -6,13 +6,14 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoViewController">
             <connections>
+                <outlet property="bgView" destination="3Lg-Al-axI" id="hy6-ZX-ks5"/>
                 <outlet property="imageVIew" destination="8O2-uo-xLS" id="JqL-nU-nAQ"/>
-                <outlet property="msgLabel" destination="uYB-8F-ZE8" id="H0y-Jc-LHM"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,23 +23,27 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8O2-uo-xLS">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <rect key="frame" x="0.0" y="292" width="375" height="375"/>
+                    <color key="backgroundColor" red="1" green="0.41176470590000003" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="8O2-uo-xLS" secondAttribute="height" multiplier="1:1" id="dhI-rm-DZd"/>
+                    </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYB-8F-ZE8">
-                    <rect key="frame" x="100" y="657" width="0.0" height="0.0"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Lg-Al-axI">
+                    <rect key="frame" x="0.0" y="70" width="222" height="222"/>
+                    <color key="backgroundColor" red="1" green="0.58150749509999999" blue="0.41317565919999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="222" id="8NB-2g-O9M"/>
+                        <constraint firstAttribute="height" constant="222" id="KTU-v4-AVo"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="8O2-uo-xLS" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0ud-yW-rRT"/>
-                <constraint firstItem="8O2-uo-xLS" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ERq-l8-M2r"/>
-                <constraint firstAttribute="bottom" secondItem="uYB-8F-ZE8" secondAttribute="bottom" constant="10" id="Rgz-2T-liW"/>
+                <constraint firstItem="3Lg-Al-axI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7Vq-mp-n8Z"/>
                 <constraint firstAttribute="bottom" secondItem="8O2-uo-xLS" secondAttribute="bottom" id="SMT-8Z-Agh"/>
-                <constraint firstItem="uYB-8F-ZE8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="100" id="eT5-JB-fKW"/>
+                <constraint firstItem="8O2-uo-xLS" firstAttribute="top" secondItem="3Lg-Al-axI" secondAttribute="bottom" id="hgS-zw-6Lx"/>
                 <constraint firstAttribute="trailing" secondItem="8O2-uo-xLS" secondAttribute="trailing" id="paA-6M-iEP"/>
             </constraints>
             <point key="canvasLocation" x="-14" y="46"/>

@@ -20,11 +20,113 @@
 		011A82C9213FFF6800AB2363 /* HomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 011A82C8213FFF6800AB2363 /* HomeCell.m */; };
 		011A82CC214003B900AB2363 /* NSArray+VAInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 011A82CA214003B900AB2363 /* NSArray+VAInfo.m */; };
 		011A82D12140C84C00AB2363 /* HomeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 011A82D02140C84C00AB2363 /* HomeModel.m */; };
-		01230B902158EEBC000F4CD3 /* model_celebrities.tar in Resources */ = {isa = PBXBuildFile; fileRef = 01230B8E2158EEBC000F4CD3 /* model_celebrities.tar */; };
-		01230B912158EEBC000F4CD3 /* model_dog.tar in Resources */ = {isa = PBXBuildFile; fileRef = 01230B8F2158EEBC000F4CD3 /* model_dog.tar */; };
-		01230B942178B84B000F4CD3 /* model_flowers.tar in Resources */ = {isa = PBXBuildFile; fileRef = 01230B922178B84B000F4CD3 /* model_flowers.tar */; };
-		01230B952178B84B000F4CD3 /* model_couples.tar in Resources */ = {isa = PBXBuildFile; fileRef = 01230B932178B84B000F4CD3 /* model_couples.tar */; };
-		01230B972178C1A0000F4CD3 /* live.json in Resources */ = {isa = PBXBuildFile; fileRef = 01230B962178C1A0000F4CD3 /* live.json */; };
+		01230B9D217AC7C9000F4CD3 /* model_flowers_v0.00001.tar in Resources */ = {isa = PBXBuildFile; fileRef = 01230B99217AC7C9000F4CD3 /* model_flowers_v0.00001.tar */; };
+		01230B9E217AC7C9000F4CD3 /* model_dog_v0.00001.tar in Resources */ = {isa = PBXBuildFile; fileRef = 01230B9A217AC7C9000F4CD3 /* model_dog_v0.00001.tar */; };
+		01230B9F217AC7C9000F4CD3 /* model_celebrities_v0.00001.tar in Resources */ = {isa = PBXBuildFile; fileRef = 01230B9B217AC7C9000F4CD3 /* model_celebrities_v0.00001.tar */; };
+		01230BA0217AC7C9000F4CD3 /* model_couples_v0.00001.tar in Resources */ = {isa = PBXBuildFile; fileRef = 01230B9C217AC7C9000F4CD3 /* model_couples_v0.00001.tar */; };
+		01230BA5217ACBE2000F4CD3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 01230BA7217ACBE2000F4CD3 /* Localizable.strings */; };
+		01230BAB217AD3FA000F4CD3 /* UIColor+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 01230BAA217AD3FA000F4CD3 /* UIColor+Common.m */; };
+		01230BB0217B21D6000F4CD3 /* 安以轩_陈荣炼.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BAF217B21D6000F4CD3 /* 安以轩_陈荣炼.jpg */; };
+		01230C14217B228F000F4CD3 /* 沈梦辰_杜海涛.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BB1217B226F000F4CD3 /* 沈梦辰_杜海涛.jpg */; };
+		01230C15217B228F000F4CD3 /* 胡杏儿_李乘德.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BB2217B226F000F4CD3 /* 胡杏儿_李乘德.jpg */; };
+		01230C16217B228F000F4CD3 /* 高圆圆_赵又廷.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BB3217B226F000F4CD3 /* 高圆圆_赵又廷.jpg */; };
+		01230C17217B228F000F4CD3 /* 陈冠希_秦舒培.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BB4217B2270000F4CD3 /* 陈冠希_秦舒培.jpg */; };
+		01230C18217B228F000F4CD3 /* 李晨_范冰冰.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BB5217B2270000F4CD3 /* 李晨_范冰冰.jpg */; };
+		01230C19217B228F000F4CD3 /* 任嘉伦_聂欢.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BB6217B2270000F4CD3 /* 任嘉伦_聂欢.jpg */; };
+		01230C1A217B228F000F4CD3 /* 杜江_霍思燕.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BB7217B2270000F4CD3 /* 杜江_霍思燕.jpg */; };
+		01230C1B217B228F000F4CD3 /* 范冰冰_李晨.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BB8217B2271000F4CD3 /* 范冰冰_李晨.jpg */; };
+		01230C1C217B228F000F4CD3 /* 伊能静_秦昊.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BB9217B2271000F4CD3 /* 伊能静_秦昊.jpg */; };
+		01230C1D217B228F000F4CD3 /* 王力宏_李靓蕾.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BBA217B2271000F4CD3 /* 王力宏_李靓蕾.jpg */; };
+		01230C1E217B228F000F4CD3 /* 周润发_陈荟莲.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BBB217B2272000F4CD3 /* 周润发_陈荟莲.jpg */; };
+		01230C1F217B228F000F4CD3 /* 陈妍希_陈晓.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BBC217B2272000F4CD3 /* 陈妍希_陈晓.jpg */; };
+		01230C20217B228F000F4CD3 /* 董璇_高云翔.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BBD217B2272000F4CD3 /* 董璇_高云翔.jpg */; };
+		01230C21217B228F000F4CD3 /* 姚晨_曹郁.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BBE217B2272000F4CD3 /* 姚晨_曹郁.jpg */; };
+		01230C22217B228F000F4CD3 /* 黄磊_孙莉.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BBF217B2273000F4CD3 /* 黄磊_孙莉.jpg */; };
+		01230C23217B228F000F4CD3 /* 成龙_林凤娇.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BC0217B2273000F4CD3 /* 成龙_林凤娇.jpg */; };
+		01230C24217B228F000F4CD3 /* 杨丞琳_李荣浩.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BC1217B2273000F4CD3 /* 杨丞琳_李荣浩.jpg */; };
+		01230C25217B228F000F4CD3 /* 徐熙娣_许雅钧.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BC2217B2273000F4CD3 /* 徐熙娣_许雅钧.jpg */; };
+		01230C26217B228F000F4CD3 /* 周渝民_喻虹渊.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BC3217B2274000F4CD3 /* 周渝民_喻虹渊.jpg */; };
+		01230C27217B228F000F4CD3 /* 林志颖_陈若仪.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BC4217B2274000F4CD3 /* 林志颖_陈若仪.jpg */; };
+		01230C28217B228F000F4CD3 /* 赵雅芝_黄锦燊.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BC5217B2274000F4CD3 /* 赵雅芝_黄锦燊.jpg */; };
+		01230C29217B228F000F4CD3 /* 刘涛_王珂.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BC6217B2275000F4CD3 /* 刘涛_王珂.jpg */; };
+		01230C2A217B228F000F4CD3 /* 景甜_张继科.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BC7217B2275000F4CD3 /* 景甜_张继科.jpg */; };
+		01230C2B217B228F000F4CD3 /* 李沁_华汉.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BC8217B2275000F4CD3 /* 李沁_华汉.jpg */; };
+		01230C2C217B228F000F4CD3 /* 佟丽娅_陈思诚.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BC9217B2275000F4CD3 /* 佟丽娅_陈思诚.jpg */; };
+		01230C2D217B228F000F4CD3 /* 郑秀文_许志安.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BCA217B2276000F4CD3 /* 郑秀文_许志安.jpg */; };
+		01230C2E217B228F000F4CD3 /* 包贝尔_包文婧.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BCB217B2276000F4CD3 /* 包贝尔_包文婧.jpg */; };
+		01230C2F217B228F000F4CD3 /* 余文乐_王棠云.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BCC217B2276000F4CD3 /* 余文乐_王棠云.jpg */; };
+		01230C30217B228F000F4CD3 /* 马伊琍_文章.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BCD217B2277000F4CD3 /* 马伊琍_文章.jpg */; };
+		01230C31217B228F000F4CD3 /* 张丹峰_洪欣.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BCE217B2277000F4CD3 /* 张丹峰_洪欣.jpg */; };
+		01230C32217B228F000F4CD3 /* 段奕宏_王瑾.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BCF217B2277000F4CD3 /* 段奕宏_王瑾.jpg */; };
+		01230C33217B228F000F4CD3 /* 付辛博_颖儿.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BD0217B2278000F4CD3 /* 付辛博_颖儿.jpg */; };
+		01230C34217B228F000F4CD3 /* 李光洁_王珞丹.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BD1217B2278000F4CD3 /* 李光洁_王珞丹.jpg */; };
+		01230C35217B228F000F4CD3 /* 张歆艺_袁弘.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BD2217B2278000F4CD3 /* 张歆艺_袁弘.jpg */; };
+		01230C36217B228F000F4CD3 /* 周迅_高圣远.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BD3217B2279000F4CD3 /* 周迅_高圣远.jpg */; };
+		01230C37217B228F000F4CD3 /* 鹿晗_关晓彤.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BD4217B2279000F4CD3 /* 鹿晗_关晓彤.jpg */; };
+		01230C38217B228F000F4CD3 /* 郑爽_张恒.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BD5217B227A000F4CD3 /* 郑爽_张恒.jpg */; };
+		01230C39217B228F000F4CD3 /* 周杰伦_昆凌.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BD6217B227A000F4CD3 /* 周杰伦_昆凌.jpg */; };
+		01230C3A217B228F000F4CD3 /* 唐艺昕_张若昀.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BD7217B227B000F4CD3 /* 唐艺昕_张若昀.jpg */; };
+		01230C3B217B228F000F4CD3 /* 孙艺洲_曹晓雯.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BD8217B227B000F4CD3 /* 孙艺洲_曹晓雯.jpg */; };
+		01230C3C217B228F000F4CD3 /* 李小璐_贾乃亮.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BD9217B227B000F4CD3 /* 李小璐_贾乃亮.jpg */; };
+		01230C3D217B228F000F4CD3 /* 张馨予_何捷.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BDA217B227C000F4CD3 /* 张馨予_何捷.jpg */; };
+		01230C3E217B228F000F4CD3 /* 贾静雯_修杰楷.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BDB217B227C000F4CD3 /* 贾静雯_修杰楷.jpg */; };
+		01230C3F217B228F000F4CD3 /* 汪涵_杨乐乐.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BDC217B227D000F4CD3 /* 汪涵_杨乐乐.jpg */; };
+		01230C40217B228F000F4CD3 /* 赵薇_黄有龙.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BDD217B227D000F4CD3 /* 赵薇_黄有龙.jpg */; };
+		01230C41217B228F000F4CD3 /* 张国立_邓婕.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BDE217B227D000F4CD3 /* 张国立_邓婕.jpg */; };
+		01230C42217B228F000F4CD3 /* 谢娜_ 张杰.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BDF217B227E000F4CD3 /* 谢娜_ 张杰.jpg */; };
+		01230C43217B228F000F4CD3 /* 霍建华_林心如.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BE0217B227E000F4CD3 /* 霍建华_林心如.jpg */; };
+		01230C44217B228F000F4CD3 /* 林宥嘉_丁文琪.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BE1217B227E000F4CD3 /* 林宥嘉_丁文琪.jpg */; };
+		01230C45217B228F000F4CD3 /* 刘嘉玲_梁朝伟.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BE2217B227E000F4CD3 /* 刘嘉玲_梁朝伟.jpg */; };
+		01230C46217B228F000F4CD3 /* 薛之谦_高磊鑫.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BE3217B227F000F4CD3 /* 薛之谦_高磊鑫.jpg */; };
+		01230C47217B228F000F4CD3 /* 莫文蔚_Johannes.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BE4217B227F000F4CD3 /* 莫文蔚_Johannes.jpg */; };
+		01230C48217B228F000F4CD3 /* 罗志祥_周扬青.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BE5217B2280000F4CD3 /* 罗志祥_周扬青.jpg */; };
+		01230C49217B228F000F4CD3 /* 雷佳音_翟煦飞.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BE6217B2280000F4CD3 /* 雷佳音_翟煦飞.jpg */; };
+		01230C4A217B228F000F4CD3 /* 韩庚_卢靖姗.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BE7217B2281000F4CD3 /* 韩庚_卢靖姗.jpg */; };
+		01230C4B217B228F000F4CD3 /* 唐嫣_罗晋.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BE8217B2281000F4CD3 /* 唐嫣_罗晋.jpg */; };
+		01230C4C217B228F000F4CD3 /* 徐熙媛_汪小菲.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BE9217B2281000F4CD3 /* 徐熙媛_汪小菲.jpg */; };
+		01230C4D217B228F000F4CD3 /* 胡先煦_刁卓.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BEA217B2282000F4CD3 /* 胡先煦_刁卓.jpg */; };
+		01230C4E217B228F000F4CD3 /* 李佳航_李晟.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BEB217B2282000F4CD3 /* 李佳航_李晟.jpg */; };
+		01230C4F217B228F000F4CD3 /* 蓝盈莹_曹骏.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BEC217B2282000F4CD3 /* 蓝盈莹_曹骏.jpg */; };
+		01230C50217B228F000F4CD3 /* 刘诗诗_吴奇隆.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BED217B2283000F4CD3 /* 刘诗诗_吴奇隆.jpg */; };
+		01230C51217B228F000F4CD3 /* 乔振宇_王倩一.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BEE217B2283000F4CD3 /* 乔振宇_王倩一.jpg */; };
+		01230C52217B228F000F4CD3 /* 林依晨_林于超.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BEF217B2283000F4CD3 /* 林依晨_林于超.jpg */; };
+		01230C53217B228F000F4CD3 /* 那英_孟桐.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BF0217B2284000F4CD3 /* 那英_孟桐.jpg */; };
+		01230C54217B228F000F4CD3 /* 陆毅_鲍蕾.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BF1217B2284000F4CD3 /* 陆毅_鲍蕾.jpg */; };
+		01230C55217B228F000F4CD3 /* 张智霖_袁咏仪.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BF2217B2285000F4CD3 /* 张智霖_袁咏仪.jpg */; };
+		01230C56217B228F000F4CD3 /* 舒淇_冯德伦.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BF3217B2285000F4CD3 /* 舒淇_冯德伦.jpg */; };
+		01230C57217B228F000F4CD3 /* 吴尊_林丽莹.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BF4217B2285000F4CD3 /* 吴尊_林丽莹.jpg */; };
+		01230C58217B228F000F4CD3 /* 孙怡_董子健.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BF5217B2286000F4CD3 /* 孙怡_董子健.jpg */; };
+		01230C59217B228F000F4CD3 /* 王祖蓝_李亚男.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BF6217B2286000F4CD3 /* 王祖蓝_李亚男.jpg */; };
+		01230C5A217B228F000F4CD3 /* 小沈阳_沈春阳.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BF7217B2286000F4CD3 /* 小沈阳_沈春阳.jpg */; };
+		01230C5B217B228F000F4CD3 /* 李小冉_徐佳宁.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BF8217B2287000F4CD3 /* 李小冉_徐佳宁.jpg */; };
+		01230C5C217B228F000F4CD3 /* 章子怡_汪峰.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BF9217B2287000F4CD3 /* 章子怡_汪峰.jpg */; };
+		01230C5D217B228F000F4CD3 /* 郭德纲_王惠.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BFA217B2287000F4CD3 /* 郭德纲_王惠.jpg */; };
+		01230C5E217B228F000F4CD3 /* 孙俪_邓超.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BFB217B2288000F4CD3 /* 孙俪_邓超.jpg */; };
+		01230C5F217B228F000F4CD3 /* 王栎鑫_吴雅婷.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BFC217B2288000F4CD3 /* 王栎鑫_吴雅婷.jpg */; };
+		01230C60217B228F000F4CD3 /* 古巨基_陈英雪.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BFD217B2288000F4CD3 /* 古巨基_陈英雪.jpg */; };
+		01230C61217B228F000F4CD3 /* 陈赫_张子萱.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BFE217B2289000F4CD3 /* 陈赫_张子萱.jpg */; };
+		01230C62217B228F000F4CD3 /* 斯琴高娃_陈亮声.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230BFF217B2289000F4CD3 /* 斯琴高娃_陈亮声.jpg */; };
+		01230C63217B228F000F4CD3 /* 朱亚文_沈佳妮.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230C00217B2289000F4CD3 /* 朱亚文_沈佳妮.jpg */; };
+		01230C64217B228F000F4CD3 /* 佟大为_关悦.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230C01217B228A000F4CD3 /* 佟大为_关悦.jpg */; };
+		01230C65217B228F000F4CD3 /* 袁泉_夏雨.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230C02217B228A000F4CD3 /* 袁泉_夏雨.jpg */; };
+		01230C66217B228F000F4CD3 /* 邱胜翊_邓丽欣.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230C03217B228A000F4CD3 /* 邱胜翊_邓丽欣.jpg */; };
+		01230C67217B228F000F4CD3 /* 严屹宽_杜若溪.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230C04217B228A000F4CD3 /* 严屹宽_杜若溪.jpg */; };
+		01230C68217B228F000F4CD3 /* 蔡少芬_张晋.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230C05217B228B000F4CD3 /* 蔡少芬_张晋.jpg */; };
+		01230C69217B228F000F4CD3 /* 沙溢_胡可.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230C06217B228B000F4CD3 /* 沙溢_胡可.jpg */; };
+		01230C6A217B228F000F4CD3 /* 魏晨_于玮.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230C07217B228B000F4CD3 /* 魏晨_于玮.jpg */; };
+		01230C6B217B228F000F4CD3 /* 陈嘉桦_赖斯翔.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230C08217B228B000F4CD3 /* 陈嘉桦_赖斯翔.jpg */; };
+		01230C6C217B228F000F4CD3 /* 陈奕迅_徐濠萦.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230C09217B228C000F4CD3 /* 陈奕迅_徐濠萦.jpg */; };
+		01230C6D217B228F000F4CD3 /* 戚薇_李承铉.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230C0A217B228C000F4CD3 /* 戚薇_李承铉.jpg */; };
+		01230C6E217B228F000F4CD3 /* 杨幂_刘恺威.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230C0B217B228C000F4CD3 /* 杨幂_刘恺威.jpg */; };
+		01230C6F217B228F000F4CD3 /* 张雨绮_袁巴元.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230C0C217B228D000F4CD3 /* 张雨绮_袁巴元.jpg */; };
+		01230C70217B228F000F4CD3 /* 张嘉译_王海燕.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230C0D217B228D000F4CD3 /* 张嘉译_王海燕.jpg */; };
+		01230C71217B228F000F4CD3 /* 倪妮_井柏然.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230C0E217B228D000F4CD3 /* 倪妮_井柏然.jpg */; };
+		01230C72217B228F000F4CD3 /* 黄渤_小欧.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230C0F217B228E000F4CD3 /* 黄渤_小欧.jpg */; };
+		01230C73217B228F000F4CD3 /* 黄晓明_杨颖.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230C10217B228E000F4CD3 /* 黄晓明_杨颖.jpg */; };
+		01230C74217B228F000F4CD3 /* 范玮琪_陈建州.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230C11217B228E000F4CD3 /* 范玮琪_陈建州.jpg */; };
+		01230C75217B228F000F4CD3 /* 靳东_李佳.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230C12217B228F000F4CD3 /* 靳东_李佳.jpg */; };
+		01230C76217B228F000F4CD3 /* 应采儿_陈小春.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 01230C13217B228F000F4CD3 /* 应采儿_陈小春.jpg */; };
+		01230C78217C32DA000F4CD3 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01230C77217C32DA000F4CD3 /* CoreImage.framework */; };
 		015090172143D0DA00F87B2E /* BaseNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = 015090162143D0DA00F87B2E /* BaseNavController.m */; };
 		0150901A2143E3F100F87B2E /* XTSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 015090192143E3F100F87B2E /* XTSheetView.m */; };
 		0150901C2143E40200F87B2E /* XTSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0150901B2143E40200F87B2E /* XTSheetView.xib */; };
@@ -71,11 +173,117 @@
 		011A82CF2140C84C00AB2363 /* HomeModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeModel.h; sourceTree = "<group>"; };
 		011A82D02140C84C00AB2363 /* HomeModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeModel.m; sourceTree = "<group>"; };
 		011A82D42140D01C00AB2363 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		01230B8E2158EEBC000F4CD3 /* model_celebrities.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; path = model_celebrities.tar; sourceTree = "<group>"; };
-		01230B8F2158EEBC000F4CD3 /* model_dog.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; path = model_dog.tar; sourceTree = "<group>"; };
-		01230B922178B84B000F4CD3 /* model_flowers.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; path = model_flowers.tar; sourceTree = "<group>"; };
-		01230B932178B84B000F4CD3 /* model_couples.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; path = model_couples.tar; sourceTree = "<group>"; };
-		01230B962178C1A0000F4CD3 /* live.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = live.json; sourceTree = "<group>"; };
+		01230B99217AC7C9000F4CD3 /* model_flowers_v0.00001.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; path = model_flowers_v0.00001.tar; sourceTree = "<group>"; };
+		01230B9A217AC7C9000F4CD3 /* model_dog_v0.00001.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; path = model_dog_v0.00001.tar; sourceTree = "<group>"; };
+		01230B9B217AC7C9000F4CD3 /* model_celebrities_v0.00001.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; path = model_celebrities_v0.00001.tar; sourceTree = "<group>"; };
+		01230B9C217AC7C9000F4CD3 /* model_couples_v0.00001.tar */ = {isa = PBXFileReference; lastKnownFileType = archive.tar; path = model_couples_v0.00001.tar; sourceTree = "<group>"; };
+		01230BA1217ACB75000F4CD3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		01230BA2217ACB76000F4CD3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		01230BA6217ACBE2000F4CD3 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		01230BA8217ACBE8000F4CD3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		01230BA9217AD3FA000F4CD3 /* UIColor+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Common.h"; sourceTree = "<group>"; };
+		01230BAA217AD3FA000F4CD3 /* UIColor+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Common.m"; sourceTree = "<group>"; };
+		01230BAF217B21D6000F4CD3 /* 安以轩_陈荣炼.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "安以轩_陈荣炼.jpg"; sourceTree = "<group>"; };
+		01230BB1217B226F000F4CD3 /* 沈梦辰_杜海涛.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "沈梦辰_杜海涛.jpg"; sourceTree = "<group>"; };
+		01230BB2217B226F000F4CD3 /* 胡杏儿_李乘德.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "胡杏儿_李乘德.jpg"; sourceTree = "<group>"; };
+		01230BB3217B226F000F4CD3 /* 高圆圆_赵又廷.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "高圆圆_赵又廷.jpg"; sourceTree = "<group>"; };
+		01230BB4217B2270000F4CD3 /* 陈冠希_秦舒培.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "陈冠希_秦舒培.jpg"; sourceTree = "<group>"; };
+		01230BB5217B2270000F4CD3 /* 李晨_范冰冰.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "李晨_范冰冰.jpg"; sourceTree = "<group>"; };
+		01230BB6217B2270000F4CD3 /* 任嘉伦_聂欢.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "任嘉伦_聂欢.jpg"; sourceTree = "<group>"; };
+		01230BB7217B2270000F4CD3 /* 杜江_霍思燕.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "杜江_霍思燕.jpg"; sourceTree = "<group>"; };
+		01230BB8217B2271000F4CD3 /* 范冰冰_李晨.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "范冰冰_李晨.jpg"; sourceTree = "<group>"; };
+		01230BB9217B2271000F4CD3 /* 伊能静_秦昊.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "伊能静_秦昊.jpg"; sourceTree = "<group>"; };
+		01230BBA217B2271000F4CD3 /* 王力宏_李靓蕾.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "王力宏_李靓蕾.jpg"; sourceTree = "<group>"; };
+		01230BBB217B2272000F4CD3 /* 周润发_陈荟莲.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "周润发_陈荟莲.jpg"; sourceTree = "<group>"; };
+		01230BBC217B2272000F4CD3 /* 陈妍希_陈晓.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "陈妍希_陈晓.jpg"; sourceTree = "<group>"; };
+		01230BBD217B2272000F4CD3 /* 董璇_高云翔.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "董璇_高云翔.jpg"; sourceTree = "<group>"; };
+		01230BBE217B2272000F4CD3 /* 姚晨_曹郁.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "姚晨_曹郁.jpg"; sourceTree = "<group>"; };
+		01230BBF217B2273000F4CD3 /* 黄磊_孙莉.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "黄磊_孙莉.jpg"; sourceTree = "<group>"; };
+		01230BC0217B2273000F4CD3 /* 成龙_林凤娇.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "成龙_林凤娇.jpg"; sourceTree = "<group>"; };
+		01230BC1217B2273000F4CD3 /* 杨丞琳_李荣浩.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "杨丞琳_李荣浩.jpg"; sourceTree = "<group>"; };
+		01230BC2217B2273000F4CD3 /* 徐熙娣_许雅钧.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "徐熙娣_许雅钧.jpg"; sourceTree = "<group>"; };
+		01230BC3217B2274000F4CD3 /* 周渝民_喻虹渊.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "周渝民_喻虹渊.jpg"; sourceTree = "<group>"; };
+		01230BC4217B2274000F4CD3 /* 林志颖_陈若仪.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "林志颖_陈若仪.jpg"; sourceTree = "<group>"; };
+		01230BC5217B2274000F4CD3 /* 赵雅芝_黄锦燊.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "赵雅芝_黄锦燊.jpg"; sourceTree = "<group>"; };
+		01230BC6217B2275000F4CD3 /* 刘涛_王珂.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "刘涛_王珂.jpg"; sourceTree = "<group>"; };
+		01230BC7217B2275000F4CD3 /* 景甜_张继科.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "景甜_张继科.jpg"; sourceTree = "<group>"; };
+		01230BC8217B2275000F4CD3 /* 李沁_华汉.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "李沁_华汉.jpg"; sourceTree = "<group>"; };
+		01230BC9217B2275000F4CD3 /* 佟丽娅_陈思诚.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "佟丽娅_陈思诚.jpg"; sourceTree = "<group>"; };
+		01230BCA217B2276000F4CD3 /* 郑秀文_许志安.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "郑秀文_许志安.jpg"; sourceTree = "<group>"; };
+		01230BCB217B2276000F4CD3 /* 包贝尔_包文婧.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "包贝尔_包文婧.jpg"; sourceTree = "<group>"; };
+		01230BCC217B2276000F4CD3 /* 余文乐_王棠云.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "余文乐_王棠云.jpg"; sourceTree = "<group>"; };
+		01230BCD217B2277000F4CD3 /* 马伊琍_文章.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "马伊琍_文章.jpg"; sourceTree = "<group>"; };
+		01230BCE217B2277000F4CD3 /* 张丹峰_洪欣.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "张丹峰_洪欣.jpg"; sourceTree = "<group>"; };
+		01230BCF217B2277000F4CD3 /* 段奕宏_王瑾.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "段奕宏_王瑾.jpg"; sourceTree = "<group>"; };
+		01230BD0217B2278000F4CD3 /* 付辛博_颖儿.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "付辛博_颖儿.jpg"; sourceTree = "<group>"; };
+		01230BD1217B2278000F4CD3 /* 李光洁_王珞丹.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "李光洁_王珞丹.jpg"; sourceTree = "<group>"; };
+		01230BD2217B2278000F4CD3 /* 张歆艺_袁弘.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "张歆艺_袁弘.jpg"; sourceTree = "<group>"; };
+		01230BD3217B2279000F4CD3 /* 周迅_高圣远.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "周迅_高圣远.jpg"; sourceTree = "<group>"; };
+		01230BD4217B2279000F4CD3 /* 鹿晗_关晓彤.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "鹿晗_关晓彤.jpg"; sourceTree = "<group>"; };
+		01230BD5217B227A000F4CD3 /* 郑爽_张恒.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "郑爽_张恒.jpg"; sourceTree = "<group>"; };
+		01230BD6217B227A000F4CD3 /* 周杰伦_昆凌.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "周杰伦_昆凌.jpg"; sourceTree = "<group>"; };
+		01230BD7217B227B000F4CD3 /* 唐艺昕_张若昀.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "唐艺昕_张若昀.jpg"; sourceTree = "<group>"; };
+		01230BD8217B227B000F4CD3 /* 孙艺洲_曹晓雯.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "孙艺洲_曹晓雯.jpg"; sourceTree = "<group>"; };
+		01230BD9217B227B000F4CD3 /* 李小璐_贾乃亮.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "李小璐_贾乃亮.jpg"; sourceTree = "<group>"; };
+		01230BDA217B227C000F4CD3 /* 张馨予_何捷.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "张馨予_何捷.jpg"; sourceTree = "<group>"; };
+		01230BDB217B227C000F4CD3 /* 贾静雯_修杰楷.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "贾静雯_修杰楷.jpg"; sourceTree = "<group>"; };
+		01230BDC217B227D000F4CD3 /* 汪涵_杨乐乐.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "汪涵_杨乐乐.jpg"; sourceTree = "<group>"; };
+		01230BDD217B227D000F4CD3 /* 赵薇_黄有龙.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "赵薇_黄有龙.jpg"; sourceTree = "<group>"; };
+		01230BDE217B227D000F4CD3 /* 张国立_邓婕.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "张国立_邓婕.jpg"; sourceTree = "<group>"; };
+		01230BDF217B227E000F4CD3 /* 谢娜_ 张杰.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "谢娜_ 张杰.jpg"; sourceTree = "<group>"; };
+		01230BE0217B227E000F4CD3 /* 霍建华_林心如.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "霍建华_林心如.jpg"; sourceTree = "<group>"; };
+		01230BE1217B227E000F4CD3 /* 林宥嘉_丁文琪.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "林宥嘉_丁文琪.jpg"; sourceTree = "<group>"; };
+		01230BE2217B227E000F4CD3 /* 刘嘉玲_梁朝伟.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "刘嘉玲_梁朝伟.jpg"; sourceTree = "<group>"; };
+		01230BE3217B227F000F4CD3 /* 薛之谦_高磊鑫.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "薛之谦_高磊鑫.jpg"; sourceTree = "<group>"; };
+		01230BE4217B227F000F4CD3 /* 莫文蔚_Johannes.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "莫文蔚_Johannes.jpg"; sourceTree = "<group>"; };
+		01230BE5217B2280000F4CD3 /* 罗志祥_周扬青.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "罗志祥_周扬青.jpg"; sourceTree = "<group>"; };
+		01230BE6217B2280000F4CD3 /* 雷佳音_翟煦飞.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "雷佳音_翟煦飞.jpg"; sourceTree = "<group>"; };
+		01230BE7217B2281000F4CD3 /* 韩庚_卢靖姗.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "韩庚_卢靖姗.jpg"; sourceTree = "<group>"; };
+		01230BE8217B2281000F4CD3 /* 唐嫣_罗晋.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "唐嫣_罗晋.jpg"; sourceTree = "<group>"; };
+		01230BE9217B2281000F4CD3 /* 徐熙媛_汪小菲.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "徐熙媛_汪小菲.jpg"; sourceTree = "<group>"; };
+		01230BEA217B2282000F4CD3 /* 胡先煦_刁卓.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "胡先煦_刁卓.jpg"; sourceTree = "<group>"; };
+		01230BEB217B2282000F4CD3 /* 李佳航_李晟.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "李佳航_李晟.jpg"; sourceTree = "<group>"; };
+		01230BEC217B2282000F4CD3 /* 蓝盈莹_曹骏.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "蓝盈莹_曹骏.jpg"; sourceTree = "<group>"; };
+		01230BED217B2283000F4CD3 /* 刘诗诗_吴奇隆.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "刘诗诗_吴奇隆.jpg"; sourceTree = "<group>"; };
+		01230BEE217B2283000F4CD3 /* 乔振宇_王倩一.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "乔振宇_王倩一.jpg"; sourceTree = "<group>"; };
+		01230BEF217B2283000F4CD3 /* 林依晨_林于超.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "林依晨_林于超.jpg"; sourceTree = "<group>"; };
+		01230BF0217B2284000F4CD3 /* 那英_孟桐.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "那英_孟桐.jpg"; sourceTree = "<group>"; };
+		01230BF1217B2284000F4CD3 /* 陆毅_鲍蕾.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "陆毅_鲍蕾.jpg"; sourceTree = "<group>"; };
+		01230BF2217B2285000F4CD3 /* 张智霖_袁咏仪.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "张智霖_袁咏仪.jpg"; sourceTree = "<group>"; };
+		01230BF3217B2285000F4CD3 /* 舒淇_冯德伦.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "舒淇_冯德伦.jpg"; sourceTree = "<group>"; };
+		01230BF4217B2285000F4CD3 /* 吴尊_林丽莹.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "吴尊_林丽莹.jpg"; sourceTree = "<group>"; };
+		01230BF5217B2286000F4CD3 /* 孙怡_董子健.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "孙怡_董子健.jpg"; sourceTree = "<group>"; };
+		01230BF6217B2286000F4CD3 /* 王祖蓝_李亚男.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "王祖蓝_李亚男.jpg"; sourceTree = "<group>"; };
+		01230BF7217B2286000F4CD3 /* 小沈阳_沈春阳.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "小沈阳_沈春阳.jpg"; sourceTree = "<group>"; };
+		01230BF8217B2287000F4CD3 /* 李小冉_徐佳宁.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "李小冉_徐佳宁.jpg"; sourceTree = "<group>"; };
+		01230BF9217B2287000F4CD3 /* 章子怡_汪峰.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "章子怡_汪峰.jpg"; sourceTree = "<group>"; };
+		01230BFA217B2287000F4CD3 /* 郭德纲_王惠.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "郭德纲_王惠.jpg"; sourceTree = "<group>"; };
+		01230BFB217B2288000F4CD3 /* 孙俪_邓超.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "孙俪_邓超.jpg"; sourceTree = "<group>"; };
+		01230BFC217B2288000F4CD3 /* 王栎鑫_吴雅婷.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "王栎鑫_吴雅婷.jpg"; sourceTree = "<group>"; };
+		01230BFD217B2288000F4CD3 /* 古巨基_陈英雪.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "古巨基_陈英雪.jpg"; sourceTree = "<group>"; };
+		01230BFE217B2289000F4CD3 /* 陈赫_张子萱.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "陈赫_张子萱.jpg"; sourceTree = "<group>"; };
+		01230BFF217B2289000F4CD3 /* 斯琴高娃_陈亮声.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "斯琴高娃_陈亮声.jpg"; sourceTree = "<group>"; };
+		01230C00217B2289000F4CD3 /* 朱亚文_沈佳妮.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "朱亚文_沈佳妮.jpg"; sourceTree = "<group>"; };
+		01230C01217B228A000F4CD3 /* 佟大为_关悦.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "佟大为_关悦.jpg"; sourceTree = "<group>"; };
+		01230C02217B228A000F4CD3 /* 袁泉_夏雨.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "袁泉_夏雨.jpg"; sourceTree = "<group>"; };
+		01230C03217B228A000F4CD3 /* 邱胜翊_邓丽欣.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "邱胜翊_邓丽欣.jpg"; sourceTree = "<group>"; };
+		01230C04217B228A000F4CD3 /* 严屹宽_杜若溪.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "严屹宽_杜若溪.jpg"; sourceTree = "<group>"; };
+		01230C05217B228B000F4CD3 /* 蔡少芬_张晋.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "蔡少芬_张晋.jpg"; sourceTree = "<group>"; };
+		01230C06217B228B000F4CD3 /* 沙溢_胡可.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "沙溢_胡可.jpg"; sourceTree = "<group>"; };
+		01230C07217B228B000F4CD3 /* 魏晨_于玮.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "魏晨_于玮.jpg"; sourceTree = "<group>"; };
+		01230C08217B228B000F4CD3 /* 陈嘉桦_赖斯翔.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "陈嘉桦_赖斯翔.jpg"; sourceTree = "<group>"; };
+		01230C09217B228C000F4CD3 /* 陈奕迅_徐濠萦.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "陈奕迅_徐濠萦.jpg"; sourceTree = "<group>"; };
+		01230C0A217B228C000F4CD3 /* 戚薇_李承铉.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "戚薇_李承铉.jpg"; sourceTree = "<group>"; };
+		01230C0B217B228C000F4CD3 /* 杨幂_刘恺威.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "杨幂_刘恺威.jpg"; sourceTree = "<group>"; };
+		01230C0C217B228D000F4CD3 /* 张雨绮_袁巴元.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "张雨绮_袁巴元.jpg"; sourceTree = "<group>"; };
+		01230C0D217B228D000F4CD3 /* 张嘉译_王海燕.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "张嘉译_王海燕.jpg"; sourceTree = "<group>"; };
+		01230C0E217B228D000F4CD3 /* 倪妮_井柏然.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "倪妮_井柏然.jpg"; sourceTree = "<group>"; };
+		01230C0F217B228E000F4CD3 /* 黄渤_小欧.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "黄渤_小欧.jpg"; sourceTree = "<group>"; };
+		01230C10217B228E000F4CD3 /* 黄晓明_杨颖.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "黄晓明_杨颖.jpg"; sourceTree = "<group>"; };
+		01230C11217B228E000F4CD3 /* 范玮琪_陈建州.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "范玮琪_陈建州.jpg"; sourceTree = "<group>"; };
+		01230C12217B228F000F4CD3 /* 靳东_李佳.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "靳东_李佳.jpg"; sourceTree = "<group>"; };
+		01230C13217B228F000F4CD3 /* 应采儿_陈小春.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "应采儿_陈小春.jpg"; sourceTree = "<group>"; };
+		01230C77217C32DA000F4CD3 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		015090152143D0DA00F87B2E /* BaseNavController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseNavController.h; sourceTree = "<group>"; };
 		015090162143D0DA00F87B2E /* BaseNavController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseNavController.m; sourceTree = "<group>"; };
 		015090182143E3F100F87B2E /* XTSheetView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTSheetView.h; sourceTree = "<group>"; };
@@ -111,6 +319,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01230C78217C32DA000F4CD3 /* CoreImage.framework in Frameworks */,
 				01816C7A213A730800101F0C /* SystemConfiguration.framework in Frameworks */,
 				01816C78213A6F8A00101F0C /* NetworkExtension.framework in Frameworks */,
 				576D81B5BEE93203CF05FFB0 /* libPods-AI.a in Frameworks */,
@@ -135,6 +344,8 @@
 			children = (
 				011A82C4213FF4EC00AB2363 /* HomeVC.h */,
 				011A82C5213FF4EC00AB2363 /* HomeVC.m */,
+				011A82B7213FF27A00AB2363 /* ViewController.h */,
+				011A82B8213FF27A00AB2363 /* ViewController.m */,
 				0150902A2144ECBE00F87B2E /* ConnectSuccessVC.h */,
 				0150902B2144ECBE00F87B2E /* ConnectSuccessVC.m */,
 				0150902D2144F21100F87B2E /* SceneRecognitionVC.h */,
@@ -146,8 +357,6 @@
 				011A82B9213FF27A00AB2363 /* VideoViewController.h */,
 				011A82B3213FF27A00AB2363 /* VideoViewController.m */,
 				011A82BB213FF27A00AB2363 /* VideoViewController.xib */,
-				011A82B7213FF27A00AB2363 /* ViewController.h */,
-				011A82B8213FF27A00AB2363 /* ViewController.m */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -187,6 +396,8 @@
 				015090232144D31D00F87B2E /* AIUtil.m */,
 				01509037214BD59D00F87B2E /* NSString+Extension.h */,
 				01509038214BD59D00F87B2E /* NSString+Extension.m */,
+				01230BA9217AD3FA000F4CD3 /* UIColor+Common.h */,
+				01230BAA217AD3FA000F4CD3 /* UIColor+Common.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -200,6 +411,113 @@
 				01509034214530EA00F87B2E /* NetWorking.m */,
 			);
 			path = NetWork;
+			sourceTree = "<group>";
+		};
+		01230BAE217B21CA000F4CD3 /* source */ = {
+			isa = PBXGroup;
+			children = (
+				01230BAF217B21D6000F4CD3 /* 安以轩_陈荣炼.jpg */,
+				01230BCB217B2276000F4CD3 /* 包贝尔_包文婧.jpg */,
+				01230C05217B228B000F4CD3 /* 蔡少芬_张晋.jpg */,
+				01230BB1217B226F000F4CD3 /* 沈梦辰_杜海涛.jpg */,
+				01230BB4217B2270000F4CD3 /* 陈冠希_秦舒培.jpg */,
+				01230BFE217B2289000F4CD3 /* 陈赫_张子萱.jpg */,
+				01230C08217B228B000F4CD3 /* 陈嘉桦_赖斯翔.jpg */,
+				01230BBC217B2272000F4CD3 /* 陈妍希_陈晓.jpg */,
+				01230C09217B228C000F4CD3 /* 陈奕迅_徐濠萦.jpg */,
+				01230BC0217B2273000F4CD3 /* 成龙_林凤娇.jpg */,
+				01230BBD217B2272000F4CD3 /* 董璇_高云翔.jpg */,
+				01230BB7217B2270000F4CD3 /* 杜江_霍思燕.jpg */,
+				01230BCF217B2277000F4CD3 /* 段奕宏_王瑾.jpg */,
+				01230BB8217B2271000F4CD3 /* 范冰冰_李晨.jpg */,
+				01230C11217B228E000F4CD3 /* 范玮琪_陈建州.jpg */,
+				01230BD0217B2278000F4CD3 /* 付辛博_颖儿.jpg */,
+				01230BB3217B226F000F4CD3 /* 高圆圆_赵又廷.jpg */,
+				01230BFD217B2288000F4CD3 /* 古巨基_陈英雪.jpg */,
+				01230BFA217B2287000F4CD3 /* 郭德纲_王惠.jpg */,
+				01230BE7217B2281000F4CD3 /* 韩庚_卢靖姗.jpg */,
+				01230BEA217B2282000F4CD3 /* 胡先煦_刁卓.jpg */,
+				01230BB2217B226F000F4CD3 /* 胡杏儿_李乘德.jpg */,
+				01230C0F217B228E000F4CD3 /* 黄渤_小欧.jpg */,
+				01230BBF217B2273000F4CD3 /* 黄磊_孙莉.jpg */,
+				01230C10217B228E000F4CD3 /* 黄晓明_杨颖.jpg */,
+				01230BE0217B227E000F4CD3 /* 霍建华_林心如.jpg */,
+				01230BDB217B227C000F4CD3 /* 贾静雯_修杰楷.jpg */,
+				01230C12217B228F000F4CD3 /* 靳东_李佳.jpg */,
+				01230BC7217B2275000F4CD3 /* 景甜_张继科.jpg */,
+				01230BEC217B2282000F4CD3 /* 蓝盈莹_曹骏.jpg */,
+				01230BE6217B2280000F4CD3 /* 雷佳音_翟煦飞.jpg */,
+				01230BB5217B2270000F4CD3 /* 李晨_范冰冰.jpg */,
+				01230BD1217B2278000F4CD3 /* 李光洁_王珞丹.jpg */,
+				01230BEB217B2282000F4CD3 /* 李佳航_李晟.jpg */,
+				01230BC8217B2275000F4CD3 /* 李沁_华汉.jpg */,
+				01230BD9217B227B000F4CD3 /* 李小璐_贾乃亮.jpg */,
+				01230BF8217B2287000F4CD3 /* 李小冉_徐佳宁.jpg */,
+				01230BEF217B2283000F4CD3 /* 林依晨_林于超.jpg */,
+				01230BE1217B227E000F4CD3 /* 林宥嘉_丁文琪.jpg */,
+				01230BC4217B2274000F4CD3 /* 林志颖_陈若仪.jpg */,
+				01230BE2217B227E000F4CD3 /* 刘嘉玲_梁朝伟.jpg */,
+				01230BED217B2283000F4CD3 /* 刘诗诗_吴奇隆.jpg */,
+				01230BC6217B2275000F4CD3 /* 刘涛_王珂.jpg */,
+				01230BF1217B2284000F4CD3 /* 陆毅_鲍蕾.jpg */,
+				01230BD4217B2279000F4CD3 /* 鹿晗_关晓彤.jpg */,
+				01230BE5217B2280000F4CD3 /* 罗志祥_周扬青.jpg */,
+				01230BCD217B2277000F4CD3 /* 马伊琍_文章.jpg */,
+				01230BE4217B227F000F4CD3 /* 莫文蔚_Johannes.jpg */,
+				01230BF0217B2284000F4CD3 /* 那英_孟桐.jpg */,
+				01230C0E217B228D000F4CD3 /* 倪妮_井柏然.jpg */,
+				01230C0A217B228C000F4CD3 /* 戚薇_李承铉.jpg */,
+				01230BEE217B2283000F4CD3 /* 乔振宇_王倩一.jpg */,
+				01230C03217B228A000F4CD3 /* 邱胜翊_邓丽欣.jpg */,
+				01230BB6217B2270000F4CD3 /* 任嘉伦_聂欢.jpg */,
+				01230C06217B228B000F4CD3 /* 沙溢_胡可.jpg */,
+				01230BF3217B2285000F4CD3 /* 舒淇_冯德伦.jpg */,
+				01230BFF217B2289000F4CD3 /* 斯琴高娃_陈亮声.jpg */,
+				01230BFB217B2288000F4CD3 /* 孙俪_邓超.jpg */,
+				01230BF5217B2286000F4CD3 /* 孙怡_董子健.jpg */,
+				01230BD8217B227B000F4CD3 /* 孙艺洲_曹晓雯.jpg */,
+				01230BE8217B2281000F4CD3 /* 唐嫣_罗晋.jpg */,
+				01230BD7217B227B000F4CD3 /* 唐艺昕_张若昀.jpg */,
+				01230C01217B228A000F4CD3 /* 佟大为_关悦.jpg */,
+				01230BC9217B2275000F4CD3 /* 佟丽娅_陈思诚.jpg */,
+				01230BDC217B227D000F4CD3 /* 汪涵_杨乐乐.jpg */,
+				01230BBA217B2271000F4CD3 /* 王力宏_李靓蕾.jpg */,
+				01230BFC217B2288000F4CD3 /* 王栎鑫_吴雅婷.jpg */,
+				01230BF6217B2286000F4CD3 /* 王祖蓝_李亚男.jpg */,
+				01230C07217B228B000F4CD3 /* 魏晨_于玮.jpg */,
+				01230BF4217B2285000F4CD3 /* 吴尊_林丽莹.jpg */,
+				01230BF7217B2286000F4CD3 /* 小沈阳_沈春阳.jpg */,
+				01230BDF217B227E000F4CD3 /* 谢娜_ 张杰.jpg */,
+				01230BC2217B2273000F4CD3 /* 徐熙娣_许雅钧.jpg */,
+				01230BE9217B2281000F4CD3 /* 徐熙媛_汪小菲.jpg */,
+				01230BE3217B227F000F4CD3 /* 薛之谦_高磊鑫.jpg */,
+				01230C04217B228A000F4CD3 /* 严屹宽_杜若溪.jpg */,
+				01230BC1217B2273000F4CD3 /* 杨丞琳_李荣浩.jpg */,
+				01230C0B217B228C000F4CD3 /* 杨幂_刘恺威.jpg */,
+				01230BBE217B2272000F4CD3 /* 姚晨_曹郁.jpg */,
+				01230BB9217B2271000F4CD3 /* 伊能静_秦昊.jpg */,
+				01230C13217B228F000F4CD3 /* 应采儿_陈小春.jpg */,
+				01230BCC217B2276000F4CD3 /* 余文乐_王棠云.jpg */,
+				01230C02217B228A000F4CD3 /* 袁泉_夏雨.jpg */,
+				01230BCE217B2277000F4CD3 /* 张丹峰_洪欣.jpg */,
+				01230BDE217B227D000F4CD3 /* 张国立_邓婕.jpg */,
+				01230C0D217B228D000F4CD3 /* 张嘉译_王海燕.jpg */,
+				01230BD2217B2278000F4CD3 /* 张歆艺_袁弘.jpg */,
+				01230BDA217B227C000F4CD3 /* 张馨予_何捷.jpg */,
+				01230C0C217B228D000F4CD3 /* 张雨绮_袁巴元.jpg */,
+				01230BF2217B2285000F4CD3 /* 张智霖_袁咏仪.jpg */,
+				01230BF9217B2287000F4CD3 /* 章子怡_汪峰.jpg */,
+				01230BDD217B227D000F4CD3 /* 赵薇_黄有龙.jpg */,
+				01230BC5217B2274000F4CD3 /* 赵雅芝_黄锦燊.jpg */,
+				01230BD5217B227A000F4CD3 /* 郑爽_张恒.jpg */,
+				01230BCA217B2276000F4CD3 /* 郑秀文_许志安.jpg */,
+				01230BD6217B227A000F4CD3 /* 周杰伦_昆凌.jpg */,
+				01230BBB217B2272000F4CD3 /* 周润发_陈荟莲.jpg */,
+				01230BD3217B2279000F4CD3 /* 周迅_高圣远.jpg */,
+				01230BC3217B2274000F4CD3 /* 周渝民_喻虹渊.jpg */,
+				01230C00217B2289000F4CD3 /* 朱亚文_沈佳妮.jpg */,
+			);
+			path = source;
 			sourceTree = "<group>";
 		};
 		01816C41213972BF00101F0C = {
@@ -223,6 +541,7 @@
 		01816C4C213972BF00101F0C /* AI */ = {
 			isa = PBXGroup;
 			children = (
+				01230BAE217B21CA000F4CD3 /* source */,
 				011A82AC213FF10000AB2363 /* NetWork */,
 				011A82AB213FF10000AB2363 /* Util */,
 				011A82A3213FF0A200AB2363 /* Main */,
@@ -234,15 +553,15 @@
 				015090162143D0DA00F87B2E /* BaseNavController.m */,
 				011A82CE2140C6B000AB2363 /* Common.h */,
 				011A82D42140D01C00AB2363 /* PrefixHeader.pch */,
-				01230B962178C1A0000F4CD3 /* live.json */,
-				01230B8E2158EEBC000F4CD3 /* model_celebrities.tar */,
-				01230B8F2158EEBC000F4CD3 /* model_dog.tar */,
-				01230B932178B84B000F4CD3 /* model_couples.tar */,
-				01230B922178B84B000F4CD3 /* model_flowers.tar */,
+				01230B9B217AC7C9000F4CD3 /* model_celebrities_v0.00001.tar */,
+				01230B9C217AC7C9000F4CD3 /* model_couples_v0.00001.tar */,
+				01230B9A217AC7C9000F4CD3 /* model_dog_v0.00001.tar */,
+				01230B99217AC7C9000F4CD3 /* model_flowers_v0.00001.tar */,
 				01816C56213972C100101F0C /* Assets.xcassets */,
 				01816C58213972C100101F0C /* LaunchScreen.storyboard */,
 				01816C5B213972C100101F0C /* Info.plist */,
 				01816C5C213972C100101F0C /* main.m */,
+				01230BA7217ACBE2000F4CD3 /* Localizable.strings */,
 			);
 			path = AI;
 			sourceTree = "<group>";
@@ -250,6 +569,7 @@
 		01816C76213A6F8900101F0C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				01230C77217C32DA000F4CD3 /* CoreImage.framework */,
 				01816C79213A730800101F0C /* SystemConfiguration.framework */,
 				01816C77213A6F8A00101F0C /* NetworkExtension.framework */,
 				84A575072EE0EA378A9A58A3 /* libPods-AI.a */,
@@ -324,16 +644,116 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01230B952178B84B000F4CD3 /* model_couples.tar in Resources */,
+				01230B9E217AC7C9000F4CD3 /* model_dog_v0.00001.tar in Resources */,
+				01230C5F217B228F000F4CD3 /* 王栎鑫_吴雅婷.jpg in Resources */,
+				01230C3C217B228F000F4CD3 /* 李小璐_贾乃亮.jpg in Resources */,
+				01230C18217B228F000F4CD3 /* 李晨_范冰冰.jpg in Resources */,
+				01230C75217B228F000F4CD3 /* 靳东_李佳.jpg in Resources */,
+				01230C16217B228F000F4CD3 /* 高圆圆_赵又廷.jpg in Resources */,
+				01230C55217B228F000F4CD3 /* 张智霖_袁咏仪.jpg in Resources */,
+				01230C4C217B228F000F4CD3 /* 徐熙媛_汪小菲.jpg in Resources */,
+				01230C3A217B228F000F4CD3 /* 唐艺昕_张若昀.jpg in Resources */,
+				01230C69217B228F000F4CD3 /* 沙溢_胡可.jpg in Resources */,
 				01816C5A213972C100101F0C /* LaunchScreen.storyboard in Resources */,
+				01230C52217B228F000F4CD3 /* 林依晨_林于超.jpg in Resources */,
+				01230C29217B228F000F4CD3 /* 刘涛_王珂.jpg in Resources */,
+				01230C58217B228F000F4CD3 /* 孙怡_董子健.jpg in Resources */,
+				01230C50217B228F000F4CD3 /* 刘诗诗_吴奇隆.jpg in Resources */,
+				01230C28217B228F000F4CD3 /* 赵雅芝_黄锦燊.jpg in Resources */,
+				01230C62217B228F000F4CD3 /* 斯琴高娃_陈亮声.jpg in Resources */,
+				01230C2F217B228F000F4CD3 /* 余文乐_王棠云.jpg in Resources */,
+				01230C2B217B228F000F4CD3 /* 李沁_华汉.jpg in Resources */,
+				01230C39217B228F000F4CD3 /* 周杰伦_昆凌.jpg in Resources */,
+				01230C3F217B228F000F4CD3 /* 汪涵_杨乐乐.jpg in Resources */,
+				01230C4A217B228F000F4CD3 /* 韩庚_卢靖姗.jpg in Resources */,
+				01230C4F217B228F000F4CD3 /* 蓝盈莹_曹骏.jpg in Resources */,
+				01230C17217B228F000F4CD3 /* 陈冠希_秦舒培.jpg in Resources */,
+				01230C2A217B228F000F4CD3 /* 景甜_张继科.jpg in Resources */,
+				01230C42217B228F000F4CD3 /* 谢娜_ 张杰.jpg in Resources */,
+				01230C2C217B228F000F4CD3 /* 佟丽娅_陈思诚.jpg in Resources */,
+				01230C49217B228F000F4CD3 /* 雷佳音_翟煦飞.jpg in Resources */,
 				0150901C2143E40200F87B2E /* XTSheetView.xib in Resources */,
-				01230B972178C1A0000F4CD3 /* live.json in Resources */,
-				01230B942178B84B000F4CD3 /* model_flowers.tar in Resources */,
+				01230C5B217B228F000F4CD3 /* 李小冉_徐佳宁.jpg in Resources */,
+				01230C67217B228F000F4CD3 /* 严屹宽_杜若溪.jpg in Resources */,
+				01230C63217B228F000F4CD3 /* 朱亚文_沈佳妮.jpg in Resources */,
+				01230C51217B228F000F4CD3 /* 乔振宇_王倩一.jpg in Resources */,
+				01230C45217B228F000F4CD3 /* 刘嘉玲_梁朝伟.jpg in Resources */,
+				01230C54217B228F000F4CD3 /* 陆毅_鲍蕾.jpg in Resources */,
+				01230C6D217B228F000F4CD3 /* 戚薇_李承铉.jpg in Resources */,
+				01230C68217B228F000F4CD3 /* 蔡少芬_张晋.jpg in Resources */,
+				01230C48217B228F000F4CD3 /* 罗志祥_周扬青.jpg in Resources */,
+				01230C4D217B228F000F4CD3 /* 胡先煦_刁卓.jpg in Resources */,
+				01230C6F217B228F000F4CD3 /* 张雨绮_袁巴元.jpg in Resources */,
+				01230C21217B228F000F4CD3 /* 姚晨_曹郁.jpg in Resources */,
+				01230C2E217B228F000F4CD3 /* 包贝尔_包文婧.jpg in Resources */,
+				01230C1F217B228F000F4CD3 /* 陈妍希_陈晓.jpg in Resources */,
+				01230C6A217B228F000F4CD3 /* 魏晨_于玮.jpg in Resources */,
+				01230C4E217B228F000F4CD3 /* 李佳航_李晟.jpg in Resources */,
 				01816C57213972C100101F0C /* Assets.xcassets in Resources */,
-				01230B912158EEBC000F4CD3 /* model_dog.tar in Resources */,
-				01230B902158EEBC000F4CD3 /* model_celebrities.tar in Resources */,
+				01230C66217B228F000F4CD3 /* 邱胜翊_邓丽欣.jpg in Resources */,
+				01230C32217B228F000F4CD3 /* 段奕宏_王瑾.jpg in Resources */,
+				01230C59217B228F000F4CD3 /* 王祖蓝_李亚男.jpg in Resources */,
+				01230C57217B228F000F4CD3 /* 吴尊_林丽莹.jpg in Resources */,
+				01230C47217B228F000F4CD3 /* 莫文蔚_Johannes.jpg in Resources */,
+				01230C3E217B228F000F4CD3 /* 贾静雯_修杰楷.jpg in Resources */,
+				01230C46217B228F000F4CD3 /* 薛之谦_高磊鑫.jpg in Resources */,
+				01230B9F217AC7C9000F4CD3 /* model_celebrities_v0.00001.tar in Resources */,
+				01230C71217B228F000F4CD3 /* 倪妮_井柏然.jpg in Resources */,
+				01230C36217B228F000F4CD3 /* 周迅_高圣远.jpg in Resources */,
+				01230C2D217B228F000F4CD3 /* 郑秀文_许志安.jpg in Resources */,
+				01230C1C217B228F000F4CD3 /* 伊能静_秦昊.jpg in Resources */,
+				01230C40217B228F000F4CD3 /* 赵薇_黄有龙.jpg in Resources */,
+				01230C31217B228F000F4CD3 /* 张丹峰_洪欣.jpg in Resources */,
+				01230C1E217B228F000F4CD3 /* 周润发_陈荟莲.jpg in Resources */,
+				01230C60217B228F000F4CD3 /* 古巨基_陈英雪.jpg in Resources */,
+				01230C38217B228F000F4CD3 /* 郑爽_张恒.jpg in Resources */,
+				01230C1A217B228F000F4CD3 /* 杜江_霍思燕.jpg in Resources */,
+				01230C19217B228F000F4CD3 /* 任嘉伦_聂欢.jpg in Resources */,
+				01230C37217B228F000F4CD3 /* 鹿晗_关晓彤.jpg in Resources */,
+				01230C53217B228F000F4CD3 /* 那英_孟桐.jpg in Resources */,
+				01230BA5217ACBE2000F4CD3 /* Localizable.strings in Resources */,
+				01230C65217B228F000F4CD3 /* 袁泉_夏雨.jpg in Resources */,
+				01230C6C217B228F000F4CD3 /* 陈奕迅_徐濠萦.jpg in Resources */,
+				01230C5C217B228F000F4CD3 /* 章子怡_汪峰.jpg in Resources */,
+				01230C26217B228F000F4CD3 /* 周渝民_喻虹渊.jpg in Resources */,
+				01230B9D217AC7C9000F4CD3 /* model_flowers_v0.00001.tar in Resources */,
+				01230C24217B228F000F4CD3 /* 杨丞琳_李荣浩.jpg in Resources */,
+				01230C20217B228F000F4CD3 /* 董璇_高云翔.jpg in Resources */,
 				011A82C0213FF27A00AB2363 /* VideoViewController.xib in Resources */,
+				01230C44217B228F000F4CD3 /* 林宥嘉_丁文琪.jpg in Resources */,
+				01230C6B217B228F000F4CD3 /* 陈嘉桦_赖斯翔.jpg in Resources */,
+				01230C43217B228F000F4CD3 /* 霍建华_林心如.jpg in Resources */,
+				01230C1B217B228F000F4CD3 /* 范冰冰_李晨.jpg in Resources */,
+				01230C6E217B228F000F4CD3 /* 杨幂_刘恺威.jpg in Resources */,
+				01230C74217B228F000F4CD3 /* 范玮琪_陈建州.jpg in Resources */,
+				01230C22217B228F000F4CD3 /* 黄磊_孙莉.jpg in Resources */,
+				01230C5A217B228F000F4CD3 /* 小沈阳_沈春阳.jpg in Resources */,
+				01230BA0217AC7C9000F4CD3 /* model_couples_v0.00001.tar in Resources */,
+				01230C5D217B228F000F4CD3 /* 郭德纲_王惠.jpg in Resources */,
+				01230C23217B228F000F4CD3 /* 成龙_林凤娇.jpg in Resources */,
+				01230C64217B228F000F4CD3 /* 佟大为_关悦.jpg in Resources */,
+				01230C25217B228F000F4CD3 /* 徐熙娣_许雅钧.jpg in Resources */,
+				01230C76217B228F000F4CD3 /* 应采儿_陈小春.jpg in Resources */,
+				01230C4B217B228F000F4CD3 /* 唐嫣_罗晋.jpg in Resources */,
+				01230C3D217B228F000F4CD3 /* 张馨予_何捷.jpg in Resources */,
+				01230C34217B228F000F4CD3 /* 李光洁_王珞丹.jpg in Resources */,
+				01230C14217B228F000F4CD3 /* 沈梦辰_杜海涛.jpg in Resources */,
+				01230C73217B228F000F4CD3 /* 黄晓明_杨颖.jpg in Resources */,
+				01230C72217B228F000F4CD3 /* 黄渤_小欧.jpg in Resources */,
+				01230C70217B228F000F4CD3 /* 张嘉译_王海燕.jpg in Resources */,
+				01230C5E217B228F000F4CD3 /* 孙俪_邓超.jpg in Resources */,
+				01230C33217B228F000F4CD3 /* 付辛博_颖儿.jpg in Resources */,
+				01230C30217B228F000F4CD3 /* 马伊琍_文章.jpg in Resources */,
+				01230C15217B228F000F4CD3 /* 胡杏儿_李乘德.jpg in Resources */,
+				01230BB0217B21D6000F4CD3 /* 安以轩_陈荣炼.jpg in Resources */,
+				01230C41217B228F000F4CD3 /* 张国立_邓婕.jpg in Resources */,
+				01230C27217B228F000F4CD3 /* 林志颖_陈若仪.jpg in Resources */,
 				01816C55213972BF00101F0C /* Main.storyboard in Resources */,
+				01230C61217B228F000F4CD3 /* 陈赫_张子萱.jpg in Resources */,
+				01230C35217B228F000F4CD3 /* 张歆艺_袁弘.jpg in Resources */,
+				01230C56217B228F000F4CD3 /* 舒淇_冯德伦.jpg in Resources */,
+				01230C1D217B228F000F4CD3 /* 王力宏_李靓蕾.jpg in Resources */,
+				01230C3B217B228F000F4CD3 /* 孙艺洲_曹晓雯.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +803,7 @@
 				01816C5D213972C100101F0C /* main.m in Sources */,
 				011A82AF213FF13500AB2363 /* ImageHelper.m in Sources */,
 				015090172143D0DA00F87B2E /* BaseNavController.m in Sources */,
+				01230BAB217AD3FA000F4CD3 /* UIColor+Common.m in Sources */,
 				011A82CC214003B900AB2363 /* NSArray+VAInfo.m in Sources */,
 				011A82BF213FF27A00AB2363 /* QRCodeViewController.m in Sources */,
 				01816C4F213972BF00101F0C /* AppDelegate.m in Sources */,
@@ -392,10 +813,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		01230BA7217ACBE2000F4CD3 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				01230BA6217ACBE2000F4CD3 /* zh-Hans */,
+				01230BA8217ACBE8000F4CD3 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		01816C53213972BF00101F0C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				01816C54213972BF00101F0C /* Base */,
+				01230BA1217ACB75000F4CD3 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -404,6 +835,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				01816C59213972C100101F0C /* Base */,
+				01230BA2217ACB76000F4CD3 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -415,6 +847,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -476,6 +909,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

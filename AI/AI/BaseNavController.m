@@ -8,7 +8,7 @@
 
 #import "BaseNavController.h"
 
-@interface BaseNavController ()
+@interface BaseNavController ()<UINavigationControllerDelegate>
 
 @end
 
@@ -24,6 +24,8 @@
                        forBarPosition:UIBarPositionAny
                            barMetrics:UIBarMetricsDefault];
     [navigationBar setShadowImage:[UIImage new]];
+    
+    self.interactivePopGestureRecognizer.delegate = (id)self;
 }
 
 - (UIImage *)imageWithColor:(UIColor *)color
@@ -39,6 +41,10 @@
     UIGraphicsEndImageContext();
     
     return image;
+}
+
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    return self.childViewControllers.count > 1;
 }
 
 @end

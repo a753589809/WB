@@ -6,10 +6,12 @@
 //  Copyright © 2018年 xuting. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "BaseVC.h"
+#import "HomeModel.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : BaseVC
 
+@property (nonatomic, strong) HomeModel *model;
 
 @end
 
