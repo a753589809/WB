@@ -15,6 +15,8 @@
 #import "NetWorking.h"
 #import "ViewController.h"
 #import "VideoViewController.h"
+#import "FileModel.h"
+#import "FileViewController.h"
 
 #define kCellSpaing 15
 
@@ -42,17 +44,17 @@
     layout.minimumInteritemSpacing = kCellSpaing;
     [self.collectionView setCollectionViewLayout:layout];
     
-//    NSArray *titleArray = @[L(@"无线U盘"),L(@"明星脸"),L(@"夫妻相"),L(@"狗狗品种"),L(@"花")];
-//    NSArray *imageArray = @[@"icon-usb",@"icon-face copy",@"icon-Physiognomy Copy",@"icon-dog copy",@"icon-flower"];
-//    NSArray *colorArray = @[@"007FEF",@"E84C3C",@"F5B908",@"00BA9A",@"1BB7F0"];
-//    NSArray *modelNameArray = @[@"",@"model_celebrities_v0.00001",@"model_couples_v0.00001",@"model_dog_v0.00001",@"model_flowers_v0.00001"];
-//    NSArray *modelIdArray = @[@"",@"57",@"63",@"55",@"64"];
+    NSArray *titleArray = @[L(@"无线U盘"),L(@"明星脸"),L(@"夫妻相"),L(@"狗狗品种"),L(@"花")];
+    NSArray *imageArray = @[@"icon-usb",@"icon-face copy",@"icon-Physiognomy Copy",@"icon-dog copy",@"icon-flower"];
+    NSArray *colorArray = @[@"007FEF",@"E84C3C",@"F5B908",@"00BA9A",@"1BB7F0"];
+    NSArray *modelNameArray = @[@"",@"model_celebrities_v0.00001",@"model_couples_v0.00001",@"model_dog_v0.00001",@"model_flowers_v0.00001"];
+    NSArray *modelIdArray = @[@"0",@"57",@"63",@"55",@"64"];
     
-    NSArray *titleArray = @[L(@"明星脸"),L(@"夫妻相"),L(@"狗狗品种"),L(@"花")];
-    NSArray *imageArray = @[@"icon-face copy",@"icon-Physiognomy Copy",@"icon-dog copy",@"icon-flower"];
-    NSArray *colorArray = @[@"E84C3C",@"F5B908",@"00BA9A",@"1BB7F0"];
-    NSArray *modelNameArray = @[@"model_celebrities_v0.00001",@"model_couples_v0.00001",@"model_dog_v0.00001",@"model_flowers_v0.00001"];
-    NSArray *modelIdArray = @[@"57",@"63",@"55",@"64"];
+//    NSArray *titleArray = @[L(@"明星脸"),L(@"夫妻相"),L(@"狗狗品种"),L(@"花")];
+//    NSArray *imageArray = @[@"icon-face copy",@"icon-Physiognomy Copy",@"icon-dog copy",@"icon-flower"];
+//    NSArray *colorArray = @[@"E84C3C",@"F5B908",@"00BA9A",@"1BB7F0"];
+//    NSArray *modelNameArray = @[@"model_celebrities_v0.00001",@"model_couples_v0.00001",@"model_dog_v0.00001",@"model_flowers_v0.00001"];
+//    NSArray *modelIdArray = @[@"57",@"63",@"55",@"64"];
     
     for (int i=0; i<titleArray.count; i++) {
         HomeModel *model = [[HomeModel alloc] init];
@@ -100,12 +102,45 @@
     
     
     HomeModel *model = [self.data objectAt:indexPath.item];
-    
-    if (model && model.modelName.length > 0) {
+    if (!model) {
+        return;
+    }
+    if ([model.ID isEqualToString:@"0"]) {
+        [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:true];
+        [[NetWorking defaultNetWorking] requestAddress:@"/downlist" andPostParameters:nil andBlock:^(NSDictionary *dict) {
+            [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
+            NSArray *array = [dict objectForKey:@"filelist"];
+            NSMutableArray *result = [NSMutableArray array];
+            if ([array isKindOfClass:[NSArray class]]) {
+                for (NSDictionary *d in array) {
+                    FileModel *m = [[FileModel alloc] init];
+                    m.type = [d objectForKey:@"type"];
+                    m.filepath = [d objectForKey:@"filepath"];
+                    [result addObject:m];
+                }
+            }
+            FileViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"FileViewController"];
+            vc.fileArray = result;
+            vc.filePath = @"/";
+            [self.navigationController pushViewController:vc animated:true];
+            FLog(@"%@",dict);
+        } andFailDownload:^{
+            [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
+            [self showTool:@"U盘读取失败" view:self.navigationController.view];
+        }];
+    }
+    else {
         [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:true];
         [[NetWorking defaultNetWorking] requestAddress:[NSString stringWithFormat:@"/checkmodelversion/%@", model.modelName] andPostParameters:nil andBlock:^(NSDictionary *dict) {
             
-            if ([[dict objectForKey:@"result"] isEqual:@"-1"]) {
+            if ([[dict objectForKey:@"result"] isEqual:@"0"]) {
+                [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
+                ViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ViewController"];
+                vc.model = model;
+                vc.showMenuButton = YES;
+                [self.navigationController pushViewController:vc animated:true];
+            }
+            else {
                 // 传模型文件
                 [[NetWorking defaultNetWorking] uploadingAddress:[NSString stringWithFormat:@"/update/%@", model.modelName] andFile:[NSString stringWithFormat:@"%@.tar", model.modelName] andProgress:^(NSProgress *progress) {
                     FLog(@"%@", progress);
@@ -114,6 +149,7 @@
                     [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
                     if ([[dict objectForKey:@"result"] isEqual:@"0"]) {
                         ViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ViewController"];
+                        vc.showMenuButton = YES;
                         vc.model = model;
                         [self.navigationController pushViewController:vc animated:true];
                     }
@@ -125,12 +161,6 @@
                     [self showTool:@"模型上传失败" view:self.navigationController.view];
                 }];
             }
-            else if ([[dict objectForKey:@"result"] isEqual:@"0"]) {
-                [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
-                ViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ViewController"];
-                vc.model = model;
-                [self.navigationController pushViewController:vc animated:true];
-            }
             
             FLog(@"%@",dict);
         } andFailDownload:^{
@@ -138,17 +168,6 @@
             [self showTool:@"模型检测失败" view:self.navigationController.view];
         }];
     }
-    
-    
-
-    
-
-    
-    
-    
-    
-    
-    
     
     
 //    XTSoundPlayer *player = [XTSoundPlayer standardSoundPlayer];

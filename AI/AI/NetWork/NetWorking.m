@@ -34,7 +34,7 @@
     self = [super init];
     if (self) {
         self.manager = [AFHTTPSessionManager manager];
-        self.manager.requestSerializer.timeoutInterval = 35.0f;
+        self.manager.requestSerializer.timeoutInterval = 20.0f;
 //        self.manager.requestSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"application/x-www-form-urlencoded",@"text/json",@"text/html",@"text/xml",@"text/plain", nil];
         self.manager.requestSerializer = [AFHTTPRequestSerializer serializer];
         self.manager.responseSerializer = [AFJSONResponseSerializer serializer]; //申明返回的结果是json类型
@@ -44,6 +44,7 @@
 }
 
 - (void)requestAddress:(NSString *)address andPostParameters:(NSDictionary *)postDic andBlock:(blockDownload)getdic andFailDownload:(blockFailDownLoad)failBlock {
+    self.manager.requestSerializer.timeoutInterval = 20.0f;
     _sessionDataTask = [self.manager GET:[NSString stringWithFormat:@"%@%@", kBoxUrl, address] parameters:postDic progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         getdic(responseObject);
@@ -59,7 +60,7 @@
              andProgress:(blockProgress)progress
                 andBlock:(blockDownload)block
          andFailDownload:(blockFailDownLoad)failBlock {
-    
+    self.manager.requestSerializer.timeoutInterval = 30.0f;
     _sessionDataTask = [self.manager POST:[NSString stringWithFormat:@"%@%@", kBoxUrl, address] parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         /*
          此方法参数

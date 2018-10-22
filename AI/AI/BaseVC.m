@@ -24,8 +24,10 @@
     
     self.title = @"AI Box";
     
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"menuicon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(clickMenu)];
-    [self.navigationItem setRightBarButtonItem:backItem];
+    if (self.showMenuButton) {
+        UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"menuicon"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStyleDone target:self action:@selector(clickMenu)];
+        [self.navigationItem setRightBarButtonItem:backItem];
+    }
     
     if (self.navigationController.childViewControllers.count > 1) {
         UIBarButtonItem *backItem=[[UIBarButtonItem alloc] initWithImage:kBackImage style:UIBarButtonItemStyleDone target:self action:@selector(backClick)];

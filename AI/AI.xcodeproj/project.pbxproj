@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01158516217E105F000691B0 /* FileModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 01158515217E105F000691B0 /* FileModel.m */; };
+		01158519217E10FB000691B0 /* FileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01158518217E10FB000691B0 /* FileViewController.m */; };
+		0115851C217E1775000691B0 /* FileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0115851B217E1775000691B0 /* FileCell.m */; };
 		0115CB5821410F37001613E8 /* XTSoundPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0115CB5721410F37001613E8 /* XTSoundPlayer.m */; };
 		011A82AF213FF13500AB2363 /* ImageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 011A82AE213FF13500AB2363 /* ImageHelper.m */; };
 		011A82B2213FF20400AB2363 /* UIViewExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 011A82B1213FF20400AB2363 /* UIViewExt.m */; };
@@ -146,6 +149,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01158514217E105F000691B0 /* FileModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileModel.h; sourceTree = "<group>"; };
+		01158515217E105F000691B0 /* FileModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileModel.m; sourceTree = "<group>"; };
+		01158517217E10FB000691B0 /* FileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileViewController.h; sourceTree = "<group>"; };
+		01158518217E10FB000691B0 /* FileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileViewController.m; sourceTree = "<group>"; };
+		0115851A217E1775000691B0 /* FileCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileCell.h; sourceTree = "<group>"; };
+		0115851B217E1775000691B0 /* FileCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileCell.m; sourceTree = "<group>"; };
 		0115CB5621410F37001613E8 /* XTSoundPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XTSoundPlayer.h; sourceTree = "<group>"; };
 		0115CB5721410F37001613E8 /* XTSoundPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XTSoundPlayer.m; sourceTree = "<group>"; };
 		011A82AD213FF13500AB2363 /* ImageHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageHelper.h; sourceTree = "<group>"; };
@@ -346,6 +355,8 @@
 				011A82C5213FF4EC00AB2363 /* HomeVC.m */,
 				011A82B7213FF27A00AB2363 /* ViewController.h */,
 				011A82B8213FF27A00AB2363 /* ViewController.m */,
+				01158517217E10FB000691B0 /* FileViewController.h */,
+				01158518217E10FB000691B0 /* FileViewController.m */,
 				0150902A2144ECBE00F87B2E /* ConnectSuccessVC.h */,
 				0150902B2144ECBE00F87B2E /* ConnectSuccessVC.m */,
 				0150902D2144F21100F87B2E /* SceneRecognitionVC.h */,
@@ -366,6 +377,8 @@
 			children = (
 				011A82CF2140C84C00AB2363 /* HomeModel.h */,
 				011A82D02140C84C00AB2363 /* HomeModel.m */,
+				01158514217E105F000691B0 /* FileModel.h */,
+				01158515217E105F000691B0 /* FileModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -376,6 +389,8 @@
 				01816C53213972BF00101F0C /* Main.storyboard */,
 				011A82C7213FFF6800AB2363 /* HomeCell.h */,
 				011A82C8213FFF6800AB2363 /* HomeCell.m */,
+				0115851A217E1775000691B0 /* FileCell.h */,
+				0115851B217E1775000691B0 /* FileCell.m */,
 				015090182143E3F100F87B2E /* XTSheetView.h */,
 				015090192143E3F100F87B2E /* XTSheetView.m */,
 				0150901B2143E40200F87B2E /* XTSheetView.xib */,
@@ -785,12 +800,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0115851C217E1775000691B0 /* FileCell.m in Sources */,
 				011A82BE213FF27A00AB2363 /* ViewController.m in Sources */,
 				011A82BC213FF27A00AB2363 /* VideoViewController.m in Sources */,
 				011A82C9213FFF6800AB2363 /* HomeCell.m in Sources */,
 				01509036214530EA00F87B2E /* NetWorking.m in Sources */,
 				0150902C2144ECBE00F87B2E /* ConnectSuccessVC.m in Sources */,
 				011A82BD213FF27A00AB2363 /* ScanViewController.m in Sources */,
+				01158519217E10FB000691B0 /* FileViewController.m in Sources */,
 				011A82C6213FF4EC00AB2363 /* HomeVC.m in Sources */,
 				011A82C3213FF47500AB2363 /* BaseVC.m in Sources */,
 				011A82B2213FF20400AB2363 /* UIViewExt.m in Sources */,
@@ -802,6 +819,7 @@
 				015090242144D31D00F87B2E /* AIUtil.m in Sources */,
 				01816C5D213972C100101F0C /* main.m in Sources */,
 				011A82AF213FF13500AB2363 /* ImageHelper.m in Sources */,
+				01158516217E105F000691B0 /* FileModel.m in Sources */,
 				015090172143D0DA00F87B2E /* BaseNavController.m in Sources */,
 				01230BAB217AD3FA000F4CD3 /* UIColor+Common.m in Sources */,
 				011A82CC214003B900AB2363 /* NSArray+VAInfo.m in Sources */,

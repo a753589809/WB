@@ -10,6 +10,8 @@
 
 @interface BaseVC : UIViewController
 
+@property (nonatomic, assign) BOOL showMenuButton;
+
 - (void)showTool:(NSString *)title view:(UIView *)v;
 
 @end
