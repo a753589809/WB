@@ -10,7 +10,11 @@
 
 @interface FileModel : NSObject
 
+@property (nonatomic, copy) NSString *showName;
 @property (nonatomic, copy) NSString *filepath;
 @property (nonatomic, copy) NSString *type;
+@property (nonatomic, assign) BOOL isSelect;
+
++ (NSMutableArray *)getFileArrayWith:(NSDictionary *)dict;
 
 @end

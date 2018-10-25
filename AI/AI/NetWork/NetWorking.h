@@ -18,10 +18,18 @@ typedef void (^blockProgress) (NSProgress *progress);
 
 - (void)requestAddress:(NSString *)address andPostParameters:(NSDictionary *)postDic andBlock:(blockDownload)getdic andFailDownload:(blockFailDownLoad)failBlock;
 
+- (void)requestPostAddress:(NSString *)address andPostParameters:(NSDictionary *)postDic andBlock:(blockDownload)getdic andFailDownload:(blockFailDownLoad)failBlock;
+
 - (void)uploadingAddress:(NSString *)address
                  andFile:(NSString *)file
              andProgress:(blockProgress)progress
                 andBlock:(blockDownload)block
          andFailDownload:(blockFailDownLoad)failBlock;
+
+- (void)uploadingFileAddress:(NSString *)address
+                     andFile:(NSString *)file
+                 andProgress:(blockProgress)progress
+                    andBlock:(blockDownload)block
+             andFailDownload:(blockFailDownLoad)failBlock;
 
 @end

@@ -45,7 +45,23 @@
 
 - (void)requestAddress:(NSString *)address andPostParameters:(NSDictionary *)postDic andBlock:(blockDownload)getdic andFailDownload:(blockFailDownLoad)failBlock {
     self.manager.requestSerializer.timeoutInterval = 20.0f;
-    _sessionDataTask = [self.manager GET:[NSString stringWithFormat:@"%@%@", kBoxUrl, address] parameters:postDic progress:^(NSProgress * _Nonnull downloadProgress) {
+    NSString *url = [NSString stringWithFormat:@"%@%@", kBoxUrl, address];
+    FLog(@"get====%@",url);
+    _sessionDataTask = [self.manager GET:url parameters:postDic progress:^(NSProgress * _Nonnull downloadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        getdic(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failBlock();
+        FLog(@"erroe:%@",error);
+        FLog(@"erroe:%@",[error localizedDescription]);
+    }];
+}
+
+- (void)requestPostAddress:(NSString *)address andPostParameters:(NSDictionary *)postDic andBlock:(blockDownload)getdic andFailDownload:(blockFailDownLoad)failBlock {
+    self.manager.requestSerializer.timeoutInterval = 20.0f;
+    NSString *url = [NSString stringWithFormat:@"%@%@", kBoxUrl, address];
+    FLog(@"post====%@",url);
+    _sessionDataTask = [self.manager POST:url parameters:postDic progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         getdic(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -87,7 +103,37 @@
     
 }
 
-
+- (void)uploadingFileAddress:(NSString *)address
+                     andFile:(NSString *)file
+                 andProgress:(blockProgress)progress
+                    andBlock:(blockDownload)block
+             andFailDownload:(blockFailDownLoad)failBlock {
+    self.manager.requestSerializer.timeoutInterval = 30.0f;
+    FLog(@"%@",[NSString stringWithFormat:@"%@%@", kBoxUrl, address]);
+    _sessionDataTask = [self.manager POST:[NSString stringWithFormat:@"%@%@", kBoxUrl, address] parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+        /*
+         此方法参数
+         1. 要上传的文件路径
+         2. 后台处理文件的字段,若没有可为空
+         3. 要保存在服务器上的[文件名]
+         4. 上传文件的[mimeType]
+         application/octet-stream为通用型
+         */
+        NSURL *fileUrl = [NSURL fileURLWithPath:file];
+        [formData appendPartWithFileURL:fileUrl name:@"" fileName:file mimeType:@"application/octet-stream" error:nil];
+        
+    } progress:^(NSProgress * _Nonnull uploadProgress) {
+        if (progress) {
+            progress(uploadProgress);
+        }
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        block(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failBlock();
+        FLog(@"error:%@",[error localizedDescription]);
+    }];
+    
+}
 
 
 

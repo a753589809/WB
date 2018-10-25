@@ -42,8 +42,10 @@
     UITapGestureRecognizer *_tap;
     
     XTSoundPlayer *player;
+    NSTimer *_timer;
     
     BOOL isRequest;
+    BOOL isUploadImage;
     
 }
 
@@ -60,11 +62,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    isUploadImage = YES;
     typeLabel.text = self.model.title;
     topImageView.hidden = YES;
     _changeButton.hidden = YES;
     containerHeight.constant = kScreenWidth - 80 + 60;
     _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickBgView:)];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    if ([_timer isValid] == YES ) {
+        [_timer invalidate];
+        _timer = nil ;
+    }
 }
 
 // 相册
@@ -83,11 +94,18 @@
     topImageView.hidden = false;
     _changeButton.hidden = YES;
     [topImageBgView removeGestureRecognizer:_tap];
+    if ([_timer isValid] == YES ) {
+        [_timer invalidate];
+        _timer = nil ;
+    }
 }
 
 // 拍照
 - (IBAction)clickTakePhotos:(id)sender {
-    
+    if ([_timer isValid] == YES ) {
+        [_timer invalidate];
+        _timer = nil ;
+    }
     if (session && session.isRunning) {
         [session stopRunning];
         [preLayer removeFromSuperlayer];
@@ -175,11 +193,6 @@
         [session addOutput:output];
         dispatch_queue_t queue = dispatch_queue_create("myQueue", NULL);
         [output setSampleBufferDelegate:self queue:queue];
-        //    output.videoSettings = [NSDictionary dictionaryWithObjectsAndKeys:
-        //                            [NSNumber numberWithInt:kCVPixelFormatType_32BGRA], kCVPixelBufferPixelFormatTypeKey,
-        //                            [NSNumber numberWithInt: 375], (id)kCVPixelBufferWidthKey,
-        //                            [NSNumber numberWithInt: 375], (id)kCVPixelBufferHeightKey,
-        //                            nil];
         output.videoSettings = [NSDictionary dictionaryWithObjectsAndKeys:
                                 [NSNumber numberWithInt:kCVPixelFormatType_32BGRA], kCVPixelBufferPixelFormatTypeKey,
                                 nil];
@@ -193,6 +206,17 @@
     _changeButton.hidden = NO;
     topImageView.hidden = YES;
     [topImageBgView addGestureRecognizer:_tap];
+    
+    if ([_timer isValid] == YES ) {
+        [_timer invalidate];
+        _timer = nil ;
+    }
+    _timer = [NSTimer scheduledTimerWithTimeInterval:0.6 target:self selector:@selector(uploadImage) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:_timer forMode:UITrackingRunLoopMode];
+}
+
+- (void)uploadImage {
+    isUploadImage = YES;
 }
 
 #pragma mark - 摄像头处理
@@ -320,11 +344,12 @@
 - (void)captureOutput:(AVCaptureOutput *)captureOutput
 didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
        fromConnection:(AVCaptureConnection *)connection {
-    
-    if (isRequest || [player isSpeaking]) {
+    if (isRequest || [player isSpeaking] || !isUploadImage) {
         return;
     }
+    NSLog(@"===");
     isRequest = YES;
+    isUploadImage = NO;
     
     UIImage *oldImage = [self imageFromSampleBuffer:sampleBuffer];
     
@@ -562,12 +587,13 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     
     if(featrues.count > 0) {
         CIFaceFeature *face = [featrues firstObject];
-        FLog(@"=====%@====%@", NSStringFromCGSize(faceImage.size),NSStringFromCGRect(face.bounds));
+        FLog(@"=====%@====%@", NSStringFromCGSize([ciimage extent].size),NSStringFromCGRect(face.bounds));
         CGFloat scale = MIN(topImageView.width / faceImage.size.width, topImageView.height / faceImage.size.height);
         CGFloat offsetX = (topImageView.width - faceImage.size.width * scale) / 2;
         CGFloat offsetY = (topImageView.height - faceImage.size.height * scale) / 2;
         CGFloat y = faceImage.size.height - face.bounds.size.height - face.bounds.origin.y;
         CGRect frame = CGRectMake(face.bounds.origin.x * scale + offsetX, y * scale + offsetY, face.bounds.size.width * scale, face.bounds.size.height * scale);
+        
         if (!rahmenView) {
             rahmenView = [[CALayer alloc] init];
             rahmenView.borderColor = [UIColor redColor].CGColor;

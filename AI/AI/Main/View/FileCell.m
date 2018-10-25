@@ -12,7 +12,7 @@
     
     __weak IBOutlet UIImageView *imgView;
     __weak IBOutlet UILabel *fileNameLabel;
-    __weak IBOutlet UILabel *desLabel;
+    __weak IBOutlet UIButton *selButton;
     
 }
 
@@ -21,9 +21,30 @@
     // Initialization code
 }
 
+- (IBAction)cliclSelect:(id)sender {
+    selButton.selected = !self.isSelected;
+    self.model.isSelect = selButton.isSelected;
+}
+
 - (void)setModel:(FileModel *)model {
-    fileNameLabel.text = model.filepath;
-    desLabel.text = @"11";
+    _model = model;
+    fileNameLabel.text = model.showName;
+    selButton.selected = model.isSelect;
+    if ([model.type isEqual:@"0"]) {
+        imgView.image = [UIImage imageNamed:@"Folder"];
+    }
+    else if ([model.type isEqual:@"1"]) {
+        imgView.image = [UIImage imageNamed:@"pic"];
+    }
+    else if ([model.type isEqual:@"2"]) {
+        imgView.image = [UIImage imageNamed:@"music"];
+    }
+    else if ([model.type isEqual:@"3"]) {
+        imgView.image = [UIImage imageNamed:@"movie"];
+    }
+    else {
+        imgView.image = [UIImage imageNamed:@"file"];
+    }
 }
 
 @end

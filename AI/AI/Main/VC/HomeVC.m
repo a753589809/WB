@@ -109,19 +109,9 @@
         [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:true];
         [[NetWorking defaultNetWorking] requestAddress:@"/downlist" andPostParameters:nil andBlock:^(NSDictionary *dict) {
             [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
-            NSArray *array = [dict objectForKey:@"filelist"];
-            NSMutableArray *result = [NSMutableArray array];
-            if ([array isKindOfClass:[NSArray class]]) {
-                for (NSDictionary *d in array) {
-                    FileModel *m = [[FileModel alloc] init];
-                    m.type = [d objectForKey:@"type"];
-                    m.filepath = [d objectForKey:@"filepath"];
-                    [result addObject:m];
-                }
-            }
             FileViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"FileViewController"];
-            vc.fileArray = result;
-            vc.filePath = @"/";
+            vc.fileArray = [FileModel getFileArrayWith:dict];
+            vc.filePath = @"";
             [self.navigationController pushViewController:vc animated:true];
             FLog(@"%@",dict);
         } andFailDownload:^{
