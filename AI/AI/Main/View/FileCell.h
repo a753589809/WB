@@ -13,4 +13,6 @@
 
 @property (nonatomic, strong) FileModel *model;
 
+@property (nonatomic, copy) void(^ down)(FileModel *model);
+
 @end

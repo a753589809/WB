@@ -8,6 +8,9 @@
 
 #import "NetWorking.h"
 #import <AFNetworking.h>
+#include <CommonCrypto/CommonDigest.h>
+
+#define FileHashDefaultChunkSizeForReadingData 1024*8
 
 @interface NetWorking()
 
@@ -77,6 +80,8 @@
                 andBlock:(blockDownload)block
          andFailDownload:(blockFailDownLoad)failBlock {
     self.manager.requestSerializer.timeoutInterval = 30.0f;
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:file ofType:nil];
+    [self.manager.requestSerializer setValue:[NetWorking getFileMD5WithPath:filePath] forHTTPHeaderField:@"fileInfoMd5"];
     _sessionDataTask = [self.manager POST:[NSString stringWithFormat:@"%@%@", kBoxUrl, address] parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         /*
          此方法参数
@@ -86,7 +91,7 @@
          4. 上传文件的[mimeType]
          application/octet-stream为通用型
          */
-        NSString *filePath = [[NSBundle mainBundle] pathForResource:file ofType:nil];
+        
         NSURL *fileUrl = [NSURL fileURLWithPath:filePath];
         [formData appendPartWithFileURL:fileUrl name:@"" fileName:file mimeType:@"application/octet-stream" error:nil];
         
@@ -103,25 +108,16 @@
     
 }
 
-- (void)uploadingFileAddress:(NSString *)address
-                     andFile:(NSString *)file
-                 andProgress:(blockProgress)progress
-                    andBlock:(blockDownload)block
-             andFailDownload:(blockFailDownLoad)failBlock {
+- (void)uploadingAddress:(NSString *)address
+                    data:(NSData *)data
+                fileName:(NSString *)fileName
+             andProgress:(blockProgress)progress
+                andBlock:(blockDownload)block
+         andFailDownload:(blockFailDownLoad)failBlock {
     self.manager.requestSerializer.timeoutInterval = 30.0f;
-    FLog(@"%@",[NSString stringWithFormat:@"%@%@", kBoxUrl, address]);
+//    [self.manager.requestSerializer setValue:[NetWorking getFileMD5WithPath:filePath] forHTTPHeaderField:@"fileInfoMd5"];
     _sessionDataTask = [self.manager POST:[NSString stringWithFormat:@"%@%@", kBoxUrl, address] parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-        /*
-         此方法参数
-         1. 要上传的文件路径
-         2. 后台处理文件的字段,若没有可为空
-         3. 要保存在服务器上的[文件名]
-         4. 上传文件的[mimeType]
-         application/octet-stream为通用型
-         */
-        NSURL *fileUrl = [NSURL fileURLWithPath:file];
-        [formData appendPartWithFileURL:fileUrl name:@"" fileName:file mimeType:@"application/octet-stream" error:nil];
-        
+        [formData appendPartWithFileData:data name:@"file" fileName:fileName mimeType:@"application/octet-stream"];
     } progress:^(NSProgress * _Nonnull uploadProgress) {
         if (progress) {
             progress(uploadProgress);
@@ -134,6 +130,102 @@
     }];
     
 }
+
+- (void)downAddress:(NSString *)address
+        andProgress:(blockProgress)progress
+           andBlock:(blockDownload)block
+    andFailDownload:(blockFailDownLoad)failBlock {
+    
+    self.manager.requestSerializer.timeoutInterval = 30.0f;
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@%@", kBoxUrl, address]];
+    FLog(@"%@",url.absoluteURL);
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    NSString *filePathStr = [path stringByAppendingPathComponent:url.lastPathComponent];
+    
+    NSURLSessionDownloadTask *downloadTask = [self.manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
+//        FLog(@"下载进度：%.0f％", downloadProgress.fractionCompleted * 100);
+        if (progress) {
+            progress(downloadProgress);
+        }
+    } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
+        /* 设定下载到的位置 */
+        return [NSURL fileURLWithPath:filePathStr];
+    } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
+        if (error) {
+            failBlock();
+            FLog(@"error:%@",[error localizedDescription]);
+        }
+        else {
+            block(@{@"file":filePathStr});
+        }
+    }];
+    [downloadTask resume];
+
+}
+
+
++ (NSString*)getFileMD5WithPath:(NSString*)path {
+    return (__bridge_transfer NSString *)FileMD5HashCreateWithPath((__bridge CFStringRef)path, FileHashDefaultChunkSizeForReadingData);
+}
+
+CFStringRef FileMD5HashCreateWithPath(CFStringRef filePath,size_t chunkSizeForReadingData) {
+    // Declare needed variables
+    CFStringRef result = NULL;
+    CFReadStreamRef readStream = NULL;
+    // Get the file URL
+    CFURLRef fileURL = CFURLCreateWithFileSystemPath(kCFAllocatorDefault, (CFStringRef)filePath, kCFURLPOSIXPathStyle, (Boolean)false);
+    if (!fileURL) goto done;
+    // Create and open the read stream
+    readStream = CFReadStreamCreateWithFile(kCFAllocatorDefault, (CFURLRef)fileURL);
+    if (!readStream) goto done;
+    bool didSucceed = (bool)CFReadStreamOpen(readStream);
+    if (!didSucceed) goto done;
+    // Initialize the hash object
+    CC_MD5_CTX hashObject;
+    CC_MD5_Init(&hashObject);
+    // Make sure chunkSizeForReadingData is valid
+    if (!chunkSizeForReadingData) {
+        chunkSizeForReadingData = FileHashDefaultChunkSizeForReadingData;
+    }
+    // Feed the data to the hash object
+    bool hasMoreData = true;
+    while (hasMoreData) {
+        uint8_t buffer[chunkSizeForReadingData];
+        CFIndex readBytesCount = CFReadStreamRead(readStream,(UInt8 *)buffer,(CFIndex)sizeof(buffer));
+        if (readBytesCount == -1) break;
+        if (readBytesCount == 0) {
+            hasMoreData = false;
+            continue;
+        }
+        CC_MD5_Update(&hashObject,(const void *)buffer,(CC_LONG)readBytesCount);
+    }
+    // Check if the read operation succeeded
+    didSucceed = !hasMoreData;
+    // Compute the hash digest
+    unsigned char digest[CC_MD5_DIGEST_LENGTH];
+    CC_MD5_Final(digest, &hashObject);
+    // Abort if the read operation failed
+    if (!didSucceed) goto done;
+    // Compute the string result
+    char hash[2 * sizeof(digest) + 1];
+    for (size_t i = 0; i < sizeof(digest); ++i) {
+        snprintf(hash + (2 * i), 3, "%02x", (int)(digest[i]));
+    }
+    result = CFStringCreateWithCString(kCFAllocatorDefault,(const char *)hash,kCFStringEncodingUTF8);
+done:
+    if (readStream) {
+        CFReadStreamClose(readStream);
+        CFRelease(readStream);
+    }
+    if (fileURL) {
+        CFRelease(fileURL);
+    }
+    return result;
+}
+
+
+
 
 
 
@@ -151,9 +243,9 @@
      第五个参数:成功回调 responseObject响应体信息
      第六个参数:失败回调
      */
-    [manager POST:@"服务器ip" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    [self.manager POST:@"http://10.10.10.254:8080/upfile/11.png" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
         
-        UIImage *image = [UIImage imageNamed:@"xxx.png"];
+        UIImage *image = [UIImage imageNamed:@"11.png"];
         NSData *imageData = UIImagePNGRepresentation(image);
         
         //使用formData拼接数据
@@ -162,13 +254,14 @@
          第二个参数:服务器规定的
          第三个参数:文件上传到服务器以什么名称保存
          */
-        [formData appendPartWithFileData:imageData name:@"file" fileName:@"xxx.png" mimeType:@"image/png"];
+//        [formData appendPartWithFileData:imageData name:@"file" fileName:@"11.png" mimeType:@"image/png"];
         
         //方法二:
-        [formData appendPartWithFileURL:[NSURL fileURLWithPath:@""] name:@"file" fileName:@"xxx.png" mimeType:@"image/png" error:nil];
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"11.png" ofType:nil];
+        [formData appendPartWithFileURL:[NSURL fileURLWithPath:filePath] name:@"file" fileName:@"xxx.png" mimeType:@"image/jpeg" error:nil];
         
         //方法三:
-        [formData appendPartWithFileURL:[NSURL fileURLWithPath:@""] name:@"file" error:nil];
+//        [formData appendPartWithFileURL:[NSURL fileURLWithPath:@""] name:@"file" error:nil];
         
     }
          progress:^(NSProgress * _Nonnull uploadProgress) {
@@ -186,71 +279,5 @@
           }];
 }
 
-- (void)down {
-    /* 创建网络下载对象 */
-    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    
-    /* 下载地址 */
-    NSURL *url = [NSURL URLWithString:@"http://xxx/test.mp4"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    
-    /* 下载路径 */
-    NSString *path = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
-    NSString *filePath = [path stringByAppendingPathComponent:url.lastPathComponent];
-    
-    /* 开始请求下载 */
-    NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-        NSLog(@"下载进度：%.0f％", downloadProgress.fractionCompleted * 100);
-        
-    } destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
-        
-        /* 设定下载到的位置 */
-        return [NSURL fileURLWithPath:filePath];
-        
-    } completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
-        
-        NSLog(@"下载完成");
-        
-    }];
-    [downloadTask resume];
-
-}
-
-- (void)down2 {
-    //创建传话管理者
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    
-    NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:@"http://cn.bing.com/az/hprichbg/rb/WindmillLighthouse_ZH-CN12870536851_1920x1080.jpg"]];
-    //下载文件
-    /*
-     第一个参数:请求对象
-     第二个参数:progress 进度回调
-     第三个参数:destination 回调(目标位置)
-     有返回值
-     targetPath:临时文件路径
-     response:响应头信息
-     第四个参数:completionHandler 下载完成后的回调
-     filePath:最终的文件路径
-     */
-    NSURLSessionDownloadTask *download = [manager downloadTaskWithRequest:request
-                                                                 progress:^(NSProgress * _Nonnull downloadProgress) {
-                                                                     //下载进度
-                                                                     NSLog(@"%f",1.0 * downloadProgress.completedUnitCount / downloadProgress.totalUnitCount);
-                                                                 }
-                                                              destination:^NSURL * _Nonnull(NSURL * _Nonnull targetPath, NSURLResponse * _Nonnull response) {
-                                                                  //保存的文件路径
-                                                                  NSString *fullPath = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:response.suggestedFilename];
-                                                                  return [NSURL fileURLWithPath:fullPath];
-                                                                  
-                                                              }
-                                                        completionHandler:^(NSURLResponse * _Nonnull response, NSURL * _Nullable filePath, NSError * _Nullable error) {
-                                                            
-                                                            NSLog(@"%@",filePath);
-                                                        }];
-    
-    //执行Task
-    [download resume];
-}
 
 @end

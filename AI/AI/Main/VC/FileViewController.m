@@ -11,6 +11,7 @@
 #import "FileCell.h"
 #import "NetWorking.h"
 #import <AssetsLibrary/AssetsLibrary.h>
+#import <Photos/Photos.h>
 
 @interface FileViewController ()<UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
@@ -48,6 +49,10 @@
     FileCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FileCell" forIndexPath:indexPath];
     if (self.fileArray.count > indexPath.row) {
         cell.model = self.fileArray[indexPath.row];
+        __weak FileViewController *weakSelf = self;
+        cell.down = ^(FileModel *model) {
+            [weakSelf dowmFile:model];
+        };
     }
     return cell;
 }
@@ -80,12 +85,14 @@
         path = @"";
     }
     NSString *file = [NSString stringWithFormat:@"/downlist/%@", path];
-    if (isRefresh) {
+    if (!isRefresh) {
         [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:true];
     }
     [[NetWorking defaultNetWorking] requestAddress:file andPostParameters:nil andBlock:^(NSDictionary *dict) {
         [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
         if (isRefresh) {
+            NSMutableArray *a = [FileModel getFileArrayWith:dict];
+            self.fileArray = a;
             [self.tableView reloadData];
         }
         else {
@@ -129,33 +136,14 @@
 }
 
 - (IBAction)uploadFile:(id)sender {
+//    [[NetWorking defaultNetWorking] uploading];
+//    return;
     UIImagePickerControllerSourceType rceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc]init];
     imagePicker.sourceType = rceType;
     imagePicker.delegate = self;
     imagePicker.navigationBar.translucent = NO;
     [self presentViewController:imagePicker animated:YES completion:nil];
-}
-
-- (IBAction)dowmFile:(id)sender {
-//    NSMutableArray *a = [NSMutableArray array];
-//    for (FileModel *m in self.fileArray) {
-//        if (m.isSelect) {
-//            if (![m.type isEqualToString:@"1"]) {
-//                [self showTool:@"只支持下载图片" view:self.view];
-//                return;
-//            }
-//            [a addObject:m.filepath];
-//        }
-//    }
-//    if (a.count == 0) {
-//        [self showTool:@"请选择需要下载的图片" view:self.view];
-//        return;
-//    }
-//    NSInteger i = 0;
-//    for (NSString *path in a) {
-//        
-//    }
 }
 
 - (IBAction)delFolder:(id)sender {
@@ -168,6 +156,44 @@
     alert.tag = 99;
     [alert show];
 }
+
+- (void)dowmFile:(FileModel *)model {
+    [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:true];
+    [[NetWorking defaultNetWorking] downAddress:[NSString stringWithFormat:@"/downfile/%@",model.filepath] andProgress:^(NSProgress *progress) {
+        
+    } andBlock:^(NSDictionary *dict) {
+        NSString *filePathStr = [dict objectForKey:@"file"];
+//        NSData *d = [NSData dataWithContentsOfFile:filePathStr];
+//        UIImage *i = [UIImage imageWithData:d];
+        UIImage *img = [UIImage imageWithContentsOfFile:filePathStr];
+        PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
+        if (status == PHAuthorizationStatusNotDetermined) {
+            [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+                if (status == PHAuthorizationStatusAuthorized) {
+                    UIImageWriteToSavedPhotosAlbum(img, self, @selector(image:didFinishSavingWithError:contextInfo:), (__bridge void *)self);
+                }
+            }];
+        }
+        else if (status == PHAuthorizationStatusDenied) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"请在\"设置->隐私->照片\"中允许访问照片。" delegate:self cancelButtonTitle:L(@"Sure") otherButtonTitles:nil];
+            [alert show];
+        }
+        else if (status == PHAuthorizationStatusAuthorized) {
+            UIImageWriteToSavedPhotosAlbum(img, self, @selector(image:didFinishSavingWithError:contextInfo:), (__bridge void *)self);
+        }
+        [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
+    } andFailDownload:^{
+        [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
+        [self showTool:@"下载失败" view:self.view];
+    }];
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
+    if (!error) {
+        
+    }
+}
+
 
 #pragma mark - alert
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -218,35 +244,28 @@
     [assetsLibrary assetForURL:imageUrl resultBlock:^(ALAsset *asset) {
         ALAssetRepresentation *representation = [asset defaultRepresentation];
         NSString *imageName = representation.filename;
-        NSLog(@"imageName:%@", imageName);
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *doucumentDirectory = paths[0];
-        NSString *fullPath = [doucumentDirectory stringByAppendingPathComponent:imageName];
-        [UIImageJPEGRepresentation(img, 1) writeToFile:fullPath atomically:YES];
-        
         NSString *p;
         if (self.filePath.length > 0) {
-            p = [NSString stringWithFormat:@"/update/%@/%@",self.filePath,imageName];
+            p = [NSString stringWithFormat:@"/upfile/%@/%@",self.filePath,imageName];
         }
         else {
-            p = [NSString stringWithFormat:@"/update/%@",imageName];
+            p = [NSString stringWithFormat:@"/upfile/%@",imageName];
         }
-        [[NetWorking defaultNetWorking] uploadingFileAddress:p andFile:fullPath andProgress:^(NSProgress *progress) {
-            FLog(@"%@", progress);
+        
+        [[NetWorking defaultNetWorking] uploadingAddress:p data:UIImagePNGRepresentation(img) fileName:imageName andProgress:^(NSProgress *progress) {
+            
         } andBlock:^(NSDictionary *dict) {
             FLog(@"%@", dict);
-            [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
             if ([[dict objectForKey:@"result"] isEqual:@"0"]) {
                 [self getFileList:self.filePath isRefresh:YES];
             }
             else {
+                [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
                 [self showTool:@"上传失败" view:self.navigationController.view];
             }
-            [[NSFileManager defaultManager] removeItemAtPath:fullPath error:nil];
         } andFailDownload:^{
             [MBProgressHUD hideAllHUDsForView:self.navigationController.view animated:true];
             [self showTool:@"上传失败" view:self.navigationController.view];
-            [[NSFileManager defaultManager] removeItemAtPath:fullPath error:nil];
         }];
         
     } failureBlock:^(NSError *error) {

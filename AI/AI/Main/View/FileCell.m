@@ -13,7 +13,7 @@
     __weak IBOutlet UIImageView *imgView;
     __weak IBOutlet UILabel *fileNameLabel;
     __weak IBOutlet UIButton *selButton;
-    
+    __weak IBOutlet UIButton *downButton;
 }
 
 - (void)awakeFromNib {
@@ -22,19 +22,27 @@
 }
 
 - (IBAction)cliclSelect:(id)sender {
-    selButton.selected = !self.isSelected;
+    selButton.selected = !selButton.isSelected;
     self.model.isSelect = selButton.isSelected;
+}
+
+- (IBAction)downFile:(id)sender {
+    if (self.down) {
+        self.down(self.model);
+    }
 }
 
 - (void)setModel:(FileModel *)model {
     _model = model;
     fileNameLabel.text = model.showName;
     selButton.selected = model.isSelect;
+    downButton.hidden = true;
     if ([model.type isEqual:@"0"]) {
         imgView.image = [UIImage imageNamed:@"Folder"];
     }
     else if ([model.type isEqual:@"1"]) {
         imgView.image = [UIImage imageNamed:@"pic"];
+        downButton.hidden = false;
     }
     else if ([model.type isEqual:@"2"]) {
         imgView.image = [UIImage imageNamed:@"music"];

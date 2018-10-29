@@ -9,18 +9,6 @@
 #ifndef kaixingou_Common_h
 #define kaixingou_Common_h
 
-//__weak  __strong
-/**
- * 强弱引用转换，用于解决代码块（block）与强引用对象之间的循环引用问题
- * 调用方式: `@weakify(object)`实现弱引用转换，`@strongify(object)`实现强引用转换
- *
- * 示例：
- * @weakify(object)
- * [obj block:^{
- * @strongify(object)
- * strong_object = something;
- * }];
- */
 #ifndef    weakify
 #if __has_feature(objc_arc)
 #define weakify(object) autoreleasepool{} __weak __typeof__(object) weak##_##object = object;
@@ -41,24 +29,13 @@
 #define kScreenWidth  [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 
-//iPhone 6,iPhone 6Plus适配
-#define Size(x)  ((x)*kScreenWidth/320.f)
-#define Size6(x) ((x)*kScreenWidth/375.f)
 
-#define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 #define Is_Iphone (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
 #define Is_Iphone_X (Is_Iphone && kScreenHeight == 812.0)
 #define kNaviHeight (Is_Iphone_X ? 88 : 64)
 #define kTabbarHeight (Is_Iphone_X ? 83 : 49)
 #define kBottomHeight (Is_Iphone_X ? 34 : 0)
 #define kStatusBarHeight (Is_Iphone_X ? 44 : 20)
-
-//判断系统版本
-#define  IOS8_LATER  [[UIDevice currentDevice].systemVersion floatValue] >= 8.0
-#define  IOS10_LATER [[UIDevice currentDevice].systemVersion floatValue] >= 10.0
-
-//判断是否 Retina屏、设备是否iPhone 5、是否是iPad
-#define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
 
 
 //返回按钮图片
