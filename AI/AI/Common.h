@@ -79,6 +79,14 @@
 // url
 #define kBoxUrl @"http://10.10.10.254:8080"
 
+#define kDownlistUrl @"/downlist"
+#define kUpdateUrl @"/update"
+#define kCreateDirUrl @"/createDir"
+#define kDownfileUrl @"/downfile"
+#define kUpfileUrl @"/upfile"
+#define kRemoveDirFileUrl @"/removeDirFile"
+#define kCheckmodelversionUrl @"/checkmodelversion"
+
 // userdefault key
 #define VOICEKEY @"VOICEKEY"
 

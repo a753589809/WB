@@ -84,7 +84,7 @@
     if (path == nil) {
         path = @"";
     }
-    NSString *file = [NSString stringWithFormat:@"/downlist/%@", path];
+    NSString *file = [NSString stringWithFormat:@"%@/%@",kDownlistUrl, path];
     if (!isRefresh) {
         [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:true];
     }
@@ -112,10 +112,10 @@
     [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:true];
     NSString *p;
     if (self.filePath.length > 0) {
-        p = [NSString stringWithFormat:@"/createDir/%@/%@",self.filePath,path];
+        p = [NSString stringWithFormat:@"%@/%@/%@",kCreateDirUrl,self.filePath,path];
     }
     else {
-        p = [NSString stringWithFormat:@"/createDir/%@",path];
+        p = [NSString stringWithFormat:@"%@/%@",kCreateDirUrl,path];
     }
     [[NetWorking defaultNetWorking] requestAddress:p andPostParameters:nil andBlock:^(NSDictionary *dict) {
         [self getFileList:self.filePath isRefresh:YES];
@@ -136,8 +136,6 @@
 }
 
 - (IBAction)uploadFile:(id)sender {
-//    [[NetWorking defaultNetWorking] uploading];
-//    return;
     UIImagePickerControllerSourceType rceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc]init];
     imagePicker.sourceType = rceType;
@@ -159,7 +157,7 @@
 
 - (void)dowmFile:(FileModel *)model {
     [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:true];
-    [[NetWorking defaultNetWorking] downAddress:[NSString stringWithFormat:@"/downfile/%@",model.filepath] andProgress:^(NSProgress *progress) {
+    [[NetWorking defaultNetWorking] downAddress:[NSString stringWithFormat:@"%@/%@",kDownfileUrl,model.filepath] andProgress:^(NSProgress *progress) {
         
     } andBlock:^(NSDictionary *dict) {
         NSString *filePathStr = [dict objectForKey:@"file"];
@@ -220,7 +218,7 @@
         NSDictionary *params = @{@"data":[NSString stringWithFormat:@"[paths=%@]", pathStr]};
         FLog(@"%@",params);
         [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:true];
-        [[NetWorking defaultNetWorking] requestPostAddress:@"/removeDirFile" andPostParameters:params andBlock:^(NSDictionary *dict) {
+        [[NetWorking defaultNetWorking] requestPostAddress:kRemoveDirFileUrl andPostParameters:params andBlock:^(NSDictionary *dict) {
             [self getFileList:self.filePath isRefresh:YES];
             FLog(@"%@",dict);
         } andFailDownload:^{
@@ -246,10 +244,10 @@
         NSString *imageName = representation.filename;
         NSString *p;
         if (self.filePath.length > 0) {
-            p = [NSString stringWithFormat:@"/upfile/%@/%@",self.filePath,imageName];
+            p = [NSString stringWithFormat:@"%@/%@/%@",kUpfileUrl,self.filePath,imageName];
         }
         else {
-            p = [NSString stringWithFormat:@"/upfile/%@",imageName];
+            p = [NSString stringWithFormat:@"%@/%@",kUpfileUrl,imageName];
         }
         
         [[NetWorking defaultNetWorking] uploadingAddress:p data:UIImagePNGRepresentation(img) fileName:imageName andProgress:^(NSProgress *progress) {

@@ -7,13 +7,10 @@
 //
 
 #import "ViewController.h"
-#import "QRCodeViewController.h"
-#import "ScanViewController.h"
 #import <NetworkExtension/NEHotspotConfigurationManager.h>
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import "ImageHelper.h"
 #import <AVFoundation/AVFoundation.h>
-#import "VideoViewController.h"
 #import "XTSoundPlayer.h"
 
 #define kCreateAlert(title) UIAlertView *_alertView11 = [[UIAlertView alloc] initWithTitle:title message:nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];\
@@ -392,16 +389,6 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     unsigned char *bitmap = [ImageHelper convertUIImageToBitmapRGBA8:image];
     NSData *data = [NSData dataWithBytes:bitmap length:224*224*3];
     free(bitmap);
-    
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *documentsDirectory = [paths objectAtIndex:0];
-//    
-//    NSMutableString * path = [[NSMutableString alloc]initWithString:documentsDirectory];
-//    [path appendString:@"/fuck"];
-//    
-//    [data writeToFile:path atomically:YES];
-//
-//    return;
     
     NSArray *a = [self.model.modelName componentsSeparatedByString:@"_v"];
     if (isShowHUD) {

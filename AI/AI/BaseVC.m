@@ -9,7 +9,7 @@
 #import "BaseVC.h"
 #import "XTSheetView.h"
 
-@interface BaseVC ()
+@interface BaseVC ()<XTSheetViewDelegat>
 
 @property (nonatomic, strong) UIView *menuView; //右上角菜单
 
@@ -128,6 +128,7 @@
         XTSheetView *sheet = [[NSBundle mainBundle] loadNibNamed:@"XTSheetView" owner:nil options:nil].lastObject;
         sheet.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
         [sheet setTitleArray:title subTitle:sub];
+        sheet.delegate = self;
         [self.navigationController.view addSubview:sheet];
         [sheet mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.top.right.bottom.mas_equalTo(self.navigationController.view);
@@ -164,4 +165,18 @@
     [tool hide:YES afterDelay:a > 1.5 ? a : 1.5f];
 }
 
+- (void)clickSheetView:(XTSheetView *)sheetView index:(NSInteger)index {
+    if (index == 0) {
+        NSURL *url = [NSURL URLWithString:@"prefs:root=WIFI"];
+        if ([[UIApplication sharedApplication] canOpenURL:url]) {
+            [[UIApplication sharedApplication] openURL:url];
+        }
+        else {
+            NSURL *url = [NSURL URLWithString:@"App-Prefs:root=WIFI"];
+            if ([[UIApplication sharedApplication] canOpenURL:url]) {
+                [[UIApplication sharedApplication] openURL:url];
+            }
+        }
+    }
+}
 @end

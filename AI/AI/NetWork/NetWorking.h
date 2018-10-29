@@ -37,5 +37,5 @@ typedef void (^blockProgress) (NSProgress *progress);
         andProgress:(blockProgress)progress
            andBlock:(blockDownload)block
     andFailDownload:(blockFailDownLoad)failBlock;
-- (void)uploading;
+
 @end
