@@ -17,6 +17,7 @@
 #import "VideoViewController.h"
 #import "FileModel.h"
 #import "FileViewController.h"
+#import "QRCodeViewController.h"
 
 #define kCellSpaing 15
 
@@ -102,6 +103,15 @@
     
     
     HomeModel *model = [self.data objectAt:indexPath.item];
+    ViewController *vc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"ViewController"];
+    vc.model = model;
+    vc.showMenuButton = YES;
+    [self.navigationController pushViewController:vc animated:true];
+//    QRCodeViewController *code = [[QRCodeViewController alloc] init];
+//    [self.navigationController pushViewController:code animated:YES];
+    return;
+    
+    
     if (!model) {
         return;
     }

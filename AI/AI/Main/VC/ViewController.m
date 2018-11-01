@@ -19,7 +19,7 @@
 #define kCreateAlert(title) UIAlertView *_alertView11 = [[UIAlertView alloc] initWithTitle:title message:nil delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];\
 [_alertView11 show];
 
-@interface ViewController()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,AVCaptureVideoDataOutputSampleBufferDelegate> {
+@interface ViewController()<UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,AVCaptureVideoDataOutputSampleBufferDelegate,AVCaptureMetadataOutputObjectsDelegate> {
 
     __weak IBOutlet UILabel *typeLabel;
     __weak IBOutlet UIView *topImageBgView;
@@ -47,6 +47,9 @@
     BOOL isRequest;
     BOOL isUploadImage;
     
+    NSArray *_faceArray;
+    
+    UIView *_v;
 }
 
 @end
@@ -167,12 +170,9 @@
     
     if (!session) {
         NSError *error = nil;
-        session = [[AVCaptureSession alloc] init];//负责输入和输出设置之间的数据传递
-        session.sessionPreset = AVCaptureSessionPresetHigh;//设置分辨率
         AVCaptureDevice *device = [AVCaptureDevice
                                    defaultDeviceWithMediaType:AVMediaTypeVideo];//这里默认是使用后置摄像头，你可以改成前置摄像头
         input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
-        
         float frameRate = 15;
         for(AVCaptureDeviceFormat *vFormat in [device formats] ) {
             CMFormatDescriptionRef description= vFormat.formatDescription;
@@ -187,18 +187,45 @@
                 }
             }
         }
-        [session addInput:input];
+        
+        AVCaptureMetadataOutput *metaOutput = [[AVCaptureMetadataOutput alloc] init];//创建一个视频数据输出流
+        dispatch_queue_t queue1 = dispatch_queue_create("myQueue1", NULL);
+        [metaOutput setMetadataObjectsDelegate:self queue:queue1];
+        //        metaOutput.metadataObjectTypes = [AVMetadataObject.ObjectType.face]
+        //        rectOfInterest 需要设置这个
+#warning xt_gg
+        
+        
         
         AVCaptureVideoDataOutput *output = [[AVCaptureVideoDataOutput alloc] init];//创建一个视频数据输出流
-        [session addOutput:output];
         dispatch_queue_t queue = dispatch_queue_create("myQueue", NULL);
         [output setSampleBufferDelegate:self queue:queue];
         output.videoSettings = [NSDictionary dictionaryWithObjectsAndKeys:
                                 [NSNumber numberWithInt:kCVPixelFormatType_32BGRA], kCVPixelBufferPixelFormatTypeKey,
                                 nil];
+        
+        
+        
+        
+        session = [[AVCaptureSession alloc] init];//负责输入和输出设置之间的数据传递
+        session.sessionPreset = AVCaptureSessionPresetHigh;//设置分辨率
+        
+        [session beginConfiguration];
+        [session addInput:input];
+        if ([session canAddOutput:output]) {
+            [session addOutput:output];
+        }
+        if ([session canAddOutput:metaOutput]) {
+            [session addOutput:metaOutput];
+        }
+        [session commitConfiguration];
+        
+        metaOutput.metadataObjectTypes = @[AVMetadataObjectTypeFace];
+        
         preLayer = [AVCaptureVideoPreviewLayer layerWithSession: session];//相机拍摄预览图层
         preLayer.frame = topImageBgView.bounds;
-        preLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+//        preLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        preLayer.videoGravity = AVLayerVideoGravityResizeAspect;
     }
     
     [topImageBgView.layer addSublayer:preLayer];
@@ -345,28 +372,110 @@
 didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
        fromConnection:(AVCaptureConnection *)connection {
     if (isRequest || [player isSpeaking] || !isUploadImage) {
-        return;
+//        return;
     }
-    NSLog(@"===");
     isRequest = YES;
     isUploadImage = NO;
     
     UIImage *oldImage = [self imageFromSampleBuffer:sampleBuffer];
     
-    CGFloat x = (oldImage.size.height - oldImage.size.width) / 2;
-    CGRect frame = CGRectMake(x, 0, oldImage.size.width, oldImage.size.width);
-    CGImageRef imageRef = CGImageCreateWithImageInRect(oldImage.CGImage, frame);
-    UIImage *newImage = [UIImage imageWithCGImage:imageRef scale:oldImage.scale orientation:oldImage.imageOrientation];
-    CGImageRelease(imageRef);
+//    CGFloat x = (oldImage.size.height - oldImage.size.width) / 2;
+//    CGRect frame = CGRectMake(x, 0, oldImage.size.width, oldImage.size.width);
+//    CGImageRef imageRef = CGImageCreateWithImageInRect(oldImage.CGImage, frame);
+//    UIImage *newImage = [UIImage imageWithCGImage:imageRef scale:oldImage.scale orientation:oldImage.imageOrientation];
+//    CGImageRelease(imageRef);
     
-    if ([self.model.ID isEqual:@"57"] || [self.model.ID isEqual:@"63"]) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [self dettectFaceWithImage:newImage isShow:NO];
-        });
+//    if ([self.model.ID isEqual:@"57"] || [self.model.ID isEqual:@"63"]) {
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [self dettectFaceWithImage:newImage isShow:NO];
+//        });
+//    }
+//    else {
+//        [self recognitionImage:newImage isShowHUD:NO];
+//    }
+    
+    
+    if (_faceArray.count > 0) {
+        for (AVMetadataFaceObject *obj in _faceArray) {
+            if ([obj isKindOfClass:[AVMetadataFaceObject class]]) {
+                AVMetadataObject *data = [captureOutput transformedMetadataObjectForMetadataObject:obj connection:connection];
+//                NSLog(@"%@", NSStringFromCGRect(data.bounds));
+                
+//                CGFloat scale = MIN(topImageView.width / oldImage.size.width, topImageView.height / oldImage.size.height);
+//                CGFloat offsetX = (topImageView.width - oldImage.size.width * scale) / 2;
+//                CGFloat offsetY = (topImageView.height - oldImage.size.height * scale) / 2;
+//                CGFloat y = oldImage.size.height - data.bounds.size.height - data.bounds.origin.y;
+//                CGRect frame = CGRectMake(data.bounds.origin.x * scale + offsetX, y * scale + offsetY, data.bounds.size.width * scale, data.bounds.size.height * scale);
+                
+//                CGFloat scale1 = MIN(topImageView.width / oldImage.size.width, topImageView.height / oldImage.size.height);
+//                CGFloat offsetX = (topImageView.width - oldImage.size.width * scale1) / 2;
+//                CGFloat offsetY = (topImageView.height - oldImage.size.height * scale1) / 2;
+                
+                
+                CGFloat scale = oldImage.size.height / preLayer.bounds.size.height;
+                CGFloat offsetX = (topImageView.width - oldImage.size.width / scale) / 2;
+                CGFloat w = data.bounds.size.height / scale;
+                CGFloat h = data.bounds.size.width / scale;
+                CGFloat x = (oldImage.size.width - data.bounds.size.height - data.bounds.origin.y) / scale + offsetX;
+//                CGFloat y = (oldImage.size.height - data.bounds.size.width - data.bounds.origin.x) / scale;
+//                CGFloat x = data.bounds.origin.y / scale + offsetX;
+                CGFloat y = data.bounds.origin.x / scale;
+                CGRect frame = CGRectMake(x, y, w, h);
+//                NSLog(@"%@===%@", NSStringFromCGRect(frame),NSStringFromCGRect(data.bounds));
+                
+                
+                if (data.bounds.origin.x < 0 || data.bounds.origin.y < 0) {
+                    NSLog(@"%@", NSStringFromCGRect(data.bounds));
+                }
+                
+                
+//                if (!rahmenView) {
+//                    rahmenView = [[CALayer alloc] init];
+//                    rahmenView.borderColor = [UIColor redColor].CGColor;
+//                    rahmenView.borderWidth = 2.0f;
+//                    [topImageBgView.layer insertSublayer:rahmenView above:preLayer];
+//                    rahmenView.frame = frame;
+//                }
+                
+//                NSLog(@"%@===%@", NSStringFromCGSize(oldImage.size), NSStringFromCGRect(data.bounds));
+                
+                
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+//                    if (!self->_v) {
+//                        self->_v = [[UIView alloc] init];
+//                        self->_v.backgroundColor = [UIColor colorWithWhite:0 alpha:0.5];
+//                        [self->topImageView addSubview:self->_v];
+//                    }
+//                    self->_v.frame = frame;
+                    
+                    if (!self->rahmenView) {
+                        self->rahmenView = [[CALayer alloc] init];
+                        self->rahmenView.borderColor = [UIColor redColor].CGColor;
+                        self->rahmenView.borderWidth = 2.0f;
+                        [self->topImageBgView.layer insertSublayer:self->rahmenView above:self->preLayer];
+                    }
+                    self->rahmenView.hidden = NO;
+                    self->rahmenView.frame = frame;
+                });
+                
+                break;
+            }
+        }
+        _faceArray = nil;
     }
     else {
-        [self recognitionImage:newImage isShowHUD:NO];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self->rahmenView.hidden = YES;
+        });
     }
+    
+    
+    
+    
+    
+    
+    
     
     
 //    dispatch_async(dispatch_get_main_queue(), ^{
@@ -381,6 +490,11 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 //        imgV.image = newImage;
 //    });
     
+}
+
+
+- (void)captureOutput:(AVCaptureOutput *)output didOutputMetadataObjects:(NSArray<__kindof AVMetadataObject *> *)metadataObjects fromConnection:(AVCaptureConnection *)connection {
+    _faceArray = metadataObjects;
 }
 
 
@@ -575,6 +689,18 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     CGImageRelease(quartzImage);
     
     return (image);
+    
+    
+    //CIImage -> CGImageRef -> UIImage
+//    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);  //拿到缓冲区帧数据
+//    CIImage *ciImage = [CIImage imageWithCVPixelBuffer:imageBuffer];            //创建CIImage对象
+//    CIContext *temporaryContext = [CIContext contextWithOptions:nil];           //创建上下文
+//    CGImageRef cgImageRef = [temporaryContext createCGImage:ciImage fromRect:CGRectMake(0, 0, CVPixelBufferGetWidth(imageBuffer), CVPixelBufferGetHeight(imageBuffer))];
+//    UIImage *result = [[UIImage alloc] initWithCGImage:cgImageRef scale:1.0 orientation:UIImageOrientationLeftMirrored];  //创建UIImage对象
+//    CGImageRelease(cgImageRef);  //释放上下文 
+//    return result;
+    
+    
 }
 
 // 人脸识别

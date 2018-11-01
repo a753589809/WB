@@ -18,7 +18,7 @@
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 
 
-@interface QRCodeViewController ()<AVCaptureMetadataOutputObjectsDelegate,UIAlertViewDelegate> {
+@interface QRCodeViewController ()<AVCaptureMetadataOutputObjectsDelegate,UIAlertViewDelegate,AVCaptureVideoDataOutputSampleBufferDelegate> {
     
     UIView *_QrCodeline;
     NSTimer *_timer;
@@ -29,6 +29,8 @@
     NSString *_symbolStr;
     
     BOOL _hasCodeNotHandle;  //是否有二维码没有处理
+    
+    NSArray *_faceArray;
 }
 
 @property (nonatomic, strong) AVCaptureSession *session;
@@ -165,7 +167,28 @@
     [session setSessionPreset:AVCaptureSessionPreset1920x1080];
     // 4.3 设置输出数据类型，需要将元数据输出添加到会话后，才能指定元数据类型，否则会报错
 //    [output setMetadataObjectTypes:@[AVMetadataObjectTypeQRCode,AVMetadataObjectTypeEAN13Code, AVMetadataObjectTypeEAN8Code, AVMetadataObjectTypeCode128Code]];
-    output.metadataObjectTypes = output.availableMetadataObjectTypes;
+//    output.metadataObjectTypes = output.availableMetadataObjectTypes;
+    output.metadataObjectTypes = @[AVMetadataObjectTypeFace];
+    
+    
+    
+    
+    AVCaptureVideoDataOutput *output1 = [[AVCaptureVideoDataOutput alloc] init];//创建一个视频数据输出流
+    dispatch_queue_t queue1 = dispatch_queue_create("myQueue", NULL);
+    [output1 setSampleBufferDelegate:self queue:queue1];
+    output1.videoSettings = [NSDictionary dictionaryWithObjectsAndKeys:
+                            [NSNumber numberWithInt:kCVPixelFormatType_32BGRA], kCVPixelBufferPixelFormatTypeKey,
+                            nil];
+    [session addOutput:output1];
+    
+    
+    
+    
+    
+    
+    
+    
+    
     self.session = session;
     
     // 5. 视频预览图层
@@ -262,34 +285,56 @@
 #pragma mark -- ZBarReaderViewDelegate
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection {
     
-    NSLog(@"==============");
     if (_hasCodeNotHandle) {
         return;
     }
-    
+    _faceArray = metadataObjects;
     if (metadataObjects.count > 0) {
         
-        AVMetadataMachineReadableCodeObject *obj = metadataObjects[0];
         
-        if (obj.stringValue && ![obj.stringValue isEqualToString:@""] && obj.stringValue.length > 0) {
+        
+        AVMetadataFaceObject *obj = metadataObjects[0];
+        if ([obj isKindOfClass:[AVMetadataFaceObject class]]) {
             
-            _hasCodeNotHandle = YES;
+//            let convertedObject = output.transformedMetadataObject(for: faceObject, connection: connection)
+//            NSLog(@"%@=====%@",obj,NSStringFromCGRect(obj.bounds));
+//            AVMetadataObject *o = [captureOutput transformedMetadataObjectForMetadataObject:obj connection:connection];
+//            NSLog(@"%@",NSStringFromCGRect(o.bounds));
+        }
+        
+//        if (obj.stringValue && ![obj.stringValue isEqualToString:@""] && obj.stringValue.length > 0) {
+//
+//            _hasCodeNotHandle = YES;
+//
+//            _symbolStr = obj.stringValue;
+//
+//            NSString *s = [_symbolStr stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]];
+        
+//            NSLog(@"%@",s);
             
-            _symbolStr = obj.stringValue;
-            
-            NSString *s = [_symbolStr stringByTrimmingCharactersInSet:[NSCharacterSet decimalDigitCharacterSet]];
-            
-            NSLog(@"%@",s);
-            
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:s delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
-            [alert show];
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:s delegate:self cancelButtonTitle:@"取消" otherButtonTitles:nil, nil];
+//            [alert show];
             //{"ssid":"BOJINGnet-B1787","password":"12345678"}
             
-        }
+//        }
         
     }
     
 }
 
+
+- (void)captureOutput:(AVCaptureOutput *)output didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
+    if (_faceArray.count > 0) {
+        for (AVMetadataFaceObject *obj in _faceArray) {
+            if ([obj isKindOfClass:[AVMetadataFaceObject class]]) {
+//                let convertedObject = output.transformedMetadataObject(for: faceObject, connection: connection)
+                AVMetadataObject *data = [output transformedMetadataObjectForMetadataObject:obj connection:connection];
+                NSLog(@"%@", NSStringFromCGRect(data.bounds));
+                break;
+            }
+        }
+        
+    }
+}
 
 @end
