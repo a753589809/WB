@@ -26,6 +26,7 @@
             else {
                 NSArray *a = [m.filepath componentsSeparatedByString:@"."];
                 NSString *last = a.lastObject;
+                last = last.lowercaseString;
                 NSArray *img = @[@"jpg",@"png",@"jpeg",@"gif",@"bmp"];
                 NSArray *audio = @[@"mp3",@"wav",@"cd",@"asf",@"real",@"wma",@"ape",@"module",@"mp3pro",@"midi",@"vqf"];
                 NSArray *video = @[@"avi",@"flv",@"mp4",@"mov",@"mpeg",@"mpg",@"mkv",@"dat",@"wmv",@"ogm",@"rmvb",@"rm",@"3gp",@"ogg"];

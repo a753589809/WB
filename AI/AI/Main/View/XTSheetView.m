@@ -91,15 +91,8 @@
 }
 
 - (void)clickMenu:(UIButton *)bt {
-    NSURL *url = [NSURL URLWithString:@"prefs:root=WIFI"];
-    if ([[UIApplication sharedApplication] canOpenURL:url]) {
-        [[UIApplication sharedApplication] openURL:url];
-    }
-    else {
-        NSURL *url = [NSURL URLWithString:@"App-Prefs:root=WIFI"];
-        if ([[UIApplication sharedApplication] canOpenURL:url]) {
-            [[UIApplication sharedApplication] openURL:url];
-        }
+    if (self.delegate && [self.delegate respondsToSelector:@selector(clickSheetView:index:)]) {
+        [self.delegate clickSheetView:self index:bt.tag];
     }
     [self clickCancel];
 }

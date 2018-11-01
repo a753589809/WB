@@ -26,10 +26,16 @@ typedef void (^blockProgress) (NSProgress *progress);
                 andBlock:(blockDownload)block
          andFailDownload:(blockFailDownLoad)failBlock;
 
-- (void)uploadingFileAddress:(NSString *)address
-                     andFile:(NSString *)file
-                 andProgress:(blockProgress)progress
-                    andBlock:(blockDownload)block
-             andFailDownload:(blockFailDownLoad)failBlock;
+- (void)uploadingAddress:(NSString *)address
+                    data:(NSData *)data
+                fileName:(NSString *)fileName
+             andProgress:(blockProgress)progress
+                andBlock:(blockDownload)block
+         andFailDownload:(blockFailDownLoad)failBlock;
+
+- (void)downAddress:(NSString *)address
+        andProgress:(blockProgress)progress
+           andBlock:(blockDownload)block
+    andFailDownload:(blockFailDownLoad)failBlock;
 
 @end

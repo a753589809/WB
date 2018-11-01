@@ -42,10 +42,9 @@
 		
 		if(newBitmap) {	// Copy the data
 			for(int i = 0; i < bufferLength / 4; ++i) {
-				newBitmap[i] = bitmapData[i*4+2];
+				newBitmap[i] = bitmapData[i*4];
                 newBitmap[i+50176] = bitmapData[i*4+1];
-                newBitmap[i+100352] = bitmapData[i*4];
-//                NSLog(@"%u==%u==%u",bitmapData[i*4],bitmapData[i*4+1],bitmapData[i*4+2]);
+                newBitmap[i+100352] = bitmapData[i*4+2];
 			}
 		}
 		

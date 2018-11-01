@@ -8,7 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class XTSheetView;
+
+@protocol XTSheetViewDelegat<NSObject>
+- (void)clickSheetView:(XTSheetView *)sheetView index:(NSInteger)index;
+@end
+
 @interface XTSheetView : UIView
+
+@property (nonatomic, weak) id<XTSheetViewDelegat> delegate;
 
 - (void)setTitleArray:(NSArray *)titleArray subTitle:(NSArray *)subArray;
 
